@@ -1,9 +1,9 @@
 import javax.swing.JFrame;
 
 
-public class PlateauJeu extends JFrame {
-	
-	public PlateauJeu()
+public class PlateauJeu  {
+
+/*	public PlateauJeu()
 	{
 		this.setAlwaysOnTop(true);
 		this.setResizable(false);
@@ -13,5 +13,6 @@ public class PlateauJeu extends JFrame {
 		this.setVisible(true);
 		
 	}
-
+*/
+	int plateau[][] = new int[5][5];
 }
