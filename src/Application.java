@@ -56,7 +56,7 @@ public class Application {
 	public static void main(String[] args) {
 		
 		Scanner recuperationInformation = new Scanner(System.in);
-		//// Choix des noms ////
+
 		do {
 			System.out.println("Voulez-vous modifier les noms de Joueur 1 et Joueur 2 (O/N)");
 			String choix = recuperationInformation.nextLine();
@@ -95,9 +95,6 @@ public class Application {
 			}
 		} while (choiceOfPlayer == false);
 		
-		//// Fin choix des noms ////
-		
-		JFrame fenetre = new PlateauJeu();
 	}
 
 }

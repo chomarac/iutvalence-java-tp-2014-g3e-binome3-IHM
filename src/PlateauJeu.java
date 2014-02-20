@@ -6,10 +6,6 @@ import javax.swing.JFrame;
  */
 public class PlateauJeu extends JFrame {
 
-	private static final long serialVersionUID = -5152197685260683938L;
-	
-	int plateauDeJeu [] [] = new int [5] [5];
-
 	/**
 	 * Créé une nouvelle fenetre graphique avec des composantes prédéfinies
 	 */
@@ -24,4 +20,17 @@ public class PlateauJeu extends JFrame {
 		this.setVisible(true);	
 	}
 	
+	public void creationPlateauDeJeu()
+	{
+	
+		int plateauDeJeu [] [] = new int [5] [5];
+		for (int i = 0 ; i < plateauDeJeu.length; i++)
+		{
+			for (int j = 0 ; j < plateauDeJeu.length; j++)
+			{
+				plateauDeJeu [i] [j] = 0;
+				System.out.println(plateauDeJeu [i] [j]);
+			}
+		}
+	}
 }
