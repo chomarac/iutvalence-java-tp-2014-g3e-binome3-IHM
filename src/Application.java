@@ -8,6 +8,10 @@ public class Application {
 	/** The Constant PLAYER2. */
 	private static final String PLAYER2 = "Joueur 2";
 	
+	private static String nomJoueur1;
+	
+	private static String nomJoueur2;
+
 	/** The Constant SIGNATURE1. */
 	private static final int SIGNATURE1 = -1;
 	
@@ -35,14 +39,22 @@ public class Application {
 			{
 				if (choix.equals("O"))
 				{
-					System.out.println("Veuillez entrer le nom du joueur 1 : ");
-					String nomJ1 = recuperationInformation.nextLine();
-					System.out.println("Veuillez entrer le nom du joueur 2 : ");
-					String nomJ2 = recuperationInformation.nextLine();			
-					choixJoueur = true;					
+					do {
+						System.out.println("Veuillez entrer le nom du joueur 1 : ");
+						String nomJoueur1 = recuperationInformation.nextLine();
+						System.out.println("Veuillez entrer le nom du joueur 2 : ");
+						String nomJoueur2 = recuperationInformation.nextLine();
+						if (nomJoueur1.equals(nomJoueur2))
+							System.out.println("Veuillez saisir des noms différents");
+						else
+							choixJoueur = true;					
+					} while (choixJoueur == false);
+					
+					Joueurs player1 = new Joueurs(nomJoueur1, SIGNATURE1);
+					Joueurs player2 = new Joueurs(nomJoueur2, SIGNATURE2);
 				}
 				else
-					Sy
+					System.out.println("Veuillez saisir une lettre valide");
 			}
 		} while (choixJoueur == false);
 
