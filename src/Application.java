@@ -1,5 +1,7 @@
 import java.util.Scanner;
 
+import javax.swing.JFrame;
+
 /**
  * Classe Application
  * @author Loic
@@ -94,6 +96,8 @@ public class Application {
 		} while (choiceOfPlayer == false);
 		
 		//// Fin choix des noms ////
+		
+		JFrame fenetre = new PlateauJeu();
 	}
 
 }
