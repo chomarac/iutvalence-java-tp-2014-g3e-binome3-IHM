@@ -1,23 +1,21 @@
 /**
- * The Class Joueurs.
+ * Classe Joueurs
+ * @author Loic
  */
 public class Joueurs {
 	
-	/** The name of player. */
 	private final String nameOfPlayer;
-	
-	/** The signature. */
+
 	private final int signature;
 	
 	/**
-	 * Constructeur personnalisable
-	 * @param playerName the player name
-	 * @param signature the signature
+	 * Retourne un nouveau joueur, de composantes données 
+	 * @param playerName la chaine de caractère du nom
+	 * @param signature l'entier unique
 	 */
 	public Joueurs(String playerName, int signature)
 	{
 		this.nameOfPlayer = playerName;
 		this.signature = signature;
 	}
-
 }
