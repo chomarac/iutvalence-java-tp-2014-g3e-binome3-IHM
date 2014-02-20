@@ -12,7 +12,7 @@ public class Application {
 	private static final int SIGNATURE1 = -1;
 	
 	/** The Constant SIGNATURE2. */
-	private static final int SIGNATURE2 = -SIGNATURE1;
+	private static final int SIGNATURE2 = - SIGNATURE1;
 	
 	/** The choix joueur. */
 	private static boolean choixJoueur = false;
@@ -21,7 +21,7 @@ public class Application {
 		
 		Scanner recuperationInformation = new Scanner(System.in);
 		
-		do{
+		do {
 			System.out.println("Voulez-vous modifier les noms de Joueur 1 et Joueur 2 (O/N)");
 			String choix = recuperationInformation.nextLine();
 			
@@ -35,13 +35,16 @@ public class Application {
 			{
 				if (choix.equals("O"))
 				{
-					System.out.println("Veuillez entrer le nom du joueur 1");
+					System.out.println("Veuillez entrer le nom du joueur 1 : ");
 					String nomJ1 = recuperationInformation.nextLine();
-					System.out.println("Veuillez entrer le nom du joueur 2");
-					String nomJ2 = recuperationInformation.nextLine();
+					System.out.println("Veuillez entrer le nom du joueur 2 : ");
+					String nomJ2 = recuperationInformation.nextLine();			
+					choixJoueur = true;					
 				}
+				else
+					Sy
 			}
-		} while (choixJoueur);
+		} while (choixJoueur == false);
 
 	}
 
