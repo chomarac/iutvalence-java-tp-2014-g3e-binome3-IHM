@@ -1,5 +1,6 @@
 import javax.swing.JFrame;
 
+/* TODO Vous devriez supprimer tous les usages de Swing pour le moment */
 /**
  * Classe PlateauJeu
  * @author Loic
@@ -19,10 +20,12 @@ public class PlateauJeu extends JFrame {
 		this.setResizable(false);
 		this.setVisible(true);	
 	}
-	
+
+    /* TODO Pourquoi pas dans le constructeur ? */
 	public void creationPlateauDeJeu()
 	{
-	
+
+        /* TODO Est-ce que ce n'est pas un attribut du plateau de jeu ? */
 		int plateauDeJeu [] [] = new int [5] [5];
 		for (int i = 0 ; i < plateauDeJeu.length; i++)
 		{
