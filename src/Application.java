@@ -31,7 +31,6 @@ public class Application {
      * @param args
      */
     public static void main(String[] args) {
-
         Scanner recuperationInformation = new Scanner(System.in);
 
         boolean choiceOfPlayer = false;
@@ -41,6 +40,7 @@ public class Application {
             String choix = recuperationInformation.nextLine();
             
             if ("N".equals(choix)) {
+                /* TODO Est-ce que ces variables ne devraient pas avoir une portée plus grande ? Elles seront utiles dans les deux cas… */
             	Joueurs player1 = new Joueurs(PLAYER1, SIGNATURE1);
             	Joueurs player2 = new Joueurs(PLAYER2, SIGNATURE2);
                 choiceOfPlayer = true;
