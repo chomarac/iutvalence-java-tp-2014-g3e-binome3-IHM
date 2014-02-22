@@ -1,15 +1,12 @@
-import javax.swing.JFrame;
-
-/* TODO Vous devriez supprimer tous les usages de Swing pour le moment */
 /**
  * Classe PlateauJeu
  * @author Loic
  */
-public class PlateauJeu extends JFrame {
+public class PlateauJeu {
 
 	/**
 	 * Créé une nouvelle fenetre graphique avec des composantes prédéfinies
-	 */
+	 *//*
 	public PlateauJeu()
 	{
 		this.setTitle("Morpion");
@@ -19,21 +16,18 @@ public class PlateauJeu extends JFrame {
 		this.setAlwaysOnTop(true);
 		this.setResizable(false);
 		this.setVisible(true);	
-	}
-
-    /* TODO Pourquoi pas dans le constructeur ? */
-	public void creationPlateauDeJeu()
+	}*/
+	
+	public PlateauJeu()
 	{
-
-        /* TODO Est-ce que ce n'est pas un attribut du plateau de jeu ? */
 		int plateauDeJeu [] [] = new int [5] [5];
-		for (int i = 0 ; i < plateauDeJeu.length; i++)
+		for (int nombreDeLignes = 0 ; nombreDeLignes < plateauDeJeu.length; nombreDeLignes++)
 		{
-			for (int j = 0 ; j < plateauDeJeu.length; j++)
+			for (int nombreDeColonnes = 0 ; nombreDeColonnes < plateauDeJeu.length; nombreDeColonnes++)
 			{
-				plateauDeJeu [i] [j] = 0;
-				System.out.println(plateauDeJeu [i] [j]);
+				plateauDeJeu [nombreDeLignes] [nombreDeColonnes] = 0;
 			}
 		}
 	}
+
 }
