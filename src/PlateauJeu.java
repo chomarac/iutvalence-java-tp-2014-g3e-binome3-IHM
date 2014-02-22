@@ -5,6 +5,16 @@
 public class PlateauJeu {
 
 	/**
+	 * Constante du nombres de lignes
+	 */
+	public static final int NOMBRE_DE_COLONNES = 5;
+	
+	/**
+	 * Constante du nombres de colonnes
+	 */
+	public static final int NOMBRE_DE_LIGNES = 5;
+
+	/**
 	 * Créé une nouvelle fenetre graphique avec des composantes prédéfinies
 	 *//*
 	public PlateauJeu()
@@ -18,9 +28,12 @@ public class PlateauJeu {
 		this.setVisible(true);	
 	}*/
 	
+	/**
+	 * Constructeur d'un plateau de jeu
+	 */
 	public PlateauJeu()
 	{
-		int plateauDeJeu [] [] = new int [5] [5];
+		int plateauDeJeu [] [] = new int [NOMBRE_DE_LIGNES] [NOMBRE_DE_COLONNES];
 		for (int nombreDeLignes = 0 ; nombreDeLignes < plateauDeJeu.length; nombreDeLignes++)
 		{
 			for (int nombreDeColonnes = 0 ; nombreDeColonnes < plateauDeJeu.length; nombreDeColonnes++)
