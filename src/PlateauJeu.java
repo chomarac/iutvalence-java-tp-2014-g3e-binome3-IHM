@@ -14,6 +14,7 @@ public class PlateauJeu {
 	 */
 	public static final int NOMBRE_DE_LIGNES = 5;
 
+    /* TODO Remarque générale : les outils comme Git sont là principalement pour éviter de faire des commentaires d'ancien bout de code qu'on reprendra plus tard. */
 	/**
 	 * Créé une nouvelle fenetre graphique avec des composantes prédéfinies
 	 *//*
@@ -33,6 +34,7 @@ public class PlateauJeu {
 	 */
 	public PlateauJeu()
 	{
+        /* TODO Je me suis mal exprimé dans ma remarque précédente. Je voulais dire : "est-ce que la variable plateauDeJeu n'est pas un attribut ? */
 		int plateauDeJeu [] [] = new int [NOMBRE_DE_LIGNES] [NOMBRE_DE_COLONNES];
 		for (int nombreDeLignes = 0 ; nombreDeLignes < plateauDeJeu.length; nombreDeLignes++)
 		{
