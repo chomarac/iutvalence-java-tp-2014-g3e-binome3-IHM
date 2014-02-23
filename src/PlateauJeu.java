@@ -21,7 +21,6 @@ public class PlateauJeu {
 	 */
 	public PlateauJeu()
 	{
-        /* TODO Je me suis mal exprimé dans ma remarque précédente. Je voulais dire : "est-ce que la variable plateauDeJeu n'est pas un attribut ? */
 		int plateauDeJeu [] [] = new int [NOMBRE_DE_LIGNES] [NOMBRE_DE_COLONNES];
 		for (int nombreDeLignes = 0 ; nombreDeLignes < plateauDeJeu.length; nombreDeLignes++)
 		{

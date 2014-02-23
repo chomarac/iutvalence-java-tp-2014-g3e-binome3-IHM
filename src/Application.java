@@ -29,7 +29,7 @@ public class Application {
 	/**
 	 * Permettra de créer le joueur player1 avec des composantes définies
 	 */
-	public static Joueurs player1;
+	private static Joueurs player1;
 	
 	/**
 	 * Permettra de créer le joueur player1 avec des composantes définies
@@ -79,7 +79,5 @@ public class Application {
 			}
 		}
         while (!choiceOfPlayer);
-		
 	}
-
 }

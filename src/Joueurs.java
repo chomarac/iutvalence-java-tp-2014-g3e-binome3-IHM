@@ -28,4 +28,13 @@ public class Joueurs {
 	{
 		return this.signature;
 	}
+	
+	/**
+	 * Permet d'obtenir le nom de l'objet courant
+	 * @return le nom
+	 */
+	public String obtenirNom()
+	{
+		return this.nameOfPlayer;
+	}
 }
