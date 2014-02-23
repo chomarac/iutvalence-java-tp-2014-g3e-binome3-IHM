@@ -25,12 +25,23 @@ public class Application {
 	 * La signature par défaut du joueur 2
 	 */
 	private static final int SIGNATURE2 = - SIGNATURE1;
+	
+	/**
+	 * Permettra de créer le joueur player1 avec des composantes définies
+	 */
+	public static Joueurs player1;
+	
+	/**
+	 * Permettra de créer le joueur player1 avec des composantes définies
+	 */
+	private static Joueurs player2;
 
     /**
      * Permet de lancer le jeu
      * @param args
      */
-    public static void main(String[] args) {
+	public static void main(String[] args) {
+    	
         Scanner recuperationInformation = new Scanner(System.in);
 
         boolean choiceOfPlayer = false;
@@ -40,9 +51,8 @@ public class Application {
             String choix = recuperationInformation.nextLine();
             
             if ("N".equals(choix)) {
-                /* TODO Est-ce que ces variables ne devraient pas avoir une portée plus grande ? Elles seront utiles dans les deux cas… */
-            	Joueurs player1 = new Joueurs(PLAYER1, SIGNATURE1);
-            	Joueurs player2 = new Joueurs(PLAYER2, SIGNATURE2);
+            	player1 = new Joueurs(PLAYER1, SIGNATURE1);
+            	player2 = new Joueurs(PLAYER2, SIGNATURE2);
                 choiceOfPlayer = true;
             }
 
@@ -57,8 +67,8 @@ public class Application {
 
                         if (namePlayer1.equals(namePlayer2)) System.out.println("Veuillez saisir des noms différents");
                         else {
-                        	Joueurs player1 = new Joueurs(namePlayer1, SIGNATURE1);
-                        	Joueurs player2 = new Joueurs(namePlayer2, SIGNATURE2);
+                        	player1 = new Joueurs(namePlayer1, SIGNATURE1);
+                        	player2 = new Joueurs(namePlayer2, SIGNATURE2);
 							choiceOfPlayer = true;
 						}
                     }
@@ -69,6 +79,7 @@ public class Application {
 			}
 		}
         while (!choiceOfPlayer);
+		
 	}
 
 }

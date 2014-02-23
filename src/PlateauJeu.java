@@ -1,5 +1,7 @@
 /**
- * Classe PlateauJeu
+ * La classe PlateauJeu permet de créer le plateau de jeu au sens propre du terme :
+ * création d'un tableau de dimensions 2 pour stocker à la fois les choix des joueurs
+ * mais également les résultats de calcul pour déterminer une victoire
  * @author Loic
  */
 public class PlateauJeu {
@@ -13,21 +15,6 @@ public class PlateauJeu {
 	 * Constante du nombres de colonnes
 	 */
 	public static final int NOMBRE_DE_LIGNES = 5;
-
-    /* TODO Remarque générale : les outils comme Git sont là principalement pour éviter de faire des commentaires d'ancien bout de code qu'on reprendra plus tard. */
-	/**
-	 * Créé une nouvelle fenetre graphique avec des composantes prédéfinies
-	 *//*
-	public PlateauJeu()
-	{
-		this.setTitle("Morpion");
-		this.setSize(500, 500);
-		this.setLocationRelativeTo(null);
-		this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		this.setAlwaysOnTop(true);
-		this.setResizable(false);
-		this.setVisible(true);	
-	}*/
 	
 	/**
 	 * Constructeur d'un plateau de jeu

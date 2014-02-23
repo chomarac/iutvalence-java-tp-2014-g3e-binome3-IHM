@@ -1,6 +1,6 @@
-/* TODO Améliorez vos JavaDoc ! On se doute que "Joueurs.java" contient la classe "Joueurs" ! */
 /**
- * Classe Joueurs
+ * La classe Joueurs permet de créer de nouveaux objets de type Joueurs,
+ * avec des composantes définies en fonction des choix de l'utilisateur.
  * @author Loic
  */
 public class Joueurs {
@@ -18,5 +18,14 @@ public class Joueurs {
 	{
 		this.nameOfPlayer = playerName;
 		this.signature = signature;
+	}
+	
+	/**
+	 * Permet d'obtenir la signature de l'objet courant
+	 * @return la signature
+	 */
+	public int obtenirSignature()
+	{
+		return this.signature;
 	}
 }
