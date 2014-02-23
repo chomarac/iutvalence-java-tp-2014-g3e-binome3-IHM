@@ -27,7 +27,7 @@ public class JeuPrincipal {
 	 */
 	public CoupleCoordonnees choixDuJoueur(int valeur1, int valeur2)
 	{
-		return (new CoupleCoordonnees(valeur1, valeur2));
+		return (new CoupleCoordonnees(valeur1 + 1, valeur2 + 1));
 	}
 	
 	/**
@@ -39,10 +39,10 @@ public class JeuPrincipal {
 	{
 		int checkValue = 0;
 		
-		if ((coordonneesAVerifier.obtenirPremiereCoordonnee() <= 3) && (coordonneesAVerifier.obtenirPremiereCoordonnee() > 0))
+		if ((coordonneesAVerifier.obtenirPremiereCoordonnee() <= 4) && (coordonneesAVerifier.obtenirPremiereCoordonnee() > 1))
 			checkValue = checkValue + 1;
 		
-		if ((coordonneesAVerifier.obtenirDeuxiemeCoordonnee() <= 3) && (coordonneesAVerifier.obtenirDeuxiemeCoordonnee() > 0))
+		if ((coordonneesAVerifier.obtenirDeuxiemeCoordonnee() <= 4) && (coordonneesAVerifier.obtenirDeuxiemeCoordonnee() > 1))
 			checkValue = checkValue + 1;
 		
 		if (checkValue == 2)
