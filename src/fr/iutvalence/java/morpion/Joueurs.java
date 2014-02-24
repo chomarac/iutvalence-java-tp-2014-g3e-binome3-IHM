@@ -1,3 +1,5 @@
+package fr.iutvalence.java.morpion;
+
 /**
  * La classe Joueurs permet de créer de nouveaux objets de type Joueurs,
  * avec des composantes définies en fonction des choix de l'utilisateur.

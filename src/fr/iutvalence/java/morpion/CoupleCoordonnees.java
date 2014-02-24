@@ -1,3 +1,4 @@
+package fr.iutvalence.java.morpion;
 
 public class CoupleCoordonnees
 {

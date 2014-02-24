@@ -1,3 +1,5 @@
+package fr.iutvalence.java.morpion;
+
 /**
  * La classe PlateauJeu permet de créer le plateau de jeu au sens propre du terme :
  * création d'un tableau de dimensions 2 pour stocker à la fois les choix des joueurs

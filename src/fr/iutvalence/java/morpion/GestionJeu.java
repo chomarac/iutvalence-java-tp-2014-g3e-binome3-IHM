@@ -1,5 +1,7 @@
+package fr.iutvalence.java.morpion;
+
 /**
- * La classe JeuPrincipal va permettre de créer plusieurs méthodes utiles pour le fonctionnement du jeu comme :
+ * La classe GestionJeu va permettre de créer plusieurs méthodes utiles pour le fonctionnement du jeu comme :
  * Déterminer si il y a ou non la présence d'une victoire ;
  * Déterminer si il y a ou non si la partie est nulle (absence de victoire) ;
  * Déterminer la fin d'une partie ;
@@ -7,7 +9,7 @@
  * @author Loic
  *
  */
-public class JeuPrincipal {
+public class GestionJeu {
 	
 	/**
 	 * La constante qui permet de dire si les coordonnées sont corrects
