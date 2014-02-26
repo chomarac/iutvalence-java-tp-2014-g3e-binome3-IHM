@@ -43,15 +43,8 @@ public class PlateauJeu {
     /**
      * Constructeur d'un plateau de jeu
      */
-    public PlateauJeu() {
-    	
+    public PlateauJeu() {	
         this.plateauDeJeu = new int[NOMBRE_DE_LIGNES][NOMBRE_DE_COLONNES];
-        
-        for (int nombreDeLignes = 0; nombreDeLignes < this.plateauDeJeu.length; nombreDeLignes++) {
-            for (int nombreDeColonnes = 0; nombreDeColonnes < this.plateauDeJeu.length; nombreDeColonnes++) {
-                this.plateauDeJeu[nombreDeLignes][nombreDeColonnes] = 0;
-            }
-        }
     }
 	
 	/**
@@ -74,11 +67,11 @@ public class PlateauJeu {
 		int firstValue = lesCoordonnees.obtenirPremiereCoordonnee();
 		int secondValue = lesCoordonnees.obtenirDeuxiemeCoordonnee();
 		
-		if (!((firstValue <= 4) && (firstValue > 1) && (secondValue <= 4) && (secondValue > 1)))
-			throw new MauvaiseCoordonneesException();
+		if (!((firstValue < 4) && (firstValue > 0) && (secondValue < 4) && (secondValue > 0)))
+			throw new MauvaiseCoordonneesException(lesCoordonnees.toString());
 		
 		if (!((this.plateauDeJeu [firstValue] [secondValue]) == 0))
-			throw new CoordonneesDejaPriseException();	
+			throw new CoordonneesDejaPriseException(Integer.toString(this.plateauDeJeu[firstValue] [secondValue]));	
 	}
 	
 	/**
@@ -88,10 +81,24 @@ public class PlateauJeu {
 	 */
 	public void ModificationDuPlateau(Joueurs unJoueur, CoupleCoordonnees unCouple)
 	{
-		int firstValue = unCouple.obtenirPremiereCoordonnee();
-		int secondValue = unCouple.obtenirDeuxiemeCoordonnee();
+		int x = unCouple.obtenirPremiereCoordonnee();
+		int y = unCouple.obtenirDeuxiemeCoordonnee();
+		int signature = unJoueur.obtenirSignature();
 		
-		this.plateauDeJeu [firstValue] [secondValue] = unJoueur.obtenirSignature();
+		plateauDeJeu[x][y] = signature;
+		plateauDeJeu[x][0] += signature;
+		plateauDeJeu[0][y] += signature;
+		if (x == y) {
+			plateauDeJeu[0][0] += signature;
+		}
+		if (x+y == 4) {
+			plateauDeJeu[0][4] += signature;
+		}
+		if ((plateauDeJeu[x][0]==3*unJoueur.obtenirSignature())
+			|| ())
+		{
+			/* Lever un flag de victoire. */
+		}
 	}
 	
 	/**
@@ -102,7 +109,6 @@ public class PlateauJeu {
 	public int verificationDeLaVictoire(Joueurs unJoueur)
 	{
 		int VictorySignatureOfPlayer = 3 * unJoueur.obtenirSignature();
-		
 		this.plateauDeJeu[0][1] = this.plateauDeJeu[1][1] + this.plateauDeJeu[2][1] + this.plateauDeJeu[3][1];
 		this.plateauDeJeu[0][2] = this.plateauDeJeu[1][2] + this.plateauDeJeu[2][2] + this.plateauDeJeu[3][2];
 		this.plateauDeJeu[0][3] = this.plateauDeJeu[1][3] + this.plateauDeJeu[2][3] + this.plateauDeJeu[3][3];
