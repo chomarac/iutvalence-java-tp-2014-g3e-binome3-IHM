@@ -9,6 +9,9 @@ public class LanceurDuMorpion {
      * @param args
      */
 	public static void main(String[] args) {
-		System.out.println("Come soon...");
+		
+		//On execute le menu de choix des noms des joueurs
+		Menu menuDeChoix = new Menu();
+		menuDeChoix.StartMenu();
 	}
 }
