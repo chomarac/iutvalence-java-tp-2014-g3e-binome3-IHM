@@ -7,8 +7,14 @@ package fr.iutvalence.java.morpion;
  */
 public class Joueurs {
 	
+	/**
+	 * Correspond au nom définitif du joueur pour une partie donnée
+	 */
 	private final String nameOfPlayer;
-
+	
+	/**
+	 * Correspond à la signature unique du joueur pour une partie donnée
+	 */
 	private final int signature;
 	
 	/**
