@@ -1,5 +1,7 @@
 package fr.iutvalence.java.morpion;
 
+/* TODO JavaDoc : Même commentaire que pour la classe PlateauJeu. */
+/* TODO Classe très (très) laborieuse à discuter en TP. */
 /**
  * La classe GestionJeu va permettre de créer plusieurs méthodes utiles pour le fonctionnement du jeu comme :
  * Déterminer si il y a ou non la présence d'une victoire ;
@@ -10,7 +12,7 @@ package fr.iutvalence.java.morpion;
  *
  */
 public class GestionJeu {
-	
+	/* TODO Remarque : en Java on met static avant final. */
 	/**
 	 * La constante qui permet de dire si les coordonnées sont corrects
 	 */
