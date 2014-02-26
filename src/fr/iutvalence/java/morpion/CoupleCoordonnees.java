@@ -1,5 +1,11 @@
 package fr.iutvalence.java.morpion;
 
+/**
+ * Modélisation d'un couple de coordonnées.
+ * <p>
+ * Modélisation par deux valeurs entières.
+ * </p>
+ */
 public class CoupleCoordonnees
 {
 

@@ -1,37 +1,39 @@
 package fr.iutvalence.java.morpion;
 
-/* TODO JavaDoc : Même commentaire que pour la classe PlateauJeu. */
-/* TODO Classe très (très) laborieuse à discuter en TP. */
 /**
- * La classe GestionJeu va permettre de créer plusieurs méthodes utiles pour le fonctionnement du jeu comme :
- * Déterminer si il y a ou non la présence d'une victoire ;
- * Déterminer si il y a ou non si la partie est nulle (absence de victoire) ;
- * Déterminer la fin d'une partie ;
- * Si l'utilisateur veux rejouer.
- * @author Loic
- *
+ * Modélisation de la gestion généralle du jeu.
+ * <p>
+ * Modélisation par les actions suivantes :
+ * <ul>
+ * <li>choix des coordonnées par le joueur</li>
+ * <li>vérification des coordonnées</li>
+ * <li>vérification de la disponibilité sur le plateau et modification du statut de la case</li>
+ * <li>vérification de la victoire</li>
+ * <li>affiche le nouveau tableau modifié</li>
+ * </ul>
+ * </p>
  */
 public class GestionJeu {
-	/* TODO Remarque : en Java on met static avant final. */
+
 	/**
 	 * La constante qui permet de dire si les coordonnées sont corrects
 	 */
-	public final static int CHECK = 1;
+	public static final int CHECK = 1;
 	
 	/**
 	 * La constante qui permet de dire si les coordonnées sont incorrects
 	 */
-	public final static int FAIL = 0;
+	public static final int FAIL = 0;
 	
 	/**
 	 * La constante qui permet de dire un joueur est vainqueur
 	 */
-	public final static int VICTORY = 10;
+	public static final int VICTORY = 10;
 	
 	/**
 	 * La constante qui permet de dire qu'il n'y a pas encore de vainqueur
 	 */
-	public final static int NOVICTORY = - VICTORY;
+	public static final int NOVICTORY = - VICTORY;
 	
 	/**
 	 * Retourne un nouvel objet de type CoupleCoordonnees qui contient les choix des valeurs1 et valeurs2
@@ -121,30 +123,6 @@ public class GestionJeu {
 		else
 			return NOVICTORY;
 		
-	}
-	
-	/**
-	 * Permet d'afficher la grille ligne par ligne en prenant en compte les retours à la ligne
-	 * @param unPlateau, le plateau sur lequel on joue
-	 */
-	public void afficherPlateauDeJeu(PlateauJeu unPlateau[][])
-	{
-		int compteur = 0;
-		
-		for (int nombreDeLignes = 1 ; nombreDeLignes < 4; nombreDeLignes++)
-		{
-			for (int nombreDeColonnes = 1 ; nombreDeColonnes < 4; nombreDeColonnes++)
-			{
-				compteur = compteur + 1;
-				if (compteur == 3)
-				{
-					compteur = 0;
-					System.out.println(unPlateau [nombreDeLignes] [nombreDeColonnes]);
-				}
-				else
-					System.out.print(unPlateau [nombreDeLignes] [nombreDeColonnes]);
-			}
-		}
 	}
 
 }

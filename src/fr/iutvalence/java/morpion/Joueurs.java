@@ -1,18 +1,21 @@
 package fr.iutvalence.java.morpion;
 
-/* TODO JavaDoc : Même commentaire que pour la classe PlateauJeu. */
-/* TODO Attention au mélange des langues ! nameOfPlayer / obtenirSignature. */
 /**
- * La classe Joueurs permet de créer de nouveaux objets de type Joueurs,
- * avec des composantes définies en fonction des choix de l'utilisateur.
- * @author Loic
+ * Modélisation d'un joueur.
+ * <p>
+ * Le joueur est composé des informations suivantes :
+ * <ul>
+ * <li>son nom</li>
+ * <li>sa signature unique</li>
+ * </ul>
+ * </p>
  */
 public class Joueurs {
 	
 	/**
 	 * Correspond au nom définitif du joueur pour une partie donnée
 	 */
-	private final String nameOfPlayer;
+	private final String nomDuJoueur;
 	
 	/**
 	 * Correspond à la signature unique du joueur pour une partie donnée
@@ -21,12 +24,12 @@ public class Joueurs {
 	
 	/**
 	 * Retourne un nouveau joueur, de composantes données 
-	 * @param playerName la chaine de caractère du nom
+	 * @param nomJoueur la chaine de caractère du nom
 	 * @param signature l'entier unique
 	 */
-	public Joueurs(String playerName, int signature)
+	public Joueurs(String nomJoueur, int signature)
 	{
-		this.nameOfPlayer = playerName;
+		this.nomDuJoueur = nomJoueur;
 		this.signature = signature;
 	}
 	
@@ -45,6 +48,6 @@ public class Joueurs {
 	 */
 	public String obtenirNom()
 	{
-		return this.nameOfPlayer;
+		return this.nomDuJoueur;
 	}
 }
