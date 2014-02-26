@@ -8,8 +8,8 @@ import fr.iutvalence.java.morpion.erreur.MauvaiseCoordonneesException;
  * <p>
  * Modélisation par une matrice contenant :
  * <ul>
- * <li>les pions des joueurs (lignes/colonnes W à X)</li>
- * <li>les résultats de calcul pour déterminer une victoire (lignes/colonnes Y à Z)</li>
+ * <li>les pions des joueurs (lignes/colonnes 1 à 3)</li>
+ * <li>les résultats de calcul pour déterminer une victoire (lignes/colonnes 0 à 1)</li>
  * </ul>
  * </p>
  */
@@ -33,17 +33,19 @@ public class PlateauJeu {
 	/**
 	 * La constante qui permet de dire un joueur est vainqueur
 	 */
-	public static final int VICTORY = 10;
+	public static final int VICTOIRE = 10;
 	
 	/**
 	 * La constante qui permet de dire qu'il n'y a pas encore de vainqueur
 	 */
-	public static final int NOVICTORY = - VICTORY;
+	public static final int NONVICTOIRE = - VICTOIRE;
     
     /**
      * Constructeur d'un plateau de jeu
      */
-    public PlateauJeu() {	
+    public PlateauJeu()
+    {	
+    	//On retourne un nouveau plateau de jeu avec des composantes prédéfinies
         this.plateauDeJeu = new int[NOMBRE_DE_LIGNES][NOMBRE_DE_COLONNES];
     }
 	
@@ -55,7 +57,8 @@ public class PlateauJeu {
 	 */
 	public CoupleCoordonnees choixDuJoueur(int valeur1, int valeur2)
 	{
-		return (new CoupleCoordonnees(valeur1 + 1, valeur2 + 1));
+		//On retourne un nouveau couple de coordonnée avec les composantes suivantes : valeur1 et valeur2
+		return new CoupleCoordonnees(valeur1, valeur2);
 	}
 	
 	/**
@@ -64,68 +67,74 @@ public class PlateauJeu {
 	 */
 	public void verificationDuChoix(CoupleCoordonnees lesCoordonnees) throws CoordonneesDejaPriseException, MauvaiseCoordonneesException
 	{
-		int firstValue = lesCoordonnees.obtenirPremiereCoordonnee();
-		int secondValue = lesCoordonnees.obtenirDeuxiemeCoordonnee();
+		//On récupère les données liées au joueur courant
+		int x = lesCoordonnees.obtenirPremiereCoordonnee();
+		int y = lesCoordonnees.obtenirDeuxiemeCoordonnee();
 		
-		if (!((firstValue < 4) && (firstValue > 0) && (secondValue < 4) && (secondValue > 0)))
+		//On soulève une exception si les valeurs saisies sont éronnées
+		if (!( (x < 4) && (x > 0) && (y < 4) && (y > 0) ))
 			throw new MauvaiseCoordonneesException(lesCoordonnees.toString());
 		
-		if (!((this.plateauDeJeu [firstValue] [secondValue]) == 0))
-			throw new CoordonneesDejaPriseException(Integer.toString(this.plateauDeJeu[firstValue] [secondValue]));	
+		//On soulève une exception si la case est déjà occupée
+		if (!( (this.plateauDeJeu[x][y]) == 0) )
+			throw new CoordonneesDejaPriseException("Les coordonnées : " + Integer.toString(this.plateauDeJeu[x][y]) + "sont déjà occupées.");	
 	}
 	
 	/**
 	 * Méthode qui permet de modifier le plateau de jeu.
 	 * @param unJoueur, le joueur qui réalise l'action
-	 * @param unCouple, un couple de coordonnées
+	 * @param lesCoordonnees, un couple de coordonnées
 	 */
-	public void ModificationDuPlateau(Joueurs unJoueur, CoupleCoordonnees unCouple)
+	public int ModificationDuPlateau(Joueurs unJoueur, CoupleCoordonnees lesCoordonnees)
 	{
-		int x = unCouple.obtenirPremiereCoordonnee();
-		int y = unCouple.obtenirDeuxiemeCoordonnee();
+		//On récupère les données liées au joueur courant
+		int x = lesCoordonnees.obtenirPremiereCoordonnee();
+		int y = lesCoordonnees.obtenirDeuxiemeCoordonnee();
 		int signature = unJoueur.obtenirSignature();
+		int victoire = 3 * signature;
 		
-		plateauDeJeu[x][y] = signature;
-		plateauDeJeu[x][0] += signature;
-		plateauDeJeu[0][y] += signature;
-		if (x == y) {
-			plateauDeJeu[0][0] += signature;
-		}
-		if (x+y == 4) {
-			plateauDeJeu[0][4] += signature;
-		}
-		if ((plateauDeJeu[x][0]==3*unJoueur.obtenirSignature())
-			|| ())
-		{
-			/* Lever un flag de victoire. */
-		}
+		this.plateauDeJeu[x][y] = signature;
+		
+		//On calcul les lignes
+		this.plateauDeJeu[x][0] = this.plateauDeJeu[x][0] + signature;
+		this.plateauDeJeu[0][y] = this.plateauDeJeu[0][y] + signature;
+		
+		//On calcul la première diagonale
+		if (x == y)
+			this.plateauDeJeu[0][0] = this.plateauDeJeu[0][0] + signature;
+		
+		//On calcul la deuxième diagonale
+		if ((x + y) == 4)
+			this.plateauDeJeu[4][0] = this.plateauDeJeu[4][0] + signature;
+		
+		//On teste une éventuelle victoire
+		if ((this.plateauDeJeu[x][0] == victoire) || (this.plateauDeJeu[0][y] == victoire) || (this.plateauDeJeu[0][0] == victoire) || (this.plateauDeJeu[4][0] == victoire))
+			return VICTOIRE;
+		else
+			return NONVICTOIRE;
 	}
 	
 	/**
-	 * Méthode qui permet de vérifier une éventuelle victoire de la part d'un des joueurs.
-	 * @param unJoueur, le joueur courant
-	 * @return VICTORY si on détecte une victoire, sinon - VICTORY
+	 * Affichage du plateau de jeu.
 	 */
-	public int verificationDeLaVictoire(Joueurs unJoueur)
+	public void afficherPlateauDeJeu()
 	{
-		int VictorySignatureOfPlayer = 3 * unJoueur.obtenirSignature();
-		this.plateauDeJeu[0][1] = this.plateauDeJeu[1][1] + this.plateauDeJeu[2][1] + this.plateauDeJeu[3][1];
-		this.plateauDeJeu[0][2] = this.plateauDeJeu[1][2] + this.plateauDeJeu[2][2] + this.plateauDeJeu[3][2];
-		this.plateauDeJeu[0][3] = this.plateauDeJeu[1][3] + this.plateauDeJeu[2][3] + this.plateauDeJeu[3][3];
-		this.plateauDeJeu[1][0] = this.plateauDeJeu[1][1] + this.plateauDeJeu[1][2] + this.plateauDeJeu[1][3];
-		this.plateauDeJeu[2][0] = this.plateauDeJeu[2][1] + this.plateauDeJeu[2][2] + this.plateauDeJeu[2][3];
-		this.plateauDeJeu[3][0] = this.plateauDeJeu[3][1] + this.plateauDeJeu[3][2] + this.plateauDeJeu[3][3];
-		this.plateauDeJeu[0][0] = this.plateauDeJeu[1][1] + this.plateauDeJeu[2][2] + this.plateauDeJeu[3][3];
-		this.plateauDeJeu[4][0] = this.plateauDeJeu[3][1] + this.plateauDeJeu[2][2] + this.plateauDeJeu[1][3];
+		int compteur = 0;
 		
-		if ((this.plateauDeJeu[0][1] == VictorySignatureOfPlayer)||(this.plateauDeJeu[0][2] == VictorySignatureOfPlayer)||
-			(this.plateauDeJeu[0][3] == VictorySignatureOfPlayer)||(this.plateauDeJeu[1][0] == VictorySignatureOfPlayer)||
-			(this.plateauDeJeu[2][0] == VictorySignatureOfPlayer)||(this.plateauDeJeu[3][0] == VictorySignatureOfPlayer)||
-			(this.plateauDeJeu[0][0] == VictorySignatureOfPlayer)||(this.plateauDeJeu[4][0] == VictorySignatureOfPlayer))
-			
-			return VICTORY;
-		else
-			return NOVICTORY;
+		for (int nombreDeLignes = 1 ; nombreDeLignes < 4; nombreDeLignes++)
+		{
+			for (int nombreDeColonnes = 1 ; nombreDeColonnes < 4; nombreDeColonnes++)
+			{
+				compteur = compteur + 1;
+				if (compteur == 3)
+				{
+					compteur = 0;
+					System.out.println(this.plateauDeJeu [nombreDeLignes] [nombreDeColonnes] + " ");
+				}
+				else
+					System.out.print(this.plateauDeJeu [nombreDeLignes] [nombreDeColonnes] + " ");
+			}
+		}
 	}
-
+	
 }

@@ -10,12 +10,12 @@ public class GestionDesJoueurs
 	/**
 	 * Le nom par défaut du joueur 1
 	 */
-	private static final String PLAYER1 = "Joueur 1";
+	private static final String JOUEUR1 = "Joueur 1";
 	
 	/**
 	 * Le nom par défaut du joueur 2
 	 */
-	private static final String PLAYER2 = "Joueur 2";
+	private static final String JOUEUR2 = "Joueur 2";
 	
 	/**
 	 * La signature par défaut du joueur 1
@@ -27,6 +27,9 @@ public class GestionDesJoueurs
 	 */
 	private static final int SIGNATURE2 = - SIGNATURE1;
 
+	/**
+	 * 
+	 */
 	public GestionDesJoueurs() {
 		// A terme mettre historique, etc...
 	}
@@ -40,6 +43,7 @@ public class GestionDesJoueurs
 
 		Joueurs player1 = null;
 		Joueurs player2 = null;
+		
 		while (true)
 		{
 			System.out.println("Voulez-vous modifier les noms de Joueur 1 et Joueur 2 (O/N)");
@@ -47,8 +51,8 @@ public class GestionDesJoueurs
 
 			if ("N".equals(choix))
 			{
-				player1 = new Joueurs(PLAYER1, SIGNATURE1);
-				player2 = new Joueurs(PLAYER2, SIGNATURE2);
+				player1 = new Joueurs(JOUEUR1, SIGNATURE1);
+				player2 = new Joueurs(JOUEUR2, SIGNATURE2);
 				break;
 			}
 
@@ -62,9 +66,8 @@ public class GestionDesJoueurs
 					String namePlayer2 = recuperationInformation.nextLine();
 
 					if (namePlayer1.equals(namePlayer2))
-					{
-						System.out.println("Veuillez saisir des noms différents");
-					} else
+						System.out.println("Veuillez saisir des noms différents.\n");
+					else
 					{
 						player1 = new Joueurs(namePlayer1, SIGNATURE1);
 						player2 = new Joueurs(namePlayer2, SIGNATURE2);
@@ -72,7 +75,7 @@ public class GestionDesJoueurs
 				}
 				break;
 			}
-			System.out.println("Veuillez saisir une lettre valide");
+			System.out.println("Veuillez saisir une lettre valide.\n");
 		}
 	}
 }

@@ -29,6 +29,7 @@ public class Joueurs {
 	 */
 	public Joueurs(String nomJoueur, int signature)
 	{
+		//On retourne un nouveau joueur avec les composantes suivantes : nomDuJoueur et signature
 		this.nomDuJoueur = nomJoueur;
 		this.signature = signature;
 	}
@@ -39,6 +40,7 @@ public class Joueurs {
 	 */
 	public int obtenirSignature()
 	{
+		//On retourne la signature du joueur courant
 		return this.signature;
 	}
 	
@@ -48,6 +50,7 @@ public class Joueurs {
 	 */
 	public String obtenirNom()
 	{
+		//On retourne le nom du joueur courant
 		return this.nomDuJoueur;
 	}
 }

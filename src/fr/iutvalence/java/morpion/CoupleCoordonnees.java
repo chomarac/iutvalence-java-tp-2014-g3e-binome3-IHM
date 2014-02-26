@@ -13,23 +13,24 @@ public class CoupleCoordonnees
 	 * La valeur entière correspondant à la première coordonnée du couple
 	 * de coordonnée
 	 */
-	private static int firstCoordinates;
+	private static int premiereCoordonnee;
 
 	/**
 	 * La valeur entière correspondant à la deuxième coordonnée du couple
 	 * de coordonnée
 	 */
-	private static int secondCoordinates;
+	private static int deuxiemeCoordonnee;
 
 	/**
 	 * Retourne un nouveau couple de coordonnées de composantes données
-	 * @param firstCoordinates
-	 * @param secondCoordinates
+	 * @param premiereCoordonnee
+	 * @param deuxiemeCoordonnee
 	 */
 	public CoupleCoordonnees(int coordonnee1, int coordonnee2)
 	{
-		this.firstCoordinates = coordonnee1;
-		this.secondCoordinates = coordonnee2;
+		//On retourne un nouveau couple de coordonnees avec les composantes suivantes : coordonnee1 et coordonnee2
+		this.premiereCoordonnee = coordonnee1;
+		this.deuxiemeCoordonnee = coordonnee2;
 	}
 
 	/**
@@ -38,7 +39,8 @@ public class CoupleCoordonnees
 	 */
 	public int obtenirPremiereCoordonnee()
 	{
-		return this.firstCoordinates;
+		//On retourne la première coordonnée du couple courant
+		return this.premiereCoordonnee;
 	}
 
 	/**
@@ -47,7 +49,8 @@ public class CoupleCoordonnees
 	 */
 	public int obtenirDeuxiemeCoordonnee()
 	{
-		return this.secondCoordinates;
+		//On retourne la deuxième coordonnée du couple courant
+		return this.deuxiemeCoordonnee;
 	}
 
 }
