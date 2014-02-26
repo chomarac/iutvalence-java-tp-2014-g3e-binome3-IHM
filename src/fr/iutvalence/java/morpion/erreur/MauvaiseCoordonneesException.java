@@ -1,4 +1,4 @@
-package fr.iutvalence.java.morpion;
+package fr.iutvalence.java.morpion.erreur;
 
 public class MauvaiseCoordonneesException extends Exception
 {

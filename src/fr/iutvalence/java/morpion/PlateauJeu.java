@@ -1,5 +1,8 @@
 package fr.iutvalence.java.morpion;
 
+import fr.iutvalence.java.morpion.erreur.CoordonneesDejaPriseException;
+import fr.iutvalence.java.morpion.erreur.MauvaiseCoordonneesException;
+
 /**
  * Modélisation d'un plateau du jeu.
  * <p>
@@ -72,10 +75,10 @@ public class PlateauJeu {
 		int secondValue = lesCoordonnees.obtenirDeuxiemeCoordonnee();
 		
 		if (!((firstValue <= 4) && (firstValue > 1) && (secondValue <= 4) && (secondValue > 1)))
-			throw MauvaiseCoordonneesException;
+			throw new MauvaiseCoordonneesException();
 		
 		if (!((this.plateauDeJeu [firstValue] [secondValue]) == 0))
-			throw CoordonneesDejaPriseException;	
+			throw new CoordonneesDejaPriseException();	
 	}
 	
 	/**
