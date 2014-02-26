@@ -1,3 +1,5 @@
+/* TODO Faites des commentaires JavaDoc pertinents ! */
+/* TODO Pourquoi hors de tout package. */
 /**
  * Classe LanceurDuMorpion
  * @author Loic
@@ -5,8 +7,7 @@
 public class LanceurDuMorpion {
 
 	/**
-     * Permet de lancer le jeu
-     * @param args
+     * Permet de lancer le jeu.
      */
 	public static void main(String[] args) {
 		
