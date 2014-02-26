@@ -2,8 +2,17 @@ package fr.iutvalence.java.morpion;
 
 public class CoupleCoordonnees
 {
+	
+	/**
+	 * La valeur entière correspondant à la première coordonnée du couple
+	 * de coordonnée
+	 */
 	private static int firstCoordinates;
 
+	/**
+	 * La valeur entière correspondant à la deuxième coordonnée du couple
+	 * de coordonnée
+	 */
 	private static int secondCoordinates;
 	
 	/**
