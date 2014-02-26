@@ -63,9 +63,8 @@ public class PlateauJeu {
 	}
 	
 	/**
-	 * Méthode qui permet de vérifier les coordonnées entrées par l'utilisateur
-	 * @param coordonneesAVerifier, l'objet qui contient un couple de coordonnée
-	 * @return 1 si les coordonnées sont corrects, sinon 0
+	 * Méthode qui permet de vérifier les coordonnées et la disponibilité.
+	 * @param lesCoordonnees, un couple de coordonnées
 	 */
 	public void verificationDuChoix(CoupleCoordonnees lesCoordonnees) throws CoordonneesDejaPriseException, MauvaiseCoordonneesException
 	{
@@ -80,11 +79,9 @@ public class PlateauJeu {
 	}
 	
 	/**
-	 * Méthode qui permet de vérifier la disponibilité de la case sur le plateau de jeu en fonction du couple de coordonnées
-	 * Si la case est disponible, on la modifie, sinon on retourne un code d'erreur (à savoir 0)
-	 * @param unPlateau, le plateau sur lequel on joue
-	 * @param unCouple, le couple de coordonnées choisi après une vérification antérieure
-	 * @return 1 si la case est disponible, sinon 0
+	 * Méthode qui permet de modifier le plateau de jeu.
+	 * @param unJoueur, le joueur qui réalise l'action
+	 * @param unCouple, un couple de coordonnées
 	 */
 	public void ModificationDuPlateau(Joueurs unJoueur, CoupleCoordonnees unCouple)
 	{
@@ -95,39 +92,31 @@ public class PlateauJeu {
 	}
 	
 	/**
-	 * Méthode qui permet de vérifier une éventuelle victoire de la part d'un des joueurs
-	 * @param unJoueur
-	 * @param unPlateau, le plateau sur lequel on joue
+	 * Méthode qui permet de vérifier une éventuelle victoire de la part d'un des joueurs.
+	 * @param unJoueur, le joueur courant
 	 * @return VICTORY si on détecte une victoire, sinon - VICTORY
 	 */
 	public int verificationDeLaVictoire(Joueurs unJoueur)
 	{
-		int verification1, verification2, verification3, verification4, verification5, verification6, verification7, verification8;
 		int VictorySignatureOfPlayer = 3 * unJoueur.obtenirSignature();
 		
-		this.plateauDeJeu[1][2] = this.plateauDeJeu[2][2] + this.plateauDeJeu[2][3] + this.plateauDeJeu[2][4];
-		this.plateauDeJeu[1][2] = this.plateauDeJeu[3][2] + this.plateauDeJeu[3][3] + this.plateauDeJeu[3][4];
-		verification3 = this.plateauDeJeu[4][2] + this.plateauDeJeu[4][3] + this.plateauDeJeu[4][4];
-		verification4 = this.plateauDeJeu[2][2] + this.plateauDeJeu[3][2] + this.plateauDeJeu[4][2];
-		verification5 = this.plateauDeJeu[2][3] + this.plateauDeJeu[3][3] + this.plateauDeJeu[4][3];
-		verification6 = this.plateauDeJeu[2][4] + this.plateauDeJeu[3][4] + this.plateauDeJeu[4][4];
-		verification7 = this.plateauDeJeu[2][2] + this.plateauDeJeu[3][3] + this.plateauDeJeu[4][4];
-		verification8 = this.plateauDeJeu[2][4] + this.plateauDeJeu[3][3] + this.plateauDeJeu[4][2];
+		this.plateauDeJeu[0][1] = this.plateauDeJeu[1][1] + this.plateauDeJeu[2][1] + this.plateauDeJeu[3][1];
+		this.plateauDeJeu[0][2] = this.plateauDeJeu[1][2] + this.plateauDeJeu[2][2] + this.plateauDeJeu[3][2];
+		this.plateauDeJeu[0][3] = this.plateauDeJeu[1][3] + this.plateauDeJeu[2][3] + this.plateauDeJeu[3][3];
+		this.plateauDeJeu[1][0] = this.plateauDeJeu[1][1] + this.plateauDeJeu[1][2] + this.plateauDeJeu[1][3];
+		this.plateauDeJeu[2][0] = this.plateauDeJeu[2][1] + this.plateauDeJeu[2][2] + this.plateauDeJeu[2][3];
+		this.plateauDeJeu[3][0] = this.plateauDeJeu[3][1] + this.plateauDeJeu[3][2] + this.plateauDeJeu[3][3];
+		this.plateauDeJeu[0][0] = this.plateauDeJeu[1][1] + this.plateauDeJeu[2][2] + this.plateauDeJeu[3][3];
+		this.plateauDeJeu[4][0] = this.plateauDeJeu[3][1] + this.plateauDeJeu[2][2] + this.plateauDeJeu[1][3];
 		
-		if ((verification1 == VictorySignatureOfPlayer)||(verification2 == VictorySignatureOfPlayer)||
-			(verification3 == VictorySignatureOfPlayer)||(verification4 == VictorySignatureOfPlayer)||
-			(verification5 == VictorySignatureOfPlayer)||(verification6 == VictorySignatureOfPlayer)||
-			(verification7 == VictorySignatureOfPlayer)||(verification8 == VictorySignatureOfPlayer))
-		{
-			String winningOfPlayer = unJoueur.obtenirNom();
-			System.out.println("-----------------------------------------------------------------------");
-			System.out.println(" Félicitation !! Victoire du joueur : " + winningOfPlayer);
-			System.out.println("-----------------------------------------------------------------------");
+		if ((this.plateauDeJeu[0][1] == VictorySignatureOfPlayer)||(this.plateauDeJeu[0][2] == VictorySignatureOfPlayer)||
+			(this.plateauDeJeu[0][3] == VictorySignatureOfPlayer)||(this.plateauDeJeu[1][0] == VictorySignatureOfPlayer)||
+			(this.plateauDeJeu[2][0] == VictorySignatureOfPlayer)||(this.plateauDeJeu[3][0] == VictorySignatureOfPlayer)||
+			(this.plateauDeJeu[0][0] == VictorySignatureOfPlayer)||(this.plateauDeJeu[4][0] == VictorySignatureOfPlayer))
+			
 			return VICTORY;
-		}
 		else
 			return NOVICTORY;
-		
 	}
 
 }
