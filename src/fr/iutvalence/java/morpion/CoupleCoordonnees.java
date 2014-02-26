@@ -2,7 +2,7 @@ package fr.iutvalence.java.morpion;
 
 public class CoupleCoordonnees
 {
-	
+
 	/**
 	 * La valeur entière correspondant à la première coordonnée du couple
 	 * de coordonnée
@@ -14,9 +14,9 @@ public class CoupleCoordonnees
 	 * de coordonnée
 	 */
 	private static int secondCoordinates;
-	
+
 	/**
-	 * Retourne un nouveau couple de coordonnées de composantes données 
+	 * Retourne un nouveau couple de coordonnées de composantes données
 	 * @param firstCoordinates
 	 * @param secondCoordinates
 	 */
@@ -25,7 +25,7 @@ public class CoupleCoordonnees
 		this.firstCoordinates = coordonnee1;
 		this.secondCoordinates = coordonnee2;
 	}
-	
+
 	/**
 	 * Permet d'obtenir la première coordonnée de l'objet courant
 	 * @return la première coordonnée
@@ -34,7 +34,7 @@ public class CoupleCoordonnees
 	{
 		return this.firstCoordinates;
 	}
-	
+
 	/**
 	 * Permet d'obtenir la deuxième coordonnée de l'objet courant
 	 * @return la deuxième coordonnée
