@@ -1,5 +1,7 @@
 package fr.iutvalence.java.morpion;
 
+/* TODO JavaDoc : Même commentaire que pour la classe PlateauJeu. */
+/* TODO Attention au mélange des langues ! nameOfPlayer / obtenirSignature. */
 /**
  * La classe Joueurs permet de créer de nouveaux objets de type Joueurs,
  * avec des composantes définies en fonction des choix de l'utilisateur.
