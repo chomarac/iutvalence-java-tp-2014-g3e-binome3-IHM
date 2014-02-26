@@ -1,5 +1,5 @@
-/* TODO Faites des commentaires JavaDoc pertinents ! */
-/* TODO Pourquoi hors de tout package. */
+package fr.iutvalence.java.morpion;
+
 /**
  * Classe LanceurDuMorpion
  * @author Loic
