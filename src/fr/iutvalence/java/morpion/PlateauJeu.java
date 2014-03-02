@@ -96,16 +96,16 @@ public class PlateauJeu {
 		this.plateauDeJeu[x][y] = signature;
 		
 		//On calcul les lignes
-		this.plateauDeJeu[x][0] = this.plateauDeJeu[x][0] + signature;
-		this.plateauDeJeu[0][y] = this.plateauDeJeu[0][y] + signature;
+		this.plateauDeJeu[x][0] += signature;
+		this.plateauDeJeu[0][y] += signature;
 		
 		//On calcul la première diagonale
 		if (x == y)
-			this.plateauDeJeu[0][0] = this.plateauDeJeu[0][0] + signature;
+			this.plateauDeJeu[0][0] += signature;
 		
 		//On calcul la deuxième diagonale
 		if ((x + y) == 4)
-			this.plateauDeJeu[4][0] = this.plateauDeJeu[4][0] + signature;
+			this.plateauDeJeu[4][0] += signature;
 		
 		//On teste une éventuelle victoire
 		if ((this.plateauDeJeu[x][0] == victoire) || (this.plateauDeJeu[0][y] == victoire) || (this.plateauDeJeu[0][0] == victoire) || (this.plateauDeJeu[4][0] == victoire))
@@ -115,10 +115,11 @@ public class PlateauJeu {
 	}
 	
 	/**
-	 * Affichage du plateau de jeu.
+	 * Affichage du plateau de jeu par redéfinition d'une méthode existante
 	 */
-	public void afficherPlateauDeJeu()
+	public String toString()
 	{
+		String plateauAsciiArt = "";
 		int compteur = 0;
 		
 		for (int nombreDeLignes = 1 ; nombreDeLignes < 4; nombreDeLignes++)
@@ -129,12 +130,15 @@ public class PlateauJeu {
 				if (compteur == 3)
 				{
 					compteur = 0;
-					System.out.println(this.plateauDeJeu [nombreDeLignes] [nombreDeColonnes] + " ");
+					plateauAsciiArt += this.plateauDeJeu[nombreDeLignes][nombreDeColonnes];
 				}
 				else
-					System.out.print(this.plateauDeJeu [nombreDeLignes] [nombreDeColonnes] + " ");
+					plateauAsciiArt += this.plateauDeJeu[nombreDeLignes][nombreDeColonnes];
 			}
+			plateauAsciiArt += "\n";
 		}
+		
+		return plateauAsciiArt;
 	}
 	
 }

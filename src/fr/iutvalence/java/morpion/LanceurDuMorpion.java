@@ -13,7 +13,7 @@ public class LanceurDuMorpion {
 		//Des tests
 		System.out.println("Coming soon !");
 		PlateauJeu unPlateauJeu = new PlateauJeu();
-		unPlateauJeu.afficherPlateauDeJeu();
+		System.out.println(unPlateauJeu);
 		GestionDesJoueurs menuInitial = new GestionDesJoueurs();
 		menuInitial.demanderJoueurs();
 	}
