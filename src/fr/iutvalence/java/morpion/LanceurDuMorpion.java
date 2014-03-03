@@ -90,16 +90,10 @@ public class LanceurDuMorpion
 		double nombre = nombresAleatoire.nextDouble();
 
 		if (nombre >= 0.5)
-		{
-			System.out.println(player1.obtenirNom() + " va débuter le premier");
 			joueurCourant = player1;
-		}
 		else
-		{
-			System.out.println(player2.obtenirNom() + " va débuter le premier");
 			joueurCourant = player2;
-		}
-
+		
 		// Début de la partie
 		int compteurDeTour = 0;
 
