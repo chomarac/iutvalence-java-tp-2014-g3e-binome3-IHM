@@ -21,9 +21,8 @@ public class PlateauJeu {
     /** Constante du nombres de colonnes. */
     public static final int NOMBRE_DE_LIGNES = 5;
 
-    /* TODO Je n'ai pas bien saisi la question... */
-    /** Nom du plateau de jeu. */
-    private int plateauDeJeu[][];
+    /** Plateau de jeu. */
+    private final int[][] plateauDeJeu;
 
     /** Constructeur d'un plateau de jeu. */
     public PlateauJeu()
@@ -34,16 +33,18 @@ public class PlateauJeu {
 
     /**
      * Méthode qui permet de vérifier les coordonnées et la disponibilité.
-     * @param premiereCoordonnee, la première coordonnée
-     * @param deuxiemeCoordonnee, la deuxième coordonnée
-     * @throws CoordonneesDejaPriseException
-     * @throws MauvaiseCoordonneesException
+     *
+     * @param x La première coordonnée
+     * @param y La deuxième coordonnée
+     *
+     * @throws CoordonneesDejaPriseException TODO
+     * @throws MauvaiseCoordonneesException  TODO
      */
     public void verificationDuChoix(int x, int y) throws CoordonneesDejaPriseException, MauvaiseCoordonneesException
 	{
 
 		//On soulève une exception si les valeurs saisies sont éronnées
-		if ((x > 3) && (x < 1) && (y > 3) && (y < 1))
+		if ((x > 3) || (x < 1) || (y > 3) || (y < 1))
             throw new MauvaiseCoordonneesException();
 
 		//On soulève une exception si la case est déjà occupée
@@ -53,8 +54,11 @@ public class PlateauJeu {
 
     /**
      * Méthode qui permet de modifier le plateau de jeu.
-     * @param unJoueur, le joueur qui réalise l'action
-     * @param lesCoordonnees, un couple de coordonnées
+     *
+     * @param unJoueur le joueur qui réalise l'action
+     * @param x        TODO
+     * @param y        TODO
+     *
      * @return true si un joueur gagne, false sinon
      */
     public boolean modificationDuPlateau(Joueurs unJoueur, int x, int y)
@@ -77,6 +81,7 @@ public class PlateauJeu {
 		if ((x + y) == 4)
             this.plateauDeJeu[4][0] += signature;
 
+        /* TODO Simplifiez le test, c'est un peu ridicule. */
 		//On teste une éventuelle victoire
 		if ((this.plateauDeJeu[x][0] == victoire) || (this.plateauDeJeu[0][y] == victoire) || (this.plateauDeJeu[0][0] == victoire) || (this.plateauDeJeu[4][0] == victoire))
 			return true;
@@ -85,21 +90,22 @@ public class PlateauJeu {
 	}
 
     /** Affichage du plateau de jeu par redéfinition d'une méthode existante. */
-	public String toString()
+	@Override
+    public String toString()
 	{
-        /* TODO Nous avons utilisé cette méthode lors du dernier TD sur les échecs. C'est pourquoi je l'ai utilisée... */
-		String plateauAsciiArt = "";
+        /* TODO À discuter en TP. */
+		StringBuilder plateauAsciiArt = new StringBuilder(21);
 
 		for (int nombreDeLignes = 1 ; nombreDeLignes < 4; nombreDeLignes++)
 		{
 			for (int nombreDeColonnes = 1 ; nombreDeColonnes < 4; nombreDeColonnes++)
 			{
-				plateauAsciiArt += this.plateauDeJeu[nombreDeLignes][nombreDeColonnes] + " ";
+				plateauAsciiArt.append(this.plateauDeJeu[nombreDeLignes][nombreDeColonnes]).append(' ');
 			}
-			plateauAsciiArt += "\n";
+			plateauAsciiArt.append('\n');
 		}
 
-		return plateauAsciiArt;
+		return plateauAsciiArt.toString();
 	}
 
 }
