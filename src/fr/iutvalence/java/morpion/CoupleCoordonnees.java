@@ -1,5 +1,6 @@
 package fr.iutvalence.java.morpion;
 
+/* TODO Je suis toujours très sceptique sur l'utilité de cette classe. */
 /**
  * Modélisation d'un couple de coordonnées.
  * <p>
