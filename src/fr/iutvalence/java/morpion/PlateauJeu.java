@@ -29,16 +29,6 @@ public class PlateauJeu {
      * Nom du plateau de jeu
      */
     private int plateauDeJeu[][];
-	
-	/**
-	 * La constante qui permet de dire un joueur est vainqueur
-	 */
-	public static final int VICTOIRE = 10;
-	
-	/**
-	 * La constante qui permet de dire qu'il n'y a pas encore de vainqueur
-	 */
-	public static final int NONVICTOIRE = - VICTOIRE;
     
     /**
      * Constructeur d'un plateau de jeu
@@ -76,7 +66,7 @@ public class PlateauJeu {
 			throw new MauvaiseCoordonneesException(lesCoordonnees.toString());
 		
 		//On soulève une exception si la case est déjà occupée
-		if (!( (this.plateauDeJeu[x][y]) == 0) )
+		if ((this.plateauDeJeu[x][y]) != 0)
 			throw new CoordonneesDejaPriseException("Les coordonnées : " + Integer.toString(this.plateauDeJeu[x][y]) + "sont déjà occupées.");	
 	}
 	
@@ -85,7 +75,7 @@ public class PlateauJeu {
 	 * @param unJoueur, le joueur qui réalise l'action
 	 * @param lesCoordonnees, un couple de coordonnées
 	 */
-	public int ModificationDuPlateau(Joueurs unJoueur, CoupleCoordonnees lesCoordonnees)
+	public boolean ModificationDuPlateau(Joueurs unJoueur, CoupleCoordonnees lesCoordonnees)
 	{
 		//On récupère les données liées au joueur courant
 		int x = lesCoordonnees.obtenirPremiereCoordonnee();
@@ -109,9 +99,9 @@ public class PlateauJeu {
 		
 		//On teste une éventuelle victoire
 		if ((this.plateauDeJeu[x][0] == victoire) || (this.plateauDeJeu[0][y] == victoire) || (this.plateauDeJeu[0][0] == victoire) || (this.plateauDeJeu[4][0] == victoire))
-			return VICTOIRE;
+			return true;
 		else
-			return NONVICTOIRE;
+			return false;
 	}
 	
 	/**
@@ -120,20 +110,12 @@ public class PlateauJeu {
 	public String toString()
 	{
 		String plateauAsciiArt = "";
-		int compteur = 0;
 		
 		for (int nombreDeLignes = 1 ; nombreDeLignes < 4; nombreDeLignes++)
 		{
 			for (int nombreDeColonnes = 1 ; nombreDeColonnes < 4; nombreDeColonnes++)
 			{
-				compteur = compteur + 1;
-				if (compteur == 3)
-				{
-					compteur = 0;
-					plateauAsciiArt += this.plateauDeJeu[nombreDeLignes][nombreDeColonnes];
-				}
-				else
-					plateauAsciiArt += this.plateauDeJeu[nombreDeLignes][nombreDeColonnes];
+				plateauAsciiArt += this.plateauDeJeu[nombreDeLignes][nombreDeColonnes] + " ";
 			}
 			plateauAsciiArt += "\n";
 		}
