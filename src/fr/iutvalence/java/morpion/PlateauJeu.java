@@ -74,6 +74,8 @@ public class PlateauJeu {
      *
      * @param unJoueur,       le joueur qui réalise l'action
      * @param lesCoordonnees, un couple de coordonnées
+     *
+     * @return TODO
      */
     public boolean ModificationDuPlateau(Joueurs unJoueur, CoupleCoordonnees lesCoordonnees)
 	{
