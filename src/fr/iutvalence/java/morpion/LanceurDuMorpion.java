@@ -1,10 +1,10 @@
 package fr.iutvalence.java.morpion;
 
-import java.util.Random;
-import java.util.Scanner;
-
 import fr.iutvalence.java.morpion.erreur.CoordonneesDejaPriseException;
 import fr.iutvalence.java.morpion.erreur.MauvaiseCoordonneesException;
+
+import java.util.Random;
+import java.util.Scanner;
 
 /**
  * Modélisation de l'execution du jeu.
@@ -37,6 +37,7 @@ public class LanceurDuMorpion
 	 */
 	private static final int NOMBREMAXDETOUR = 9;
 
+    /* TODO Très grosse méthode. À découper. */
 	/**
 	 * Permet de lancer le jeu.
 	 */
@@ -86,6 +87,8 @@ public class LanceurDuMorpion
 		}
 
 		//On détermine quel joueur va débuter la partie
+        /* TODO SecureRandom. */
+        /* TODO À simplifier ! */
 		Random nombresAleatoire = new Random();
 		double nombre = nombresAleatoire.nextDouble();
 
@@ -113,13 +116,15 @@ public class LanceurDuMorpion
 			try
 			{
 				unPlateauJeu.verificationDuChoix(choixCoordonneesJoueur);
+                /* TODO Ce genre de test est ridicule ;-). Pourquoi ne pas faire directement le test plutôt qu'une comparaison à "true". */
 				if (unPlateauJeu.ModificationDuPlateau(joueurCourant, choixCoordonneesJoueur) == true)
 				{
 					System.out.println(unPlateauJeu);
 					compteurDeTour = 2*NOMBREMAXDETOUR;
 				}
 				else
-				{					
+				{
+                    /* TODO À Simplifier. */
 					if (joueurCourant == player1)
 						joueurCourant = player2;
 					else
@@ -128,12 +133,12 @@ public class LanceurDuMorpion
 					compteurDeTour += 1;
 				}
 			}
-			catch (CoordonneesDejaPriseException e)
+			catch (CoordonneesDejaPriseException ignored)
 			{
 				System.out.println("Les coordonnées saisies sont déjà prises, veuillez en saisir des différentes.");
 				System.out.println(unPlateauJeu);
 			}
-			catch (MauvaiseCoordonneesException e)
+			catch (MauvaiseCoordonneesException ignored)
 			{
 				System.out.println("Les coordonnées ne sont pas comprises entre 1 et 3.");
 				System.out.println(unPlateauJeu);
