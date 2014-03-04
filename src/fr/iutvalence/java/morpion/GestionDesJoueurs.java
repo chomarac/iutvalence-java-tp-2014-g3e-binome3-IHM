@@ -5,5 +5,5 @@ package fr.iutvalence.java.morpion;
  */
 public class GestionDesJoueurs
 {
-	
+	//A venir..
 }

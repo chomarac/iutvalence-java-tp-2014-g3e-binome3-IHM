@@ -7,7 +7,7 @@ import fr.iutvalence.java.morpion.erreur.CoordonneesDejaPriseException;
 import fr.iutvalence.java.morpion.erreur.MauvaiseCoordonneesException;
 
 /**
- * Lancer une partie
+ * Permet de gérer l'intégralité du jeu (début, rejouer, fin)
  */
 public class Jouer
 {
