@@ -12,16 +12,28 @@ public class uneApplication
 	 */
 	public static void main(String[] args)
 	{
-        /* TODO Où est la classe Jouer ? */
+		Scanner recuperationInformation = new Scanner(System.in);
+		
 		Jouer unePartie = new Jouer();
 		unePartie.jouer();
-		
-		Scanner recuperationInformation = new Scanner(System.in);
-		System.out.println("Voulez-vous rejouer une partie ? (O/N)");
-		String reponse = recuperationInformation.nextLine();
 
-        /* TODO Il doit manquer une boucle... */
-		if ("O".equals(reponse))
-			unePartie.rejouer();
+		while (true)
+		{
+			System.out.println("Voulez-vous rejouer une partie ? (O/N)");
+			String reponse = recuperationInformation.nextLine();
+
+			if ("O".equals(reponse))
+			{
+				unePartie.rejouer();
+				break;
+			}
+			else
+				if ("N".equals(reponse))
+				{
+					unePartie.quitter();
+					break;
+				}
+			System.out.println("Veuillez saisir une lettre valide.\n");
+		}
 	}
 }
