@@ -3,7 +3,7 @@ package fr.iutvalence.java.morpion;
 import java.util.Scanner;
 
 /**
- * Lance le jeu
+ * Permet d'executer l'application
  */
 public class uneApplication
 {
