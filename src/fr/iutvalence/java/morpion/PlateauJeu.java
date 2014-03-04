@@ -36,9 +36,9 @@ public class PlateauJeu {
      *
      * @param x La première coordonnée
      * @param y La deuxième coordonnée
-     *
-     * @throws CoordonneesDejaPriseException TODO
-     * @throws MauvaiseCoordonneesException  TODO
+     * 
+     * @throws CoordonneesDejaPriseException Si la case est déjà occupée
+     * @throws MauvaiseCoordonneesException Si les coordonnées ne sont pas dans l'intervalle [1,3]
      */
     public void verificationDuChoix(int x, int y) throws CoordonneesDejaPriseException, MauvaiseCoordonneesException
 	{
@@ -56,8 +56,8 @@ public class PlateauJeu {
      * Méthode qui permet de modifier le plateau de jeu.
      *
      * @param unJoueur le joueur qui réalise l'action
-     * @param x        TODO
-     * @param y        TODO
+     * @param x La première coordonnée
+     * @param y La deuxième coordonnée
      *
      * @return true si un joueur gagne, false sinon
      */
@@ -81,7 +81,7 @@ public class PlateauJeu {
 		if ((x + y) == 4)
             this.plateauDeJeu[4][0] += signature;
 
-        /* TODO Simplifiez le test, c'est un peu ridicule. */
+        /* TODO Je ne vois pas comment on pourrait simplifier le test... */
 		//On teste une éventuelle victoire
 		if ((this.plateauDeJeu[x][0] == victoire) || (this.plateauDeJeu[0][y] == victoire) || (this.plateauDeJeu[0][0] == victoire) || (this.plateauDeJeu[4][0] == victoire))
 			return true;
