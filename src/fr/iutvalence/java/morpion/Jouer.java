@@ -1,10 +1,10 @@
 package fr.iutvalence.java.morpion;
 
-import java.security.SecureRandom;
-import java.util.Scanner;
-
 import fr.iutvalence.java.morpion.erreur.CoordonneesDejaPriseException;
 import fr.iutvalence.java.morpion.erreur.MauvaiseCoordonneesException;
+
+import java.security.SecureRandom;
+import java.util.Scanner;
 
 /**
  * Permet de gérer l'intégralité du jeu (début, rejouer, fin)
@@ -64,7 +64,8 @@ public class Jouer
 	{
 
 		PlateauJeu unPlateauJeu = new PlateauJeu();
-		
+
+        /* TODO N'est-ce pas redondant avec les attributs ? */
 		Joueurs player1 = null;
 		Joueurs player2 = null;
 		Joueurs joueurCourant;
