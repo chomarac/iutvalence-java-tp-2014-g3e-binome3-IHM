@@ -35,12 +35,17 @@ public class Jouer
 	/**
 	 * Un objet qui contiendra toutes les informations relatives à player1
 	 */
-	private static Joueurs player1;
+	private static Joueurs player1 = null;
 
 	/**
 	 * Un objet qui contiendra toutes les informations relatives à player2
 	 */
-	private static Joueurs player2;
+	private static Joueurs player2 = null;
+	
+	/**
+	 * Un objet qui contiendra le joueur courant
+	 */
+	private static Joueurs joueurCourant;
 
 	/**
 	 * La nombre de tour maximum pour une partie
@@ -62,13 +67,7 @@ public class Jouer
 	 */
 	public void jouer()
 	{
-
 		PlateauJeu unPlateauJeu = new PlateauJeu();
-
-        /* TODO N'est-ce pas redondant avec les attributs ? */
-		Joueurs player1 = null;
-		Joueurs player2 = null;
-		Joueurs joueurCourant;
 
 		while (true)
 		{
