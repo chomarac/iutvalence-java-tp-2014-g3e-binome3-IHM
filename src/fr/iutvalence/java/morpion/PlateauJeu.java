@@ -81,11 +81,13 @@ public class PlateauJeu {
 		if ((x + y) == 4)
             this.plateauDeJeu[4][0] += signature;
 
-        /* TODO Je ne vois pas comment on pourrait simplifier le test... */
-		//On teste une éventuelle victoire
-		if ((this.plateauDeJeu[x][0] == victoire) || (this.plateauDeJeu[0][y] == victoire) || (this.plateauDeJeu[0][0] == victoire) || (this.plateauDeJeu[4][0] == victoire))
+        /* TODO Comme ceci peut-être plus simplement ? */
+        // return (this.plateauDeJeu[x][0] == victoire) || (this.plateauDeJeu[0][y] == victoire) || (this.plateauDeJeu[0][0] == victoire) || (this.plateauDeJeu[4][0] == victoire);
+        //On teste une éventuelle victoire
+
+        if ((this.plateauDeJeu[x][0] == victoire) || (this.plateauDeJeu[0][y] == victoire) || (this.plateauDeJeu[0][0] == victoire) || (this.plateauDeJeu[4][0] == victoire))
 			return true;
-		
+
 		return false;
 	}
 
