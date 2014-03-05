@@ -2,6 +2,7 @@ package fr.iutvalence.java.morpion;
 
 import java.util.Scanner;
 
+/* TODO Convention du Java, les noms de classes commencent par des majuscules. */
 /**
  * Permet d'executer l'application
  */
