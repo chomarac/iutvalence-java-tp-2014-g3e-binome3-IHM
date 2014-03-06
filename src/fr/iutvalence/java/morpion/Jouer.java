@@ -25,12 +25,12 @@ public class Jouer
 	/**
 	 * La signature par défaut du joueur 1
 	 */
-	private static final int SIGNATURE1 = 5;
+	public static final int SIGNATURE1 = 5;
 
 	/**
 	 * La signature par défaut du joueur 2
 	 */
-	private static final int SIGNATURE2 = -SIGNATURE1;
+	public static final int SIGNATURE2 = -SIGNATURE1;
 
 	/**
 	 * Un objet qui contiendra toutes les informations relatives à player1
@@ -116,7 +116,14 @@ public class Jouer
 
 		while (compteurDeTour < NOMBREMAXDETOUR)
 		{
-			System.out.println("C'est à " + joueurCourant.obtenirNom() + " de jouer.");
+			String pionJoueurCourant;
+			
+			if (joueurCourant.obtenirSignature() == Jouer.SIGNATURE1)
+				pionJoueurCourant = "X";
+			else
+				pionJoueurCourant = "O";
+			
+			System.out.println("C'est à " + joueurCourant.obtenirNom() + " de jouer (pion : " + pionJoueurCourant + ").");
 			System.out.println(unPlateauJeu);
 			
 			System.out.println("Veuillez saisir la première coordonnée (entre 1 et 3 compris) :");

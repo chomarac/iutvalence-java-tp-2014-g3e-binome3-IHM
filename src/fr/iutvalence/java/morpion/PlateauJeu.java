@@ -96,11 +96,21 @@ public class PlateauJeu {
 		{
 			for (int nombreDeColonnes = 1 ; nombreDeColonnes < 4; nombreDeColonnes++)
 			{
-				plateauAsciiArt.append(this.plateauDeJeu[nombreDeLignes][nombreDeColonnes]).append(' ');
+				switch (this.plateauDeJeu[nombreDeLignes][nombreDeColonnes])
+				{
+				case Jouer.SIGNATURE1:
+					plateauAsciiArt.append('X').append(' ');
+					break;
+				case Jouer.SIGNATURE2:
+					plateauAsciiArt.append('O').append(' ');
+					break;
+				default:
+					plateauAsciiArt.append('.').append(' ');
+					break;
+				}
 			}
 			plateauAsciiArt.append('\n');
 		}
-
 		return plateauAsciiArt.toString();
 	}
 
