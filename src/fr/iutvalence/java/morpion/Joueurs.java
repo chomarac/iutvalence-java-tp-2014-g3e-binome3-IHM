@@ -1,5 +1,6 @@
 package fr.iutvalence.java.morpion;
 
+/* TODO JavaDoc. Conseil : toujours ajouter l'auteur et le numéro de version. */
 /**
  * Modélisation d'un joueur.
  * <p>
