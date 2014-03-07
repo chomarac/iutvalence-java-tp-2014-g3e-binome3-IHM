@@ -3,6 +3,7 @@ package fr.iutvalence.java.morpion;
 import fr.iutvalence.java.morpion.erreur.CoordonneesDejaPriseException;
 import fr.iutvalence.java.morpion.erreur.MauvaiseCoordonneesException;
 
+/* TODO JavaDoc. Conseil : toujours ajouter l'auteur et le numéro de version. */
 /**
  * Modélisation d'un plateau du jeu.
  * <p>
@@ -31,6 +32,7 @@ public class PlateauJeu {
         this.plateauDeJeu = new int[NOMBRE_DE_LIGNES][NOMBRE_DE_COLONNES];
     }
 
+    /* TODO Ce genre de nom de méthode trahit votre pensée impérative... Pourquoi pas "estCoupValide" ? */
     /**
      * Méthode qui permet de vérifier les coordonnées et la disponibilité.
      *
@@ -52,6 +54,8 @@ public class PlateauJeu {
             throw new CoordonneesDejaPriseException();
 	}
 
+    /* TODO Ce genre de nom de méthode trahit votre pensée impérative... Pourquoi pas "placerPion" ? */
+    /* TODO Point interessant, vous ne spécifier pas dans cette méthode que le coup proposé doit forcément être valide... */
     /**
      * Méthode qui permet de modifier le plateau de jeu.
      *
