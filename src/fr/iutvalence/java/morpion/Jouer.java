@@ -6,6 +6,8 @@ import fr.iutvalence.java.morpion.erreur.MauvaiseCoordonneesException;
 import java.security.SecureRandom;
 import java.util.Scanner;
 
+/* TODO Le nom de la classe ne me paraît pas très pertinent et elle me parait divisable. */
+/* TODO JavaDoc. Conseil : toujours ajouter l'auteur et le numéro de version. */
 /**
  * Permet de gérer l'intégralité du jeu (début, rejouer, fin)
  */
@@ -32,16 +34,19 @@ public class Jouer
 	 */
 	public static final int SIGNATURE2 = -SIGNATURE1;
 
-	/**
+    /* TODO Pourquoi "static" "? */
+    /**
 	 * Un objet qui contiendra toutes les informations relatives à player1
 	 */
 	private static Joueurs player1 = null;
 
-	/**
+    /* TODO Pourquoi "static" "? */
+    /**
 	 * Un objet qui contiendra toutes les informations relatives à player2
 	 */
 	private static Joueurs player2 = null;
-	
+
+    /* TODO Pourquoi un attribut ? */
 	/**
 	 * Un objet qui contiendra le joueur courant
 	 */
@@ -57,7 +62,8 @@ public class Jouer
 	 */
 	private static final int PARTIEGAGNEE = 2*NOMBREMAXDETOUR;
 
-	/**
+	/* TODO Pourquoi un attribut ? */
+    /**
 	 * L'objet qui va permettre de récupérer les entrées au clavier
 	 */
 	Scanner recuperationInformation = new Scanner(System.in);
@@ -69,6 +75,7 @@ public class Jouer
 	{
 		PlateauJeu unPlateauJeu = new PlateauJeu();
 
+        /* TODO Pourquoi ne pas mettre cette partie dans une méthode ? */
 		while (true)
 		{
 			System.out.println("Voulez-vous modifier les noms de Joueur 1 et Joueur 2 (O/N)");
@@ -83,6 +90,7 @@ public class Jouer
 
 			if ("O".equals(choix))
 			{
+                /* TODO .equals( ) serait mieux */
 				while (player1 == player2)
 				{
 					System.out.println("Veuillez entrer le nom du joueur 1 : ");
@@ -103,6 +111,7 @@ public class Jouer
 			System.out.println("Veuillez saisir une lettre valide.\n");
 		}
 
+        /* TODO Vous pouvez simplifier cette affectation (à discuter en TP). */
 		// On détermine quel joueur va débuter la partie
 		SecureRandom nombresAleatoire = new SecureRandom();
 
