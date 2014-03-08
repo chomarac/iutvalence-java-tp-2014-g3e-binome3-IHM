@@ -5,6 +5,8 @@ import java.util.Scanner;
 /* TODO JavaDoc. Conseil : toujours ajouter l'auteur et le numéro de version. */
 /**
  * Permet d'executer l'application
+ * @author DELORME Loïc & BASSON Julien
+ * @version 0.7.5
  */
 public class UneApplication
 {
