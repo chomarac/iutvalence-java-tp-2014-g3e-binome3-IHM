@@ -2,18 +2,17 @@ package fr.iutvalence.java.morpion;
 
 import java.util.Scanner;
 
-/**
- * Permet d'executer l'application
+/** Permet d'executer l'application
+ * 
  * @author DELORME Loïc & BASSON Julien
- * @version 0.7.5
+ * @version 1.0
  */
 public class UneApplication
 {
-	/**
-	 * Permet de lancer le jeu.
-	 */
+	/** Permet de lancer le jeu. */
 	public static void main(String[] args)
 	{
+		@SuppressWarnings("resource")
 		Scanner choixDePoursuite = new Scanner(System.in);
 		
 		Jouer unePartie = new Jouer();
@@ -21,7 +20,7 @@ public class UneApplication
 		
 		while (true)
 		{			
-			System.out.println("Voulez-vous rejouer une partie ? (O/N)");
+			System.out.println("\nVoulez-vous rejouer une partie ? (O/N)");
 			String reponse = choixDePoursuite.nextLine();
 
 			if ("O".equals(reponse))

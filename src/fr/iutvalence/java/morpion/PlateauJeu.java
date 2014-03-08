@@ -3,7 +3,6 @@ package fr.iutvalence.java.morpion;
 import fr.iutvalence.java.morpion.erreur.CoordonneesDejaPriseException;
 import fr.iutvalence.java.morpion.erreur.MauvaiseCoordonneesException;
 
-/* TODO JavaDoc. Conseil : toujours ajouter l'auteur et le numéro de version. */
 /**
  * Modélisation d'un plateau du jeu.
  * <p>
@@ -13,6 +12,9 @@ import fr.iutvalence.java.morpion.erreur.MauvaiseCoordonneesException;
  * <li>les résultats de calcul pour déterminer une victoire (lignes/colonnes 0 à 1)</li>
  * </ul>
  * </p>
+ *
+ * @author DELORME Loïc & BASSON Julien
+ * @version 1.0
  */
 public class PlateauJeu {
 
@@ -32,9 +34,7 @@ public class PlateauJeu {
         this.plateauDeJeu = new int[NOMBRE_DE_LIGNES][NOMBRE_DE_COLONNES];
     }
 
-    /* TODO Ce genre de nom de méthode trahit votre pensée impérative... Pourquoi pas "estCoupValide" ? */
-    /**
-     * Méthode qui permet de vérifier les coordonnées et la disponibilité.
+    /** Méthode qui permet de vérifier les coordonnées et la disponibilité.
      *
      * @param x La première coordonnée
      * @param y La deuxième coordonnée
@@ -42,9 +42,8 @@ public class PlateauJeu {
      * @throws CoordonneesDejaPriseException Si la case est déjà occupée
      * @throws MauvaiseCoordonneesException Si les coordonnées ne sont pas dans l'intervalle [1,3]
      */
-    public void verificationDuChoix(int x, int y) throws CoordonneesDejaPriseException, MauvaiseCoordonneesException
+    public void estCoupValide(int x, int y) throws CoordonneesDejaPriseException, MauvaiseCoordonneesException
 	{
-
 		//On soulève une exception si les valeurs saisies sont éronnées
 		if ((x > 3) || (x < 1) || (y > 3) || (y < 1))
             throw new MauvaiseCoordonneesException();
@@ -54,10 +53,7 @@ public class PlateauJeu {
             throw new CoordonneesDejaPriseException();
 	}
 
-    /* TODO Ce genre de nom de méthode trahit votre pensée impérative... Pourquoi pas "placerPion" ? */
-    /* TODO Point interessant, vous ne spécifier pas dans cette méthode que le coup proposé doit forcément être valide... */
-    /**
-     * Méthode qui permet de modifier le plateau de jeu.
+    /** Méthode qui permet de modifier le plateau de jeu si le coup joué est valide
      *
      * @param unJoueur le joueur qui réalise l'action
      * @param x La première coordonnée
@@ -65,7 +61,7 @@ public class PlateauJeu {
      *
      * @return true si un joueur gagne, false sinon
      */
-    public boolean modificationDuPlateau(Joueurs unJoueur, int x, int y)
+    public boolean placerPionSurPlateau(Joueurs unJoueur, int x, int y)
 	{
 		//On récupère les données liées au joueur courant
 		int signature = unJoueur.obtenirSignature();
@@ -89,7 +85,10 @@ public class PlateauJeu {
         return ((this.plateauDeJeu[x][0] == victoire) || (this.plateauDeJeu[0][y] == victoire) || (this.plateauDeJeu[0][0] == victoire) || (this.plateauDeJeu[4][0] == victoire));
 	}
 
-    /** Affichage du plateau de jeu par redéfinition d'une méthode existante. */
+    /** Affichage du plateau de jeu par redéfinition d'une méthode existante.
+     * 
+     * @return Le plateau de jeu au format String
+     */
 	@Override
     public String toString()
 	{
@@ -102,10 +101,10 @@ public class PlateauJeu {
 			{
 				switch (this.plateauDeJeu[nombreDeLignes][nombreDeColonnes])
 				{
-				case Jouer.SIGNATURE1:
+				case Joueurs.SIGNATURE1:
 					plateauAsciiArt.append('X').append(' ');
 					break;
-				case Jouer.SIGNATURE2:
+				case Joueurs.SIGNATURE2:
 					plateauAsciiArt.append('O').append(' ');
 					break;
 				default:
@@ -117,5 +116,4 @@ public class PlateauJeu {
 		}
 		return plateauAsciiArt.toString();
 	}
-
 }
