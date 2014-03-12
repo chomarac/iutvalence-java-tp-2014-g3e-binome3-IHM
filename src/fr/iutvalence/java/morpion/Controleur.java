@@ -18,8 +18,16 @@ public class Controleur
 	
 	/** Le nombre qui détermine si la partie est gagnée */
 	private static final int PARTIEGAGNEE = 2*NOMBREMAXDETOUR;
-
 	
+	/** Création du controleur de la partie */
+	public Controleur()
+	{
+		PlateauJeu unPlateauJeu = new PlateauJeu();
+		Vue uneVue = new Vue();
+		uneVue.modificationNomsJoueurs();
+		choixJoueurDebutantPartie();
+		partie(unPlateauJeu);
+	}
 	
 	/** Méthode permettant de choisir un joueur aléatoire pour débuter la partie */
 	public void choixJoueurDebutantPartie()
