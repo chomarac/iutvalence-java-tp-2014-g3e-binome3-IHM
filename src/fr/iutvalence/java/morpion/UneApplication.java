@@ -12,7 +12,6 @@ public class UneApplication
 	/** Permet de lancer le jeu. */
 	public static void main(String[] args)
 	{
-		@SuppressWarnings("resource")
 		Scanner choixDePoursuite = new Scanner(System.in);
 		
 		Jouer unePartie = new Jouer();

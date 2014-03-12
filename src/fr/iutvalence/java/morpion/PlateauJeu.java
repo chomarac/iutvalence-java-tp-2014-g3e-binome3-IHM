@@ -61,7 +61,7 @@ public class PlateauJeu {
      *
      * @return true si un joueur gagne, false sinon
      */
-    public boolean placerPionSurPlateau(Joueurs unJoueur, int x, int y)
+    public boolean placerPion(Joueurs unJoueur, int x, int y)
 	{
 		//On récupère les données liées au joueur courant
 		int signature = unJoueur.obtenirSignature();
@@ -92,7 +92,6 @@ public class PlateauJeu {
 	@Override
     public String toString()
 	{
-        /* TODO À discuter en TP. */
 		StringBuilder plateauAsciiArt = new StringBuilder(21);
 
 		for (int nombreDeLignes = 1 ; nombreDeLignes < 4; nombreDeLignes++)

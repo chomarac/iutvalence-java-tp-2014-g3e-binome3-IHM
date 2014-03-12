@@ -34,10 +34,10 @@ public class Joueurs
 	public static final int SIGNATURE2 = -SIGNATURE1;
 	
     /** Un objet qui contiendra toutes les informations relatives à player1 */
-	public static Joueurs player1 = null;
+	public static Joueurs player1;
 
     /** Un objet qui contiendra toutes les informations relatives à player2 */
-	public static Joueurs player2 = null;
+	public static Joueurs player2;
 	
 	/** Un objet qui contiendra le joueur courant */
 	public static Joueurs joueurCourant;

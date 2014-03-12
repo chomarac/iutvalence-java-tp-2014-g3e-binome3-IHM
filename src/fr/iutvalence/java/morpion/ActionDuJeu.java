@@ -22,7 +22,6 @@ public class ActionDuJeu
 	/** Méthode permettant de demander à l'utilisateur si il veut changer le nom des joueurs */
 	public void modificationNomsJoueurs()
 	{
-		@SuppressWarnings("resource")
 		Scanner recuperationInformation = new Scanner(System.in);
 		
 		while (true)
@@ -79,7 +78,6 @@ public class ActionDuJeu
 	 */
 	public void partie(PlateauJeu unPlateauJeu)
 	{
-		@SuppressWarnings("resource")
 		Scanner recuperationInformations = new Scanner(System.in);
 		int compteurDeTour = 0;
 
@@ -103,7 +101,7 @@ public class ActionDuJeu
 			try
 			{
 				unPlateauJeu.estCoupValide(choix1, choix2);
-				if (unPlateauJeu.placerPionSurPlateau(Joueurs.joueurCourant, choix1, choix2))
+				if (unPlateauJeu.placerPion(Joueurs.joueurCourant, choix1, choix2))
 				{
 					System.out.println(unPlateauJeu);
 					compteurDeTour = PARTIEGAGNEE;
