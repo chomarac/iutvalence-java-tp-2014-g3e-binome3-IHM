@@ -23,16 +23,17 @@ public class Controleur
 	public Controleur()
 	{
 		PlateauJeu unPlateauJeu = new PlateauJeu();
+		
 		Vue uneVue = new Vue();
 		uneVue.modificationNomsJoueurs();
+		
 		this.choixJoueurDebutantPartie();
+		
 		if (this.partie(unPlateauJeu) == PARTIEGAGNEE)
 			uneVue.afficherVainqueur();
 		else
-		{
-			if (this.partie(unPlateauJeu) == NOMBREMAXDETOUR)
-				uneVue.afficherPartieNulle();
-		}
+			uneVue.afficherPartieNulle();
+		
 		uneVue.choixRejouer();
 	}
 	

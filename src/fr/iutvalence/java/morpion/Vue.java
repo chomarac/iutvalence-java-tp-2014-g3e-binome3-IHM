@@ -56,7 +56,7 @@ public class Vue
 	/** Méthode permettant d'afficher une partie nulle */
 	public void afficherPartieNulle()
 	{
-		System.out.println("Partie nulle. Il n'y a pas de vainqueur.");
+		System.out.println("\nPartie nulle. Il n'y a pas de vainqueur.");
 	}
 	
 	/** Méthode permettant de demander aux joueurs si ils veulent rejouer */
