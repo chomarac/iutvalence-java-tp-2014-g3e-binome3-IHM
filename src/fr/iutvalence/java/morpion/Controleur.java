@@ -9,9 +9,9 @@ import fr.iutvalence.java.morpion.erreur.MauvaiseCoordonneesException;
 /** Modélisation des différentes actions possibles lors d'une partie
  *
  * @author DELORME Loïc & BASSON Julien
- * @version 0.9
+ * @version 1.2
  */
-public class Controlleur
+public class Controleur
 {
 	/** La nombre de tour maximum pour une partie */
 	private static final int NOMBREMAXDETOUR = 9;
@@ -19,46 +19,7 @@ public class Controlleur
 	/** Le nombre qui détermine si la partie est gagnée */
 	private static final int PARTIEGAGNEE = 2*NOMBREMAXDETOUR;
 
-	/** Méthode permettant de demander à l'utilisateur si il veut changer le nom des joueurs */
-	public void modificationNomsJoueurs()
-	{
-		Scanner recuperationInformation = new Scanner(System.in);
-		
-		while (true)
-		{
-			System.out.println("Voulez-vous modifier les noms de Joueur 1 et Joueur 2 (O/N)");
-			String choix = recuperationInformation.nextLine();
-
-			if ("N".equals(choix))
-			{
-				Joueurs.player1 = new Joueurs(Joueurs.JOUEUR1, Joueurs.SIGNATURE1);
-				Joueurs.player2 = new Joueurs(Joueurs.JOUEUR2, Joueurs.SIGNATURE2);
-				break;
-			}
-
-			if ("O".equals(choix))
-			{
-				while (true)
-				{
-					System.out.println("Veuillez entrer le nom du joueur 1 : ");
-					String namePlayer1 = recuperationInformation.nextLine();
-					System.out.println("Veuillez entrer le nom du joueur 2 : ");
-					String namePlayer2 = recuperationInformation.nextLine();
-
-					if (namePlayer1.equals(namePlayer2))
-						System.out.println("Veuillez saisir des noms différents.\n");
-					else
-					{
-						Joueurs.player1 = new Joueurs(namePlayer1, Joueurs.SIGNATURE1);
-						Joueurs.player2 = new Joueurs(namePlayer2, Joueurs.SIGNATURE2);
-						break;
-					}
-				}
-				break;
-			}
-			System.out.println("Veuillez saisir une lettre valide.\n");
-		}
-	}
+	
 	
 	/** Méthode permettant de choisir un joueur aléatoire pour débuter la partie */
 	public void choixJoueurDebutantPartie()
