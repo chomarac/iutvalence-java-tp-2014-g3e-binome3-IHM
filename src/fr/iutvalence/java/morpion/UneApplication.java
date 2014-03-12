@@ -1,7 +1,5 @@
 package fr.iutvalence.java.morpion;
 
-import java.util.Scanner;
-
 /** Permet d'executer l'application
  * 
  * @author DELORME Loïc & BASSON Julien
@@ -13,7 +11,6 @@ public class UneApplication
 	public static void main(String[] args)
 	{
 		new Controleur();
-		new Vue();
 	}
 	
 }

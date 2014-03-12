@@ -2,30 +2,13 @@ package fr.iutvalence.java.morpion;
 
 import java.util.Scanner;
 
+/** Modélisation d'une vue */
 public class Vue
 {
-	while (true)
-	{			
-		Scanner choixDePoursuite = new Scanner(System.in);
-		System.out.println("\nVoulez-vous rejouer une partie ? (O/N)");
-		String reponse = choixDePoursuite.nextLine();
-
-		if ("O".equals(reponse))
-			new Controleur();
-		else
-			if ("N".equals(reponse))
-			{
-				Vue vueFin = new Vue();
-				vueFin.quitter();
-				break;
-			}
-			else
-				System.out.println("Veuillez saisir une lettre valide.\n");
-	}
-
 	/** Méthode permettant de demander à l'utilisateur si il veut changer le nom des joueurs */
 	public void modificationNomsJoueurs()
 	{
+		@SuppressWarnings("resource")
 		Scanner recuperationInformation = new Scanner(System.in);
 		
 		while (true)
@@ -64,6 +47,42 @@ public class Vue
 		}
 	}
 	
+	/** Méthode permettant d'afficher le vainqueur */
+	public void afficherVainqueur()
+	{
+		System.out.println("La partie est remportée par " + Joueurs.joueurCourant.obtenirNom());
+	}
+	
+	/** Méthode permettant d'afficher une partie nulle */
+	public void afficherPartieNulle()
+	{
+		System.out.println("Partie nulle. Il n'y a pas de vainqueur.");
+	}
+	
+	/** Méthode permettant de demander aux joueurs si ils veulent rejouer */
+	public void choixRejouer()
+	{
+		while (true)
+		{			
+			@SuppressWarnings("resource")
+			Scanner choixDePoursuite = new Scanner(System.in);
+			
+			System.out.println("\nVoulez-vous rejouer une partie ? (O/N)");
+			String reponse = choixDePoursuite.nextLine();
+
+			if ("O".equals(reponse))
+				new Controleur();
+			else
+				if ("N".equals(reponse))
+				{
+					quitter();
+					break;
+				}
+				else
+					System.out.println("Veuillez saisir une lettre valide.\n");
+		}
+	}
+	
 	/** Permet de quitter l'application */
 	public void quitter()
 	{
@@ -72,6 +91,5 @@ public class Vue
 		System.out.println("--- Merci à Anthony Gelibert pour son aide ! ----");
 		System.out.println("-------------------------------------------------");
 	}
-	
-	
+
 }

@@ -25,14 +25,20 @@ public class Controleur
 		PlateauJeu unPlateauJeu = new PlateauJeu();
 		Vue uneVue = new Vue();
 		uneVue.modificationNomsJoueurs();
-		choixJoueurDebutantPartie();
-		partie(unPlateauJeu);
+		this.choixJoueurDebutantPartie();
+		if (this.partie(unPlateauJeu) == PARTIEGAGNEE)
+			uneVue.afficherVainqueur();
+		else
+		{
+			if (this.partie(unPlateauJeu) == NOMBREMAXDETOUR)
+				uneVue.afficherPartieNulle();
+		}
+		uneVue.choixRejouer();
 	}
 	
 	/** Méthode permettant de choisir un joueur aléatoire pour débuter la partie */
 	public void choixJoueurDebutantPartie()
 	{
-		/* TODO Vous pouvez simplifier cette affectation (à discuter en TP). */
 		SecureRandom nombresAleatoire = new SecureRandom();
 
 		if ((nombresAleatoire.nextDouble()) >= 0.5)
@@ -44,9 +50,11 @@ public class Controleur
 	/** Méthode permettant de jouer une partie
 	 * 
 	 * @param unPlateauJeu Le plateau de jeu courant
+	 * @return Le nombre de tours joués
 	 */
-	public void partie(PlateauJeu unPlateauJeu)
+	public int partie(PlateauJeu unPlateauJeu)
 	{
+		@SuppressWarnings("resource")
 		Scanner recuperationInformations = new Scanner(System.in);
 		int compteurDeTour = 0;
 
@@ -59,12 +67,12 @@ public class Controleur
 			else
 				pionJoueurCourant = "O";
 			
-			System.out.println("C'est à " + Joueurs.joueurCourant.obtenirNom() + " de jouer (pion : " + pionJoueurCourant + ").");
+			System.out.println("\nC'est à " + Joueurs.joueurCourant.obtenirNom() + " de jouer (pion : " + pionJoueurCourant + ")");
 			System.out.println(unPlateauJeu);
 			
-			System.out.println("Veuillez saisir la première coordonnée (entre 1 et 3 compris) :");
+			System.out.print("Veuillez saisir la première coordonnée (entre 1 et 3 compris) : ");
 			int choix1 = recuperationInformations.nextInt();
-			System.out.println("Veuillez saisir la deuxième coordonnée (entre 1 et 3 compris) :");
+			System.out.print("Veuillez saisir la deuxième coordonnée (entre 1 et 3 compris) : ");
 			int choix2 = recuperationInformations.nextInt();
 			
 			try
@@ -87,28 +95,15 @@ public class Controleur
 			}
 			catch (CoordonneesDejaPriseException ignored)
 			{
-				System.out.println("Les coordonnées saisies sont déjà prises, veuillez en saisir des différentes.");
-				System.out.println(unPlateauJeu);
+				System.out.println("\nLes coordonnées saisies sont déjà prises, veuillez en saisir des différentes.");
 			}
 			catch (MauvaiseCoordonneesException ignored)
 			{
-				System.out.println("Les coordonnées ne sont pas comprises entre 1 et 3.");
-				System.out.println(unPlateauJeu);
+				System.out.println("\nLes coordonnées ne sont pas comprises entre 1 et 3.");
 			}
 		}
-
-		afficherVictoire(compteurDeTour);
+		
+		return compteurDeTour;
 	}
 	
-	/** Méthode permettant de connaître le vainqueur d'une partie ou si celle-ci est nulle
-	 * 
-	 * @param nbTours Le nombre de tours joués lors de la partie
-	 */
-	public void afficherVictoire(int nbTours)
-	{
-		if (nbTours == PARTIEGAGNEE)
-			System.out.println("La partie est remportée par " + Joueurs.joueurCourant.obtenirNom());
-		else
-			System.out.println("Partie nulle. Il n'y a pas de vainqueur.");
-	}
 }
