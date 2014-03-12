@@ -14,8 +14,7 @@ public class UneApplication
 	{
 		Scanner choixDePoursuite = new Scanner(System.in);
 		
-		Jouer unePartie = new Jouer();
-		unePartie.jouer();
+		jouer();
 		
 		while (true)
 		{			
@@ -23,15 +22,40 @@ public class UneApplication
 			String reponse = choixDePoursuite.nextLine();
 
 			if ("O".equals(reponse))
-				unePartie.rejouer();
+				rejouer();
 			else
 				if ("N".equals(reponse))
 				{
-					unePartie.quitter();
+					quitter();
 					break;
 				}
 				else
 					System.out.println("Veuillez saisir une lettre valide.\n");
 		}
+	}
+	
+	/** Permet jouer une partie */
+	public static void jouer()
+	{
+		PlateauJeu unPlateauJeu = new PlateauJeu();
+		Controlleur uneAction = new Controlleur();
+		uneAction.modificationNomsJoueurs();
+		uneAction.choixJoueurDebutantPartie();
+		uneAction.partie(unPlateauJeu);
+	}
+	
+	/** Permet de lancer une nouvelle partie */
+	public static void rejouer()
+	{
+		jouer();
+	}
+	
+	/** Permet de quitter l'application */
+	public static void quitter()
+	{
+		System.out.println("-------------------------------------------------");
+		System.out.println("-- Développé par Delorme Loïc et Basson Julien --");
+		System.out.println("--- Merci à Anthony Gelibert pour son aide ! ----");
+		System.out.println("-------------------------------------------------");
 	}
 }

@@ -11,7 +11,7 @@ import fr.iutvalence.java.morpion.erreur.MauvaiseCoordonneesException;
  * @author DELORME Loïc & BASSON Julien
  * @version 0.9
  */
-public class ActionDuJeu
+public class Controlleur
 {
 	/** La nombre de tour maximum pour une partie */
 	private static final int NOMBREMAXDETOUR = 9;
