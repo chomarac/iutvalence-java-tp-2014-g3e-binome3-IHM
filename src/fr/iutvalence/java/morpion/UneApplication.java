@@ -1,5 +1,7 @@
 package fr.iutvalence.java.morpion;
 
+import fr.iutvalence.java.morpion.graphique.Fenetre;
+
 /** Permet d'executer l'application
  * 
  * @author DELORME Loïc & BASSON Julien
@@ -12,11 +14,12 @@ public class UneApplication
 	 * @param args un argument*/
 	public static void main(String[] args)
 	{
-		Controleur controleur;
+		/*Controleur controleur;
 		do
 		{
 			controleur = new Controleur();
-		} while (controleur.nouvellePartie());
+		} while (controleur.nouvellePartie());*/
+		new Fenetre();
 	}
 	
 }

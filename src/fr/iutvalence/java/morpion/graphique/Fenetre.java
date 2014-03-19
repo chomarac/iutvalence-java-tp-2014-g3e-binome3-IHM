@@ -49,10 +49,10 @@ public class Fenetre extends JFrame
 	private JMenuItem item3_1 = new JMenuItem("Règles du jeu");
 
 	/** Deuxième sous-menu de Actions disponibles */
-	private JMenuItem item3_2 = new JMenuItem("Documentation");
+	private JMenuItem item3_2 = new JMenuItem("Version");
 
 	/** Troisième menu principal : A propos */
-	private JMenuItem item3_3 = new JMenu("A propos de");
+	private JMenuItem item3_3 = new JMenuItem("A propos de");
 	
 
 	/** Fenetre avec des composantes graphiques */
@@ -87,7 +87,7 @@ public class Fenetre extends JFrame
 		this.item1_3.addActionListener(new BoutonQuitter());
 		this.item2_1.addActionListener(new BoutonHistoriqueDesScores());
 		this.item3_1.addActionListener(new BoutonReglesDuJeu());
-		this.item3_2.addActionListener(new BoutonDocumentation());
+		this.item3_2.addActionListener(new BoutonVersion());
 		this.item3_3.addActionListener(new BoutonAProposDe());
 
 		// On insère tous les menus dans la le menuBar
