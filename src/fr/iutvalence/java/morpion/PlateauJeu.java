@@ -100,10 +100,10 @@ public class PlateauJeu {
 			{
 				switch (this.plateauDeJeu[nombreDeLignes][nombreDeColonnes])
 				{
-				case Joueurs.SIGNATURE1:
+				case Joueur.SIGNATURE1:
 					plateauAsciiArt.append('X').append(' ');
 					break;
-				case Joueurs.SIGNATURE2:
+				case Joueur.SIGNATURE2:
 					plateauAsciiArt.append('O').append(' ');
 					break;
 				default:

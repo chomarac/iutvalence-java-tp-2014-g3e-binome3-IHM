@@ -3,12 +3,27 @@ package fr.iutvalence.java.morpion;
 import java.util.Scanner;
 
 /** Modélisation d'une vue */
-public class Vue
+public class VueConsole
 {
+    /** Un objet qui contiendra toutes les informations relatives à player1 */
+	public static Joueur player1;
+
+    /** Un objet qui contiendra toutes les informations relatives à player2 */
+	public static Joueur player2;
+	
+	/** Le joueur courant de la partie */
+	public static Joueurs joueurActuel;
+	
+	/** Modélisation d'une vue en mode console */
+	public VueConsole()
+	{
+		modificationNomsJoueurs();
+		/* S'en servir pour peupler un champ. */
+	}
+	
 	/** Méthode permettant de demander à l'utilisateur si il veut changer le nom des joueurs */
 	public void modificationNomsJoueurs()
 	{
-		@SuppressWarnings("resource")
 		Scanner recuperationInformation = new Scanner(System.in);
 		
 		while (true)
@@ -18,8 +33,8 @@ public class Vue
 
 			if ("N".equals(choix))
 			{
-				Joueurs.player1 = new Joueurs(Joueurs.JOUEUR1, Joueurs.SIGNATURE1);
-				Joueurs.player2 = new Joueurs(Joueurs.JOUEUR2, Joueurs.SIGNATURE2);
+				player1 = new Joueur(Joueur.JOUEUR1, Joueur.SIGNATURE1);
+				player2 = new Joueur(Joueur.JOUEUR2, Joueur.SIGNATURE2);
 				break;
 			}
 
@@ -36,8 +51,8 @@ public class Vue
 						System.out.println("Veuillez saisir des noms différents.\n");
 					else
 					{
-						Joueurs.player1 = new Joueurs(namePlayer1, Joueurs.SIGNATURE1);
-						Joueurs.player2 = new Joueurs(namePlayer2, Joueurs.SIGNATURE2);
+						player1 = new Joueur(namePlayer1, Joueur.SIGNATURE1);
+						player2 = new Joueur(namePlayer2, Joueur.SIGNATURE2);
 						break;
 					}
 				}
@@ -50,7 +65,7 @@ public class Vue
 	/** Méthode permettant d'afficher le vainqueur */
 	public void afficherVainqueur()
 	{
-		System.out.println("La partie est remportée par " + Joueurs.joueurCourant.obtenirNom());
+		System.out.printf("La partie est remportée par %s%n", joueurActuel.obtenirNom());
 	}
 	
 	/** Méthode permettant d'afficher une partie nulle */
@@ -59,24 +74,24 @@ public class Vue
 		System.out.println("\nPartie nulle. Il n'y a pas de vainqueur.");
 	}
 	
-	/** Méthode permettant de demander aux joueurs si ils veulent rejouer */
-	public void choixRejouer()
+	/** Méthode permettant de demander aux joueurs si ils veulent rejouer 
+	 * @return true si le joueur veut rejouer une partie, false sinon */
+	public boolean choixRejouer()
 	{
 		while (true)
 		{			
-			@SuppressWarnings("resource")
 			Scanner choixDePoursuite = new Scanner(System.in);
 			
 			System.out.println("\nVoulez-vous rejouer une partie ? (O/N)");
 			String reponse = choixDePoursuite.nextLine();
 
 			if ("O".equals(reponse))
-				new Controleur();
+				return true;
 			else
 				if ("N".equals(reponse))
 				{
 					quitter();
-					break;
+					return false;
 				}
 				else
 					System.out.println("Veuillez saisir une lettre valide.\n");

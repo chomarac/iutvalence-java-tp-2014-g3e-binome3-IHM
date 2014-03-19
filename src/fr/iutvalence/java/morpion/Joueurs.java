@@ -1,5 +1,7 @@
 package fr.iutvalence.java.morpion;
 
+import java.security.SecureRandom;
+
 /**
  * Modélisation d'un joueur.
  * <p>
@@ -21,26 +23,8 @@ public class Joueurs
 	/** Correspond à la signature unique du joueur pour une partie donnée. */
 	private final int signature;
 	
-	/** Le nom par défaut du joueur 1 */
-	public static final String JOUEUR1 = "Joueur 1";
-
-	/** Le nom par défaut du joueur 2 */
-	public static final String JOUEUR2 = "Joueur 2";
-	
-	/** La signature par défaut du joueur 1 */
-	public static final int SIGNATURE1 = 5;
-
-	/** La signature par défaut du joueur 2 */
-	public static final int SIGNATURE2 = -SIGNATURE1;
-	
-    /** Un objet qui contiendra toutes les informations relatives à player1 */
-	public static Joueurs player1;
-
-    /** Un objet qui contiendra toutes les informations relatives à player2 */
-	public static Joueurs player2;
-	
 	/** Un objet qui contiendra le joueur courant */
-	public static Joueurs joueurCourant;
+	public Joueurs joueurCourant;
 
     /** Retourne un nouveau joueur, de composantes données.
      *
@@ -69,5 +53,19 @@ public class Joueurs
 	public String obtenirNom()
 	{
 		return this.nomDuJoueur;
+	}
+	
+	/** Détermine le premier joueur 
+	 * @return le joueur qui va débuter la partie */
+	public Joueurs determinerPremierJoueur()
+	{
+		return (this.joueurCourant = new SecureRandom().nextBoolean() ? VueConsole.player1 : VueConsole.player2);
+	}
+	
+	/** Détermine le joueur suivant 
+	 * @return le joueur opposé */
+	public Joueurs joueurSuivant()
+	{
+		return (this.joueurCourant.equals(VueConsole.player1) ? VueConsole.player2 : VueConsole.player1);
 	}
 }
