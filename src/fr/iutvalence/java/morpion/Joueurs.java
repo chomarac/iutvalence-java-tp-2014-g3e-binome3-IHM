@@ -17,55 +17,54 @@ import java.security.SecureRandom;
  */
 public class Joueurs
 {
-	/** Correspond au nom définitif du joueur pour une partie donnée. */
+	/** Nom définitif du joueur pour une partie donnée */
 	private final String nomDuJoueur;
 	
-	/** Correspond à la signature unique du joueur pour une partie donnée. */
+	/** Signature unique du joueur pour une partie donnée */
 	private final int signature;
 	
-	/** Un objet qui contiendra le joueur courant */
-	public Joueurs joueurCourant;
+	/** Contient le joueur courant */
+	public static Joueurs joueurCourant;
 
-    /** Retourne un nouveau joueur, de composantes données.
+    /** Retourne un nouveau joueur avec des composantes données.
      *
      * @param nomJoueur la chaine de caractère du nom
-     * @param signature l'entier unique
-     */
+     * @param signature l'entier unique */
     public Joueurs(String nomJoueur, int signature)
 	{
 		this.nomDuJoueur = nomJoueur;
 		this.signature = signature;
 	}
 
-    /** Permet d'obtenir la signature de l'objet courant.
+    /** Obtenir la signature d'un joueur courant.
      * 
-     * @return La signature du joueur courant
-     */
+     * @return La signature du joueur courant */
     public int obtenirSignature()
 	{
 		return this.signature;
 	}
 	
-	/** Permet d'obtenir le nom de l'objet courant. 
+	/** Obtenir le nom d'un joueur courant. 
 	 *
-	 * @return Le nom du joueur courant
-	 */
+	 * @return Le nom du joueur courant */
 	public String obtenirNom()
 	{
 		return this.nomDuJoueur;
 	}
 	
 	/** Détermine le premier joueur 
+	 * 
 	 * @return le joueur qui va débuter la partie */
-	public Joueurs determinerPremierJoueur()
+	public static Joueurs determinerPremierJoueur()
 	{
-		return (this.joueurCourant = new SecureRandom().nextBoolean() ? VueConsole.player1 : VueConsole.player2);
+		return (joueurCourant = new SecureRandom().nextBoolean() ? VueConsole.player1 : VueConsole.player2);
 	}
 	
-	/** Détermine le joueur suivant 
+	/** Détermine le joueur suivant
+	 * 
 	 * @return le joueur opposé */
-	public Joueurs joueurSuivant()
+	public static Joueurs joueurSuivant()
 	{
-		return (this.joueurCourant.equals(VueConsole.player1) ? VueConsole.player2 : VueConsole.player1);
+		return (joueurCourant = (joueurCourant.equals(VueConsole.player1)) ? VueConsole.player2 : VueConsole.player1);
 	}
 }

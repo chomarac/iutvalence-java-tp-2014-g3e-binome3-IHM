@@ -1,6 +1,10 @@
 package fr.iutvalence.java.morpion;
 
-/** Modélisation d'un joueur */
+/** Modélisation d'un joueur par héritage de la classe Joueurs
+ * 
+ * @author DELORME Loïc & BASSON Julien
+ * @version 1.0
+ * */
 public class Joueur extends Joueurs
 {
 	/** Le nom par défaut du joueur 1 */
@@ -15,7 +19,7 @@ public class Joueur extends Joueurs
 	/** La signature par défaut du joueur 2 */
 	public static final int SIGNATURE2 = -SIGNATURE1;
 	
-	/** Permet de créer un joueur
+	/** Permet de modéliser un joueur avec des composantes pré-définies
 	 * 
 	 * @param nomJoueur le nom du joueur
 	 * @param signature la signature du joueur */
@@ -23,5 +27,4 @@ public class Joueur extends Joueurs
 	{
 		super(nomJoueur, signature);
 	}
-
 }

@@ -2,7 +2,11 @@ package fr.iutvalence.java.morpion;
 
 import java.util.Scanner;
 
-/** Modélisation d'une vue */
+/** Modélisation d'une vue 
+ * 
+ * @author DELORME Loïc & BASSON Julien
+ * @version 1.0
+ * */
 public class VueConsole
 {
     /** Un objet qui contiendra toutes les informations relatives à player1 */
@@ -11,17 +15,13 @@ public class VueConsole
     /** Un objet qui contiendra toutes les informations relatives à player2 */
 	public static Joueur player2;
 	
-	/** Le joueur courant de la partie */
-	public static Joueurs joueurActuel;
-	
 	/** Modélisation d'une vue en mode console */
 	public VueConsole()
 	{
 		modificationNomsJoueurs();
-		/* S'en servir pour peupler un champ. */
 	}
 	
-	/** Méthode permettant de demander à l'utilisateur si il veut changer le nom des joueurs */
+	/** Permet de demander aux utilisateurs si ils veulent changer le nom des joueurs */
 	public void modificationNomsJoueurs()
 	{
 		Scanner recuperationInformation = new Scanner(System.in);
@@ -62,10 +62,10 @@ public class VueConsole
 		}
 	}
 	
-	/** Méthode permettant d'afficher le vainqueur */
+	/** Message à afficher lorsqu'il y a un vainqueur */
 	public void afficherVainqueur()
 	{
-		System.out.printf("La partie est remportée par %s%n", joueurActuel.obtenirNom());
+		System.out.printf("La partie est remportée par %s%n", Joueurs.joueurCourant.obtenirNom());
 	}
 	
 	/** Méthode permettant d'afficher une partie nulle */
@@ -74,14 +74,15 @@ public class VueConsole
 		System.out.println("\nPartie nulle. Il n'y a pas de vainqueur.");
 	}
 	
-	/** Méthode permettant de demander aux joueurs si ils veulent rejouer 
+	/** Permet de demander aux joueurs si ils veulent rejouer une partie
+	 * 
 	 * @return true si le joueur veut rejouer une partie, false sinon */
 	public boolean choixRejouer()
 	{
 		while (true)
-		{			
+		{		
 			Scanner choixDePoursuite = new Scanner(System.in);
-			
+			/* TODO L'application plante à cette étape. Essayé avec le debugger sans succès.. L'erreur intervient subitement */
 			System.out.println("\nVoulez-vous rejouer une partie ? (O/N)");
 			String reponse = choixDePoursuite.nextLine();
 
@@ -98,7 +99,7 @@ public class VueConsole
 		}
 	}
 	
-	/** Permet de quitter l'application */
+	/** Message à afficher lorsqu'on quitte l'application */
 	public void quitter()
 	{
 		System.out.println("-------------------------------------------------");

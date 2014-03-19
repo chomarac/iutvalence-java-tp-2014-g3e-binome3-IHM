@@ -7,7 +7,8 @@ package fr.iutvalence.java.morpion;
  */
 public class UneApplication
 {
-	/** Permet de lancer le jeu. 
+	/** Permet de lancer le jeu.
+	 * 
 	 * @param args un argument*/
 	public static void main(String[] args)
 	{

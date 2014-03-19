@@ -8,10 +8,11 @@ import javax.swing.JMenuBar;
 import javax.swing.JMenuItem;
 import javax.swing.JPanel;
 
-/**
- * @author delormel
- *
- */
+/** Modélisation d'une fenêtre graphique
+ * 
+ * @author DELORME Loïc & BASSON Julien
+ * @version 1.0
+ * */
 public class Fenetre extends JFrame
 {
 	/** ??? */
@@ -23,7 +24,7 @@ public class Fenetre extends JFrame
 	/** Définition de la barre de menu */
 	private JMenuBar barreDeMenu = new JMenuBar();
 
-	/** Premier menu principal : Connexion */
+	/** Premier menu principal : Partie */
 	private JMenu menu1 = new JMenu("Partie");
 
 	/** Premier sous-menu */
@@ -35,21 +36,26 @@ public class Fenetre extends JFrame
 	/** Troisième sous-menu */
 	private JMenuItem item1_3 = new JMenuItem("Quitter");
 
+	/** Premier menu principal : Score */
+	private JMenu menu2 = new JMenu("Score(s)");
+
+	/** Premier sous-menu */
+	private JMenuItem item2_1 = new JMenuItem("Historique des scores");
+	
 	/** Deuxième menu principal : Edition */
-	private JMenu menu2 = new JMenu("Aide");
+	private JMenu menu3 = new JMenu("Aide");
 
 	/** Premier sous-menu de Actions disponibles */
-	private JMenuItem item2_1 = new JMenuItem("Règles du jeu");
+	private JMenuItem item3_1 = new JMenuItem("Règles du jeu");
 
 	/** Deuxième sous-menu de Actions disponibles */
-	private JMenuItem item2_2 = new JMenuItem("Documentation");
+	private JMenuItem item3_2 = new JMenuItem("Documentation");
 
 	/** Troisième menu principal : A propos */
-	private JMenuItem item2_3 = new JMenu("A propos de");
+	private JMenuItem item3_3 = new JMenu("A propos de");
+	
 
-	/**
-	 * 
-	 */
+	/** Fenetre avec des composantes graphiques */
 	public Fenetre()
 	{
 		this.setTitle("Morpion");
@@ -58,38 +64,36 @@ public class Fenetre extends JFrame
 		this.setLocationRelativeTo(null);
 		this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		
-		// Ajout des actions possibles dans le menu "Connexion"
+		// Ajout des actions possibles dans le menu "Partie"
 		this.menu1.add(this.item1_1);
 		this.menu1.addSeparator();
 		this.menu1.add(this.item1_2);
 		this.menu1.addSeparator();
 		this.menu1.add(this.item1_3);
 
-		// Ajout des actions possibles dans le sous-menu "Actions Disponibles"
+		// Ajout des actions possibles dans le menu "Historique des scores"
 		this.menu2.add(this.item2_1);
-		this.menu2.addSeparator();
-		this.menu2.add(this.item2_2);
-		this.menu2.addSeparator();
-		this.menu2.add(this.item2_3);
+		
+		// Ajout des actions possibles dans le menu "Aide"
+		this.menu3.add(this.item3_1);
+		this.menu3.addSeparator();
+		this.menu3.add(this.item3_2);
+		this.menu3.addSeparator();
+		this.menu3.add(this.item3_3);
 
 		// On ajoute les événements relatifs aux différents boutons
 		this.item1_1.addActionListener(new BoutonJouer());
 		this.item1_2.addActionListener(new BoutonRejouer());
 		this.item1_3.addActionListener(new BoutonQuitter());
-		
-		this.item2_1_1.addActionListener(new BoutonAjouter());
-		this.item2_1_2.addActionListener(new BoutonModifier());
-		this.item2_1_3.addActionListener(new BoutonSupprimer());
-		this.item2_1_4.addActionListener(new BoutonConsulter());
-		this.item2_1_5.addActionListener(new BoutonImprimer());
-		this.item3_1.addActionListener(new BoutonDocumentation());
-		this.item3_2.addActionListener(new BoutonFAQ());
-		this.item3_3.addActionListener(new BoutonAuteurs());
-		this.item3_4.addActionListener(new BoutonVersion());
+		this.item2_1.addActionListener(new BoutonHistoriqueDesScores());
+		this.item3_1.addActionListener(new BoutonReglesDuJeu());
+		this.item3_2.addActionListener(new BoutonDocumentation());
+		this.item3_3.addActionListener(new BoutonAProposDe());
 
 		// On insère tous les menus dans la le menuBar
 		this.barreDeMenu.add(this.menu1);
 		this.barreDeMenu.add(this.menu2);
+		this.barreDeMenu.add(this.menu3);
 
 		// On l'ajoute à la fenêtre
 		this.setJMenuBar(this.barreDeMenu);

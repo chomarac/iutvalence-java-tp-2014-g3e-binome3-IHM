@@ -19,10 +19,10 @@ import fr.iutvalence.java.morpion.erreur.MauvaiseCoordonneesException;
 public class PlateauJeu {
 
     /** Constante du nombres de lignes. */
-    public static final int NOMBRE_DE_COLONNES = 5;
+    private static final int NOMBRE_DE_COLONNES = 5;
 
     /** Constante du nombres de colonnes. */
-    public static final int NOMBRE_DE_LIGNES = 5;
+    private static final int NOMBRE_DE_LIGNES = 5;
 
     /** Plateau de jeu. */
     private final int[][] plateauDeJeu;
@@ -34,7 +34,7 @@ public class PlateauJeu {
         this.plateauDeJeu = new int[NOMBRE_DE_LIGNES][NOMBRE_DE_COLONNES];
     }
 
-    /** Méthode qui permet de vérifier les coordonnées et la disponibilité.
+    /** Vérifier les coordonnées et la disponibilité.
      *
      * @param x La première coordonnée
      * @param y La deuxième coordonnée
@@ -53,7 +53,7 @@ public class PlateauJeu {
             throw new CoordonneesDejaPriseException();
 	}
 
-    /** Méthode qui permet de modifier le plateau de jeu si le coup joué est valide
+    /** Modifier le plateau de jeu si le coup joué est valide
      *
      * @param unJoueur le joueur qui réalise l'action
      * @param x La première coordonnée
