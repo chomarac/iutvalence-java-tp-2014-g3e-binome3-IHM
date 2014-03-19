@@ -35,6 +35,7 @@ public class Controleur
 	public boolean nouvellePartie()
 	{
 		/* XXX Déterminer le premier joueur. */
+		VueConsole.joueurActuel.determinerPremierJoueur();
 		if (this.partie(this.unPlateauJeu) == Controleur.PARTIEGAGNEE)
 			this.uneVue.afficherVainqueur();
 		else
