@@ -2,34 +2,36 @@ package fr.iutvalence.java.morpion;
 
 import java.util.Scanner;
 
-/** Modélisation d'une vue 
+/**
+ * Modélisation d'une vue.
  * 
  * @author DELORME Loïc & BASSON Julien
  * @version 1.0
  * */
 public class VueConsole
 {
-    /** Un objet qui contiendra toutes les informations relatives à player1 */
+    /* TODO N'a rien à faire ici. */
+    /** Un objet qui contiendra toutes les informations relatives au premier joueur. */
 	public static Joueur player1;
-
-    /** Un objet qui contiendra toutes les informations relatives à player2 */
+    /* TODO N'a rien à faire ici. */
+    /** Un objet qui contiendra toutes les informations relatives au second joueur. */
 	public static Joueur player2;
 	
-	/** Modélisation d'une vue en mode console */
+	/** Modélisation d'une vue en mode console. */
 	public VueConsole()
 	{
 		modificationNomsJoueurs();
 	}
 	
-	/** Permet de demander aux utilisateurs si ils veulent changer le nom des joueurs */
+	/** Permet de demander aux utilisateurs si ils veulent changer le nom des joueurs. */
 	public void modificationNomsJoueurs()
 	{
-		Scanner recuperationInformation = new Scanner(System.in);
+		Scanner scanner = new Scanner(System.in);
 		
 		while (true)
 		{
 			System.out.println("Voulez-vous modifier les noms de Joueur 1 et Joueur 2 (O/N)");
-			String choix = recuperationInformation.nextLine();
+			String choix = scanner.nextLine();
 
 			if ("N".equals(choix))
 			{
@@ -43,9 +45,9 @@ public class VueConsole
 				while (true)
 				{
 					System.out.println("Veuillez entrer le nom du joueur 1 : ");
-					String namePlayer1 = recuperationInformation.nextLine();
+					String namePlayer1 = scanner.nextLine();
 					System.out.println("Veuillez entrer le nom du joueur 2 : ");
-					String namePlayer2 = recuperationInformation.nextLine();
+					String namePlayer2 = scanner.nextLine();
 
 					if (namePlayer1.equals(namePlayer2))
 						System.out.println("Veuillez saisir des noms différents.\n");
@@ -62,21 +64,23 @@ public class VueConsole
 		}
 	}
 	
-	/** Message à afficher lorsqu'il y a un vainqueur */
+	/** Message à afficher lorsqu'il y a un vainqueur. */
 	public void afficherVainqueur()
 	{
 		System.out.printf("La partie est remportée par %s%n", Joueurs.joueurCourant.obtenirNom());
 	}
 	
-	/** Méthode permettant d'afficher une partie nulle */
+	/** Méthode permettant d'afficher une partie nulle. */
 	public void afficherPartieNulle()
 	{
 		System.out.println("\nPartie nulle. Il n'y a pas de vainqueur.");
 	}
 	
-	/** Permet de demander aux joueurs si ils veulent rejouer une partie
+	/**
+     * Permet de demander aux joueurs si ils veulent rejouer une partie.
 	 * 
-	 * @return true si le joueur veut rejouer une partie, false sinon */
+	 * @return true si le joueur veut rejouer une partie, false sinon
+     */
 	public boolean choixRejouer()
 	{
 		while (true)
@@ -99,7 +103,7 @@ public class VueConsole
 		}
 	}
 	
-	/** Message à afficher lorsqu'on quitte l'application */
+	/** Message à afficher lorsqu'on quitte l'application. */
 	public void quitter()
 	{
 		System.out.println("-------------------------------------------------");

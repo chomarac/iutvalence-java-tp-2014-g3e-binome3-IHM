@@ -14,7 +14,7 @@ import fr.iutvalence.java.morpion.erreur.MauvaiseCoordonneesException;
  * </p>
  *
  * @author DELORME Loïc & BASSON Julien
- * @version 1.0
+ * @version 1.0.0
  */
 public class PlateauJeu {
 
@@ -31,7 +31,7 @@ public class PlateauJeu {
     public PlateauJeu()
     {
     	//On retourne un nouveau plateau de jeu avec des composantes prédéfinies
-        this.plateauDeJeu = new int[NOMBRE_DE_LIGNES][NOMBRE_DE_COLONNES];
+        this.plateauDeJeu = new int[PlateauJeu.NOMBRE_DE_LIGNES][PlateauJeu.NOMBRE_DE_COLONNES];
     }
 
     /** Vérifier les coordonnées et la disponibilité.
@@ -53,7 +53,8 @@ public class PlateauJeu {
             throw new CoordonneesDejaPriseException();
 	}
 
-    /** Modifier le plateau de jeu si le coup joué est valide
+    /**
+     * Modifier le plateau de jeu si le coup joué est valide.
      *
      * @param unJoueur le joueur qui réalise l'action
      * @param x La première coordonnée
@@ -82,7 +83,7 @@ public class PlateauJeu {
             this.plateauDeJeu[4][0] += signature;
 
         //On teste une éventuelle victoire
-        return ((this.plateauDeJeu[x][0] == victoire) || (this.plateauDeJeu[0][y] == victoire) || (this.plateauDeJeu[0][0] == victoire) || (this.plateauDeJeu[4][0] == victoire));
+        return (this.plateauDeJeu[x][0] == victoire) || (this.plateauDeJeu[0][y] == victoire) || (this.plateauDeJeu[0][0] == victoire) || (this.plateauDeJeu[4][0] == victoire);
 	}
 
     /** Affichage du plateau de jeu par redéfinition d'une méthode existante.

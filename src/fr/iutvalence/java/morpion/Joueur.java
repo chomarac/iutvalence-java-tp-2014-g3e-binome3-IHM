@@ -1,6 +1,10 @@
 package fr.iutvalence.java.morpion;
 
-/** Modélisation d'un joueur par héritage de la classe Joueurs
+/* TODO Ce n'est pas du tout ce que je pensais que vous alliez faire. */
+/* TODO Ce n'est pas un héritier de Joueurs. C'est une classe à part entière dont Joueurs possède deux instances. */
+
+/**
+ * Modélisation d'un joueur par héritage de la classe Joueurs.
  * 
  * @author DELORME Loïc & BASSON Julien
  * @version 1.0

@@ -2,6 +2,7 @@ package fr.iutvalence.java.morpion;
 
 import java.security.SecureRandom;
 
+/* TODO Regarder le commentaire dans Joueur. */
 /**
  * Modélisation d'un joueur.
  * <p>
