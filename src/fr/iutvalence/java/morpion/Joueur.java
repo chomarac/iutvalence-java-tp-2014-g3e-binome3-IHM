@@ -1,6 +1,6 @@
 package fr.iutvalence.java.morpion;
 
-/** Modélisation d'un joueur par héritage de la classe Joueurs.
+/** Modélisation d'un joueur par son nom et sa signature.
  * 
  * @author DELORME Loïc & BASSON Julien
  * @version 2.0.0 */
@@ -41,6 +41,6 @@ public final class Joueur
     @Override
     public String toString()
     {
-        return (String.format("Joueur{m_nom='%s', m_signature=%d}", this.nom, this.signature));
+        return String.format("Joueur{m_nom='%s', m_signature=%d}", this.nom, this.signature);
     }
 }
