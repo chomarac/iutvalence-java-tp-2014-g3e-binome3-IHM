@@ -26,12 +26,6 @@ public final class Joueurs
 
         this.joueur1 = new Joueur(joueurs[0], PlateauJeu.SIGNATURE_JOUEUR1);
         this.joueur2 = new Joueur(joueurs[1], PlateauJeu.SIGNATURE_JOUEUR2);
-        determinerPremierJoueur();
-    }
-
-    /** Déterminer le premier joueur. */
-    private void determinerPremierJoueur()
-    {
         this.joueurCourant = new SecureRandom().nextBoolean() ? this.joueur1 : this.joueur2;
     }
 
