@@ -2,31 +2,20 @@ package fr.iutvalence.java.morpion;
 
 import java.util.Scanner;
 
-/**
- * Modélisation d'une vue.
+/** Modélisation d'une vue.
  * 
  * @author DELORME Loïc & BASSON Julien
- * @version 1.0
- * */
+ * @version 1.0 */
 public class VueConsole
 {
-    /* TODO N'a rien à faire ici. */
-    /** Un objet qui contiendra toutes les informations relatives au premier joueur. */
-	public static Joueur player1;
-    /* TODO N'a rien à faire ici. */
-    /** Un objet qui contiendra toutes les informations relatives au second joueur. */
-	public static Joueur player2;
+	/** Noms par défaut des différents joueurs. */
+    private static final String[] JOUEURS_PAR_DEFAUT = {"Joueur 1", "Joueur 2"};
 	
-	/** Modélisation d'une vue en mode console. */
-	public VueConsole()
+	/** Demander aux utilisateurs si ils veulent changer le nom des joueurs. 
+	 * @return Un tableau contenant les noms des joueurs. */
+	public String[] demanderNomsJoueurs()
 	{
-		modificationNomsJoueurs();
-	}
-	
-	/** Permet de demander aux utilisateurs si ils veulent changer le nom des joueurs. */
-	public void modificationNomsJoueurs()
-	{
-		Scanner scanner = new Scanner(System.in);
+		final Scanner scanner = new Scanner(System.in);
 		
 		while (true)
 		{
@@ -34,11 +23,7 @@ public class VueConsole
 			String choix = scanner.nextLine();
 
 			if ("N".equals(choix))
-			{
-				player1 = new Joueur(Joueur.JOUEUR1, Joueur.SIGNATURE1);
-				player2 = new Joueur(Joueur.JOUEUR2, Joueur.SIGNATURE2);
-				break;
-			}
+				return JOUEURS_PAR_DEFAUT;
 
 			if ("O".equals(choix))
 			{
@@ -52,35 +37,29 @@ public class VueConsole
 					if (namePlayer1.equals(namePlayer2))
 						System.out.println("Veuillez saisir des noms différents.\n");
 					else
-					{
-						player1 = new Joueur(namePlayer1, Joueur.SIGNATURE1);
-						player2 = new Joueur(namePlayer2, Joueur.SIGNATURE2);
-						break;
-					}
+						return new String[]{namePlayer1, namePlayer2};
 				}
-				break;
 			}
 			System.out.println("Veuillez saisir une lettre valide.\n");
 		}
 	}
 	
-	/** Message à afficher lorsqu'il y a un vainqueur. */
-	public void afficherVainqueur()
+	/** Message à afficher lorsqu'il y a un vainqueur. 
+	 * @param vainqueur Contient le nom du vainqueur.*/
+	public void afficherVainqueur(final String vainqueur)
 	{
-		System.out.printf("La partie est remportée par %s%n", Joueurs.joueurCourant.obtenirNom());
+		System.out.printf("La partie est remportée par %s%n", vainqueur);
 	}
 	
-	/** Méthode permettant d'afficher une partie nulle. */
+	/** Permet d'afficher une partie nulle. */
 	public void afficherPartieNulle()
 	{
 		System.out.println("\nPartie nulle. Il n'y a pas de vainqueur.");
 	}
 	
-	/**
-     * Permet de demander aux joueurs si ils veulent rejouer une partie.
+	/** Permet de demander aux joueurs si ils veulent rejouer une partie.
 	 * 
-	 * @return true si le joueur veut rejouer une partie, false sinon
-     */
+	 * @return true si le joueur veut rejouer une partie, false sinon. */
 	public boolean choixRejouer()
 	{
 		while (true)
@@ -111,5 +90,4 @@ public class VueConsole
 		System.out.println("--- Merci à Anthony Gelibert pour son aide ! ----");
 		System.out.println("-------------------------------------------------");
 	}
-
 }

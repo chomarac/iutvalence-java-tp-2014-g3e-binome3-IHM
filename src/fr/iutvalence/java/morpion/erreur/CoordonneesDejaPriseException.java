@@ -1,10 +1,9 @@
 package fr.iutvalence.java.morpion.erreur;
 
-/**
- * Permet de soulever une exception lorsque la case est déjà occupée.
+/** Permet de soulever une exception lorsque la case est déjà occupée.
  *
- * @author TODO
- * @version TODO
+ * @author DELORME Loïc & BASSON Julien
+ * @version 1.0
  */
 public class CoordonneesDejaPriseException extends Exception {
     /** Serial version UID (used for serialization). */

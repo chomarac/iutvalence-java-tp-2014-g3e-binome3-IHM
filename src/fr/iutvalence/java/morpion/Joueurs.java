@@ -2,70 +2,56 @@ package fr.iutvalence.java.morpion;
 
 import java.security.SecureRandom;
 
-/* TODO Regarder le commentaire dans Joueur. */
-/**
- * Modélisation d'un joueur.
- * <p>
- * Le joueur est composé des informations suivantes :
- * <ul>
- * <li>son nom</li>
- * <li>sa signature unique</li>
- * </ul>
- * </p>
- * 
+/** Gestionnaire des joueurs.
+ *
  * @author DELORME Loïc & BASSON Julien
- * @version 1.0
- */
-public class Joueurs
+ * @version 1.0 */
+public final class Joueurs
 {
-	/** Nom définitif du joueur pour une partie donnée */
-	private final String nomDuJoueur;
-	
-	/** Signature unique du joueur pour une partie donnée */
-	private final int signature;
-	
-	/** Contient le joueur courant */
-	public static Joueurs joueurCourant;
+    /** Premier joueur. */
+    private final Joueur joueur1;
 
-    /** Retourne un nouveau joueur avec des composantes données.
+    /** Second joueur. */
+    private final Joueur joueur2;
+
+    /** Joueur courant */
+    private Joueur joueurCourant;
+
+    /** Créer les deux joueurs de la partie en utilisant les noms spécifiés.
      *
-     * @param nomJoueur la chaine de caractère du nom
-     * @param signature l'entier unique */
-    public Joueurs(String nomJoueur, int signature)
-	{
-		this.nomDuJoueur = nomJoueur;
-		this.signature = signature;
-	}
+     * @param joueurs Noms des deux joueurs (ATTENTION, le tableau doit contenir deux entrées) */
+    public Joueurs(final String[] joueurs)
+    {
+        assert joueurs.length == 2 : "Tentative de création d'un gestionnaire avec moins de deux joueurs";
+
+        this.joueur1 = new Joueur(joueurs[0], PlateauJeu.SIGNATURE_JOUEUR1);
+        this.joueur2 = new Joueur(joueurs[1], PlateauJeu.SIGNATURE_JOUEUR2);
+        determinerPremierJoueur();
+    }
+
+    /** Déterminer le premier joueur. */
+    private void determinerPremierJoueur()
+    {
+        this.joueurCourant = new SecureRandom().nextBoolean() ? this.joueur1 : this.joueur2;
+    }
+
+    /** Détermine le joueur suivant. */
+    public void joueurSuivant()
+    {
+        this.joueurCourant = (this.joueurCourant.equals(this.joueur1)) ? this.joueur2 : this.joueur1;
+    }
 
     /** Obtenir la signature d'un joueur courant.
-     * 
-     * @return La signature du joueur courant */
-    public int obtenirSignature()
-	{
-		return this.signature;
-	}
-	
-	/** Obtenir le nom d'un joueur courant. 
-	 *
-	 * @return Le nom du joueur courant */
-	public String obtenirNom()
-	{
-		return this.nomDuJoueur;
-	}
-	
-	/** Détermine le premier joueur 
-	 * 
-	 * @return le joueur qui va débuter la partie */
-	public static Joueurs determinerPremierJoueur()
-	{
-		return (joueurCourant = new SecureRandom().nextBoolean() ? VueConsole.player1 : VueConsole.player2);
-	}
-	
-	/** Détermine le joueur suivant
-	 * 
-	 * @return le joueur opposé */
-	public static Joueurs joueurSuivant()
-	{
-		return (joueurCourant = (joueurCourant.equals(VueConsole.player1)) ? VueConsole.player2 : VueConsole.player1);
-	}
+     * @return La signature du joueur courant.*/
+    public int obtenirSignatureCourante()
+    {
+        return this.joueurCourant.signature();
+    }
+
+    /** Obtenir le nom d'un joueur courant. 
+     * @return Le nom du joueur courant. */
+    public String obtenirNomCourant()
+    {
+        return this.joueurCourant.nom();
+    }
 }

@@ -9,26 +9,33 @@ package fr.iutvalence.java.morpion;
  * @author DELORME Loïc & BASSON Julien
  * @version 1.0
  * */
-public class Joueur extends Joueurs
+public final class Joueur
 {
-	/** Le nom par défaut du joueur 1 */
-	public static final String JOUEUR1 = "Joueur 1";
+    /** Nom. */
+    private final String nom;
 
-	/** Le nom par défaut du joueur 2 */
-	public static final String JOUEUR2 = "Joueur 2";
-	
-	/** La signature par défaut du joueur 1 */
-	public static final int SIGNATURE1 = 5;
+    /** Signature. */
+    private final int signature;
 
-	/** La signature par défaut du joueur 2 */
-	public static final int SIGNATURE2 = -SIGNATURE1;
-	
-	/** Permet de modéliser un joueur avec des composantes pré-définies
-	 * 
-	 * @param nomJoueur le nom du joueur
-	 * @param signature la signature du joueur */
-	public Joueur(String nomJoueur, int signature)
-	{
-		super(nomJoueur, signature);
-	}
+    /** Permet de modéliser un joueur avec des composantes pré-définies
+     *
+     * @param nom le nom du joueur
+     * @param signature la signature du joueur */
+    public Joueur(final String nom, final int signature) {
+        this.nom = nom;
+        this.signature = signature;
+    }
+
+    public String nom() {
+        return nom;
+    }
+
+    public int signature() {
+        return signature;
+    }
+
+    @Override
+    public String toString() {
+        return String.format("Joueur{m_nom='%s', m_signature=%d}", nom, signature);
+    }
 }

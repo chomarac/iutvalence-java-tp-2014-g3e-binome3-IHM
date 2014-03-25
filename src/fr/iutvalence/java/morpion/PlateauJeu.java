@@ -3,8 +3,7 @@ package fr.iutvalence.java.morpion;
 import fr.iutvalence.java.morpion.erreur.CoordonneesDejaPriseException;
 import fr.iutvalence.java.morpion.erreur.MauvaiseCoordonneesException;
 
-/**
- * Modélisation d'un plateau du jeu.
+/** Modélisation d'un plateau du jeu.
  * <p>
  * Modélisation par une matrice contenant :
  * <ul>
@@ -14,9 +13,10 @@ import fr.iutvalence.java.morpion.erreur.MauvaiseCoordonneesException;
  * </p>
  *
  * @author DELORME Loïc & BASSON Julien
- * @version 1.0.0
+ * @version 1.0
  */
-public class PlateauJeu {
+public class PlateauJeu 
+{
 
     /** Constante du nombres de lignes. */
     private static final int NOMBRE_DE_COLONNES = 5;
@@ -26,6 +26,12 @@ public class PlateauJeu {
 
     /** Plateau de jeu. */
     private final int[][] plateauDeJeu;
+    
+    /** La signature unique du joueur 1. */
+    public static final int SIGNATURE_JOUEUR1 = 5;
+    
+    /** La signature unique du joueur 2. */
+    public static final int SIGNATURE_JOUEUR2 = - SIGNATURE_JOUEUR1;
 
     /** Constructeur d'un plateau de jeu. */
     public PlateauJeu()
@@ -65,7 +71,7 @@ public class PlateauJeu {
     public boolean placerPion(Joueurs unJoueur, int x, int y)
 	{
 		//On récupère les données liées au joueur courant
-		int signature = unJoueur.obtenirSignature();
+		int signature = unJoueur.obtenirSignatureCourante();
 		int victoire = 3 * signature;
 
 		this.plateauDeJeu[x][y] = signature;
@@ -101,10 +107,10 @@ public class PlateauJeu {
 			{
 				switch (this.plateauDeJeu[nombreDeLignes][nombreDeColonnes])
 				{
-				case Joueur.SIGNATURE1:
+				case SIGNATURE_JOUEUR1:
 					plateauAsciiArt.append('X').append(' ');
 					break;
-				case Joueur.SIGNATURE2:
+				case SIGNATURE_JOUEUR2:
 					plateauAsciiArt.append('O').append(' ');
 					break;
 				default:
