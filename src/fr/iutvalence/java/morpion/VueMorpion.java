@@ -86,22 +86,22 @@ public class VueMorpion
 	 * @return true si le joueur veut rejouer une partie, false sinon. */
 	public boolean choixRejouer()
 	{
-		while (true)
+        Scanner choixDePoursuite = new Scanner(System.in);
+        while (true)
 		{		
-			Scanner choixDePoursuite = new Scanner(System.in);
 			System.out.println("\nVoulez-vous rejouer une partie ? (O/N)");
 			String reponse = choixDePoursuite.nextLine();
 
 			if ("O".equals(reponse))
 				return true;
-			else
-				if ("N".equals(reponse))
-				{
-					quitter();
-					return false;
-				}
-				else
-					System.out.println("Veuillez saisir une lettre valide.\n");
+
+            if ("N".equals(reponse))
+			{
+			    quitter();
+				return false;
+			}
+            
+			System.out.println("Veuillez saisir une lettre valide.\n");
 		}
 	}
 	
