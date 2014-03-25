@@ -6,12 +6,13 @@ import java.util.Scanner;
  * 
  * @author DELORME Loïc & BASSON Julien
  * @version 1.0 */
-public class VueConsole
+public class VueMorpion
 {
 	/** Noms par défaut des différents joueurs. */
     private static final String[] JOUEURS_PAR_DEFAUT = {"Joueur 1", "Joueur 2"};
 	
-	/** Demander aux utilisateurs si ils veulent changer le nom des joueurs. 
+	/** Demander aux utilisateurs si ils veulent changer le nom des joueurs.
+	 *  
 	 * @return Un tableau contenant les noms des joueurs. */
 	public String[] demanderNomsJoueurs()
 	{
@@ -44,7 +45,8 @@ public class VueConsole
 		}
 	}
 	
-	/** Message à afficher lorsqu'il y a un vainqueur. 
+	/** Message à afficher lorsqu'il y a un vainqueur.
+	 * 
 	 * @param vainqueur Contient le nom du vainqueur.*/
 	public void afficherVainqueur(final String vainqueur)
 	{
@@ -65,7 +67,6 @@ public class VueConsole
 		while (true)
 		{		
 			Scanner choixDePoursuite = new Scanner(System.in);
-			/* TODO L'application plante à cette étape. Essayé avec le debugger sans succès.. L'erreur intervient subitement */
 			System.out.println("\nVoulez-vous rejouer une partie ? (O/N)");
 			String reponse = choixDePoursuite.nextLine();
 

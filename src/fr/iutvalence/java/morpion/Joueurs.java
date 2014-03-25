@@ -11,7 +11,7 @@ public final class Joueurs
     /** Premier joueur. */
     private final Joueur joueur1;
 
-    /** Second joueur. */
+    /** Deuxième joueur. */
     private final Joueur joueur2;
 
     /** Joueur courant */
@@ -42,16 +42,18 @@ public final class Joueurs
     }
 
     /** Obtenir la signature d'un joueur courant.
+     * 
      * @return La signature du joueur courant.*/
     public int obtenirSignatureCourante()
     {
-        return this.joueurCourant.signature();
+        return this.joueurCourant.obtenirSignature();
     }
 
     /** Obtenir le nom d'un joueur courant. 
+     * 
      * @return Le nom du joueur courant. */
     public String obtenirNomCourant()
     {
-        return this.joueurCourant.nom();
+        return this.joueurCourant.obtenirNom();
     }
 }

@@ -13,8 +13,7 @@ import fr.iutvalence.java.morpion.erreur.MauvaiseCoordonneesException;
  * </p>
  *
  * @author DELORME Loïc & BASSON Julien
- * @version 1.0
- */
+ * @version 1.0 */
 public class PlateauJeu 
 {
 
