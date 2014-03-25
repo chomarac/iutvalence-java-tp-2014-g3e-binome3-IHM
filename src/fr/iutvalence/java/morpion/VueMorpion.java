@@ -1,6 +1,5 @@
 package fr.iutvalence.java.morpion;
 
-import java.security.SecureRandom;
 import java.util.Scanner;
 
 /** Modélisation d'une vue.
@@ -51,10 +50,16 @@ public class VueMorpion
 	 * @param unJoueur Un joueur. */
 	public void estAJoueurDeJouer(Joueurs unJoueur)
 	{
+        /* TODO Vous recommencez !!! Tout l'objectif de Joueurs est d'éviter cela !
+           De plus, Joueurs n'est pas un joueur mais la modélisatio d'un joueur !
+           Enfin, l'objectif est de ne pas passer directement le gestionnaire de joueur à la vue donc éviter cela.
+         */
+
 		String symbole = (unJoueur.obtenirSignatureCourante() == PlateauJeu.SIGNATURE_JOUEUR1) ? "X" : "O";
 		System.out.printf("\nC'est à %s de jouer (pion : %s)%n", unJoueur.obtenirNomCourant(), symbole);
 	}
-	
+
+    /* TODO Faites une seule méthode qui renvoie un tableau de coordonnées validées (ou faites une classe Coordonnée ad-hoc). */
 	/** Permet de demander la première coordonnée au joueur courant. */
 	public void demandePremiereCoordonnee()
 	{
@@ -100,7 +105,7 @@ public class VueMorpion
 			    quitter();
 				return false;
 			}
-            
+
 			System.out.println("Veuillez saisir une lettre valide.\n");
 		}
 	}
