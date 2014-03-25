@@ -1,4 +1,4 @@
-package fr.iutvalence.java.morpion.graphique;
+package fr.iutvalence.java.morpion.vue.graphique;
 
 import java.awt.Color;
 

@@ -1,4 +1,7 @@
-package fr.iutvalence.java.morpion;
+package fr.iutvalence.java.morpion.vue.console;
+
+import fr.iutvalence.java.morpion.Joueurs;
+import fr.iutvalence.java.morpion.PlateauJeu;
 
 import java.util.Scanner;
 
