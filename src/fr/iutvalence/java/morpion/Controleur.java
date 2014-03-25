@@ -15,9 +15,6 @@ public class Controleur
     /** Le nombre de tour maximum pour une partie. */
     private static final int NOMBREMAXDETOUR = 9;
 
-    /** Le nombre qui détermine si la partie est gagnée. */
-    private static final int PARTIEGAGNEE = 2 * Controleur.NOMBREMAXDETOUR;
-
     /** Un plateau de jeu. */
     private final PlateauJeu plateau;
 
@@ -60,7 +57,7 @@ public class Controleur
         while (compteurDeTour < Controleur.NOMBREMAXDETOUR)
         {
             /* TODO Tous ces printf n'ont rien à faire ici. */
-            System.out.printf("\nC'est à %s de jouer (pion : %s)%n", joueurs.obtenirNomCourant(), joueurs.obtenirSignatureCourante());
+            System.out.printf("\nC'est à %s de jouer (pion : %s)%n", this.joueurs.obtenirNomCourant(), this.joueurs.obtenirSignatureCourante());
             System.out.println(plateau);
 
             /* TODO Pensez à traiter les Exceptions de nextInt() */
