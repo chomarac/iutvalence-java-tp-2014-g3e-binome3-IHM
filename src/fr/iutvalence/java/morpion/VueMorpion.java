@@ -102,16 +102,16 @@ public class VueMorpion
 
             if ("N".equals(reponse))
 			{
-			    quitter();
+			    VueMorpion.quitter();
 				return false;
 			}
 
 			System.out.println("Veuillez saisir une lettre valide.\n");
 		}
 	}
-	
+
 	/** Message à afficher lorsqu'on quitte l'application. */
-	public void quitter()
+	private static void quitter()
 	{
 		System.out.println("-------------------------------------------------");
 		System.out.println("-- Développé par Delorme Loïc et Basson Julien --");
