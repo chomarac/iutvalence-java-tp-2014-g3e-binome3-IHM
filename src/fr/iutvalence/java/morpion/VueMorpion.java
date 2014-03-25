@@ -1,5 +1,6 @@
 package fr.iutvalence.java.morpion;
 
+import java.security.SecureRandom;
 import java.util.Scanner;
 
 /** Modélisation d'une vue.
@@ -43,6 +44,27 @@ public class VueMorpion
 			}
 			System.out.println("Veuillez saisir une lettre valide.\n");
 		}
+	}
+	
+	/** On affiche quel joueur doit jouer son coup.
+	 * 
+	 * @param unJoueur Un joueur. */
+	public void estAJoueurDeJouer(Joueurs unJoueur)
+	{
+		String symbole = (unJoueur.obtenirSignatureCourante() == PlateauJeu.SIGNATURE_JOUEUR1) ? "X" : "O";
+		System.out.printf("\nC'est à %s de jouer (pion : %s)%n", unJoueur.obtenirNomCourant(), symbole);
+	}
+	
+	/** Permet de demander la première coordonnée au joueur courant. */
+	public void demandePremiereCoordonnee()
+	{
+		System.out.print("Veuillez saisir la première coordonnée (entre 1 et 3 compris) : ");
+	}
+	
+	/** Permet de demander la deuxième coordonnée au joueur courant. */
+	public void demandeDeuxiemeCoordonnee()
+	{
+		System.out.print("Veuillez saisir la deuxième coordonnée (entre 1 et 3 compris) : ");
 	}
 	
 	/** Message à afficher lorsqu'il y a un vainqueur.

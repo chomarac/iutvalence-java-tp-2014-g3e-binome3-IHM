@@ -56,14 +56,13 @@ public class Controleur
 
         while (compteurDeTour < Controleur.NOMBREMAXDETOUR)
         {
-            /* TODO Tous ces printf n'ont rien à faire ici. */
-            System.out.printf("\nC'est à %s de jouer (pion : %s)%n", this.joueurs.obtenirNomCourant(), this.joueurs.obtenirSignatureCourante());
+        	this.vue.estAJoueurDeJouer(this.joueurs);
             System.out.println(plateau);
 
             /* TODO Pensez à traiter les Exceptions de nextInt() */
-            System.out.print("Veuillez saisir la première coordonnée (entre 1 et 3 compris) : ");
+            this.vue.demandePremiereCoordonnee();
             int choix1 = scanner.nextInt();
-            System.out.print("Veuillez saisir la deuxième coordonnée (entre 1 et 3 compris) : ");
+            this.vue.demandeDeuxiemeCoordonnee();
             int choix2 = scanner.nextInt();
 
             try
