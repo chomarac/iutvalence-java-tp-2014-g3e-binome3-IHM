@@ -3,7 +3,7 @@ package fr.iutvalence.java.morpion;
 /** Modélisation d'un joueur par héritage de la classe Joueurs.
  * 
  * @author DELORME Loïc & BASSON Julien
- * @version 1.0 */
+ * @version 2.0.0 */
 public final class Joueur
 {
     /** Nom. */
