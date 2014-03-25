@@ -14,7 +14,7 @@ public final class Joueurs
     /** Deuxième joueur. */
     private final Joueur joueur2;
 
-    /** Joueur courant */
+    /** Joueur courant. */
     private Joueur joueurCourant;
 
     /** Créer les deux joueurs de la partie en utilisant les noms spécifiés.
@@ -35,7 +35,7 @@ public final class Joueurs
         this.joueurCourant = new SecureRandom().nextBoolean() ? this.joueur1 : this.joueur2;
     }
 
-    /** Détermine le joueur suivant. */
+    /** Déterminer le joueur suivant. */
     public void joueurSuivant()
     {
         this.joueurCourant = (this.joueurCourant.equals(this.joueur1)) ? this.joueur2 : this.joueur1;
