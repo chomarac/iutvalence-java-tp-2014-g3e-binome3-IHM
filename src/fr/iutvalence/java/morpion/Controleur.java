@@ -19,6 +19,7 @@ public class Controleur
     /** Un plateau de jeu. */
     private final PlateauJeu plateau;
 
+    /* TODO Encore une fois, je pense qu'une interface VueConsole (à défaut d'un meilleur nom) aurait du sens. */
     /** Une vue. */
     private final VueMorpion vue;
 
