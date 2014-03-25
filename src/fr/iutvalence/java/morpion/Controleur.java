@@ -8,10 +8,10 @@ import java.util.Scanner;
 /** Modélisation du fonctionnement d'une partie.
  *
  * @author DELORME Loïc & BASSON Julien
- * @version 2.0 */
+ * @version 2.0.0 */
 public class Controleur
 {
-	
+	/* TODO Je me demande si la notion de fin de partie ne devrait pas être fournie par le plateau ? */
     /** Le nombre de tour maximum pour une partie. */
     private static final int NOMBREMAXDETOUR = 9;
 
@@ -57,6 +57,7 @@ public class Controleur
         while (compteurDeTour < Controleur.NOMBREMAXDETOUR)
         {
         	this.vue.estAJoueurDeJouer(this.joueurs);
+            /* TODO Encore un println ici ! À déplacer dans l'appel à la vue (mais ça va complexifier les choses). */
             System.out.println(plateau);
 
             /* TODO Pensez à traiter les Exceptions de nextInt() */
@@ -70,14 +71,12 @@ public class Controleur
                 plateau.estCoupValide(choix1, choix2);
                 if (plateau.placerPion(this.joueurs, choix1, choix2))
                 {
+                    /* TODO Encore un println ici ! À déplacer dans l'appel à la vue. */
                     System.out.println(plateau);
                     return true;
                 }
-                else
-                {
-                    this.joueurs.joueurSuivant();
-                    compteurDeTour += 1;
-                }
+                this.joueurs.joueurSuivant();
+                compteurDeTour += 1;
             }
             catch (CoordonneesDejaPriseException ignored)
             {

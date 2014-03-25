@@ -44,7 +44,9 @@ public class VueMorpion
 			System.out.println("Veuillez saisir une lettre valide.\n");
 		}
 	}
-	
+
+    /* TODO Avec l'affichage du plateau, ce nom de méthode ne me paraît pas très pertinent. */
+    /* Pourquoi pas debuterTour() ? Ou quelque chose comme ça… Si vous avez mieux, je prends volontier. */
 	/** On affiche quel joueur doit jouer son coup.
 	 * 
 	 * @param unJoueur Un joueur. */
@@ -59,8 +61,9 @@ public class VueMorpion
 		System.out.printf("\nC'est à %s de jouer (pion : %s)%n", unJoueur.obtenirNomCourant(), symbole);
 	}
 
-    /* TODO Faites une seule méthode qui renvoie un tableau de coordonnées validées (ou faites une classe Coordonnée ad-hoc). */
-	/** Permet de demander la première coordonnée au joueur courant. */
+    /* TODO Faites une seule méthode qui renvoie un tableau de deux entiers (ou faites une classe Coordonnée ad-hoc). */
+	/* TODO Renommer également en demanderCoordonnees() */
+    /** Permet de demander la première coordonnée au joueur courant. */
 	public void demandePremiereCoordonnee()
 	{
 		System.out.print("Veuillez saisir la première coordonnée (entre 1 et 3 compris) : ");
