@@ -9,7 +9,7 @@ import java.util.Scanner;
  * 
  * @author DELORME Loïc & BASSON Julien
  * @version 1.0 */
-public class VueMorpion
+public class VueConsole
 {
 	/** Noms par défaut des différents joueurs. */
     private static final String[] JOUEURS_PAR_DEFAUT = {"Joueur 1", "Joueur 2"};
@@ -48,12 +48,10 @@ public class VueMorpion
 		}
 	}
 
-    /* TODO Avec l'affichage du plateau, ce nom de méthode ne me paraît pas très pertinent. */
-    /* Pourquoi pas debuterTour() ? Ou quelque chose comme ça… Si vous avez mieux, je prends volontier. */
 	/** On affiche quel joueur doit jouer son coup.
 	 * 
 	 * @param unJoueur Un joueur. */
-	public void estAJoueurDeJouer(Joueurs unJoueur)
+	public void debuterUnTour(Joueurs unJoueur)
 	{
         /* TODO Vous recommencez !!! Tout l'objectif de Joueurs est d'éviter cela !
            De plus, Joueurs n'est pas un joueur mais la modélisatio d'un joueur !
@@ -64,18 +62,20 @@ public class VueMorpion
 		System.out.printf("\nC'est à %s de jouer (pion : %s)%n", unJoueur.obtenirNomCourant(), symbole);
 	}
 
-    /* TODO Faites une seule méthode qui renvoie un tableau de deux entiers (ou faites une classe Coordonnée ad-hoc). */
-	/* TODO Renommer également en demanderCoordonnees() */
-    /** Permet de demander la première coordonnée au joueur courant. */
-	public void demandePremiereCoordonnee()
+    /** Permet de demander la première coordonnée au joueur courant. 
+     * 
+     * @return Un tableau contenant les choix du joueur. */
+	public int[] demanderCoordonnees()
 	{
+		Scanner scanner = new Scanner(System.in);
+		int choix[] = new int[2];
+		
 		System.out.print("Veuillez saisir la première coordonnée (entre 1 et 3 compris) : ");
-	}
-	
-	/** Permet de demander la deuxième coordonnée au joueur courant. */
-	public void demandeDeuxiemeCoordonnee()
-	{
-		System.out.print("Veuillez saisir la deuxième coordonnée (entre 1 et 3 compris) : ");
+        choix[1] = scanner.nextInt();
+        System.out.print("Veuillez saisir la deuxième coordonnée (entre 1 et 3 compris) : ");
+        choix[2] = scanner.nextInt();
+        
+        return choix;
 	}
 	
 	/** Message à afficher lorsqu'il y a un vainqueur.
@@ -108,7 +108,7 @@ public class VueMorpion
 
             if ("N".equals(reponse))
 			{
-			    VueMorpion.quitter();
+			    VueConsole.quitter();
 				return false;
 			}
 

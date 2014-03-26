@@ -2,9 +2,7 @@ package fr.iutvalence.java.morpion;
 
 import fr.iutvalence.java.morpion.erreur.CoordonneesDejaPriseException;
 import fr.iutvalence.java.morpion.erreur.MauvaiseCoordonneesException;
-import fr.iutvalence.java.morpion.vue.console.VueMorpion;
-
-import java.util.Scanner;
+import fr.iutvalence.java.morpion.vue.console.VueConsole;
 
 /** Modélisation du fonctionnement d'une partie.
  *
@@ -19,9 +17,8 @@ public class Controleur
     /** Un plateau de jeu. */
     private final PlateauJeu plateau;
 
-    /* TODO Encore une fois, je pense qu'une interface VueConsole (à défaut d'un meilleur nom) aurait du sens. */
     /** Une vue. */
-    private final VueMorpion vue;
+    private final VueConsole vue;
 
     /** Joueurs. */
     private final Joueurs joueurs;
@@ -29,7 +26,7 @@ public class Controleur
     /** Création du controleur de la partie. */
     public Controleur() {
         this.plateau = new PlateauJeu();
-        this.vue = new VueMorpion();
+        this.vue = new VueConsole();
         this.joueurs = new Joueurs(this.vue.demanderNomsJoueurs());
     }
 
@@ -50,25 +47,23 @@ public class Controleur
      * @return True si la partie est gagné et false si la partie est nulle. */
     private boolean partie(PlateauJeu plateau) 
     {
-        Scanner scanner = new Scanner(System.in);
+        
         int compteurDeTour = 0;
-
+        int tableauDesChoix[];
+        
         while (compteurDeTour < Controleur.NOMBREMAXDETOUR)
         {
-        	this.vue.estAJoueurDeJouer(this.joueurs);
+        	this.vue.debuterUnTour(this.joueurs);
             /* TODO Encore un println ici ! À déplacer dans l'appel à la vue (mais ça va complexifier les choses). */
             System.out.println(plateau);
-
             /* TODO Pensez à traiter les Exceptions de nextInt() */
-            this.vue.demandePremiereCoordonnee();
-            int choix1 = scanner.nextInt();
-            this.vue.demandeDeuxiemeCoordonnee();
-            int choix2 = scanner.nextInt();
+            
+            tableauDesChoix = this.vue.demanderCoordonnees();
 
             try
             {
-                plateau.estCoupValide(choix1, choix2);
-                if (plateau.placerPion(this.joueurs, choix1, choix2))
+                plateau.estCoupValide(tableauDesChoix[0], tableauDesChoix[1]);
+                if (plateau.placerPion(this.joueurs, tableauDesChoix[0], tableauDesChoix[1]))
                 {
                     /* TODO Encore un println ici ! À déplacer dans l'appel à la vue. */
                     System.out.println(plateau);
