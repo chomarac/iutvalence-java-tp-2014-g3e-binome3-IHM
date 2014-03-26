@@ -50,4 +50,13 @@ public final class Joueurs
     {
         return this.joueurCourant.obtenirNom();
     }
+    
+    /** Obtenir le symbole correspondant au joueur courant.
+     * 
+     * @return Son symbole.
+     */
+    public String obtenirSymboleJoueur()
+    {
+    	return (this.obtenirSignatureCourante() == PlateauJeu.SIGNATURE_JOUEUR1) ? "X" : "O";
+    }
 }

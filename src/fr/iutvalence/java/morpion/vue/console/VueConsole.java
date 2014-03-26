@@ -1,7 +1,6 @@
 package fr.iutvalence.java.morpion.vue.console;
 
 import fr.iutvalence.java.morpion.Joueurs;
-import fr.iutvalence.java.morpion.PlateauJeu;
 
 import java.util.Scanner;
 
@@ -53,13 +52,7 @@ public class VueConsole
 	 * @param unJoueur Un joueur. */
 	public void debuterUnTour(Joueurs unJoueur)
 	{
-        /* TODO Vous recommencez !!! Tout l'objectif de Joueurs est d'éviter cela !
-           De plus, Joueurs n'est pas un joueur mais la modélisatio d'un joueur !
-           Enfin, l'objectif est de ne pas passer directement le gestionnaire de joueur à la vue donc éviter cela.
-         */
-
-		String symbole = (unJoueur.obtenirSignatureCourante() == PlateauJeu.SIGNATURE_JOUEUR1) ? "X" : "O";
-		System.out.printf("\nC'est à %s de jouer (pion : %s)%n", unJoueur.obtenirNomCourant(), symbole);
+		System.out.printf("\nC'est à %s de jouer (pion : %s)%n", unJoueur.obtenirNomCourant(), unJoueur.obtenirSymboleJoueur());
 	}
 
     /** Permet de demander la première coordonnée au joueur courant. 
@@ -68,14 +61,13 @@ public class VueConsole
 	public int[] demanderCoordonnees()
 	{
 		Scanner scanner = new Scanner(System.in);
-		int choix[] = new int[2];
 		
 		System.out.print("Veuillez saisir la première coordonnée (entre 1 et 3 compris) : ");
-        choix[1] = scanner.nextInt();
+        int choix1 = scanner.nextInt();
         System.out.print("Veuillez saisir la deuxième coordonnée (entre 1 et 3 compris) : ");
-        choix[2] = scanner.nextInt();
+        int choix2 = scanner.nextInt();
         
-        return choix;
+        return new int[]{choix1, choix2};
 	}
 	
 	/** Message à afficher lorsqu'il y a un vainqueur.

@@ -51,7 +51,7 @@ public class Controleur
         int compteurDeTour = 0;
         int tableauDesChoix[];
         
-        while (compteurDeTour < Controleur.NOMBREMAXDETOUR)
+        while (compteurDeTour < NOMBREMAXDETOUR)
         {
         	this.vue.debuterUnTour(this.joueurs);
             /* TODO Encore un println ici ! À déplacer dans l'appel à la vue (mais ça va complexifier les choses). */
