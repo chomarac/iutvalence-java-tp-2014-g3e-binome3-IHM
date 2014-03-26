@@ -1,11 +1,12 @@
+/* TODO Pourquoi avoir changé le package que j'avais créé ? */
 package fr.iutvalence.java.morpion.vues;
+
+import fr.iutvalence.java.morpion.Joueurs;
+import fr.iutvalence.java.morpion.PlateauJeu;
 
 import java.io.BufferedReader;
 import java.io.InputStreamReader;
 import java.util.Scanner;
-
-import fr.iutvalence.java.morpion.Joueurs;
-import fr.iutvalence.java.morpion.PlateauJeu;
 
 /** Modélisation d'une vue.
  * 
@@ -15,30 +16,27 @@ public class VueConsole
 {
 	/** Noms par défaut des différents joueurs. */
     private static final String[] JOUEURS_PAR_DEFAUT = {"Joueur 1", "Joueur 2"};
-    
+
+    /* TODO Pourquoi ce BufferedReader ? */
     /** Flux d'entré au clavier dans la console. */
     private BufferedReader entreeConsole;
-	
-    /** Modélisation d'un flux d'entrée. */
-    public VueConsole()
-    {
-    	this.entreeConsole = new BufferedReader(new InputStreamReader(System.in));
-    }
-    
-	/** Demander aux utilisateurs si ils veulent changer le nom des joueurs.
-	 *  
-	 * @return Un tableau contenant les noms des joueurs. */
-	public String[] demanderNomsJoueurs()
-	{
-		final Scanner scanner = new Scanner(System.in);
-		
-		while (true)
-		{
-			System.out.println("Voulez-vous modifier les noms de Joueur 1 et Joueur 2 (O/N)");
-			String choix = scanner.nextLine();
 
-			if ("N".equals(choix))
-				return JOUEURS_PAR_DEFAUT;
+    /** Modélisation d'un flux d'entrée. */
+    public VueConsole() {
+        this.entreeConsole = new BufferedReader(new InputStreamReader(System.in));
+    }
+
+    /** Demander aux utilisateurs si ils veulent changer le nom des joueurs.
+     *
+     * @return Un tableau contenant les noms des joueurs. */
+    public String[] demanderNomsJoueurs() {
+        final Scanner scanner = new Scanner(System.in);
+
+        while (true) {
+            System.out.println("Voulez-vous modifier les noms de Joueur 1 et Joueur 2 (O/N)");
+            String choix = scanner.nextLine();
+
+            if ("N".equals(choix)) return JOUEURS_PAR_DEFAUT;
 
 			if ("O".equals(choix))
 			{
@@ -59,6 +57,7 @@ public class VueConsole
 		}
 	}
 
+    /* TODO Je préférerais que l'on passe deux chaines à la méthode plutôt que la classe Joueurs directement. */
 	/** On affiche quel joueur doit jouer son coup.
 	 * 
 	 * @param unJoueur Un joueur. */
@@ -66,7 +65,8 @@ public class VueConsole
 	{
 		System.out.printf("\nC'est à %s de jouer (pion : %s)%n", unJoueur.obtenirNomCourant(), unJoueur.obtenirSymboleJoueur());
 	}
-	
+
+    /* TODO Je préfèrerais que l'on passe une chaine de caractère à lé méthode plutôt qu'un PlateauJeu directement. */
 	/** Afficher le plateau de jeu courant.
 	 * 
 	 * @param unPlateau Le plateau courant. */
@@ -75,7 +75,7 @@ public class VueConsole
 		System.out.println(unPlateau);
 	}
 
-    /** Permet de demander la première coordonnée au joueur courant. 
+    /** Permet de demander la première coordonnée au joueur courant.
      * 
      * @return Un tableau contenant les choix du joueur. */
 	public int[] demanderCoordonnees()
@@ -89,17 +89,21 @@ public class VueConsole
 				System.out.print("Veuillez saisir la première coordonnée (entre 1 et 3 compris) : ");
 				ligne = this.entreeConsole.readLine();
 				
-				if (ligne == null)
-					throw new Exception();
-				
+				if (ligne == null) {
+                    /* TODO À proscrire complétement ! Très mauvaise pratique de lever Exception directement ! */
+                    throw new Exception();
+                }
+                /* TODO Pourquoi pas nextInt directement ? */
 				choix1 = Integer.parseInt(ligne);
+
 				System.out.print("Veuillez saisir la deuxième coordonnée (entre 1 et 3 compris) : ");
 				ligne = this.entreeConsole.readLine();
-				
-				if (ligne == null)
-					throw new Exception();
-				
-				choix2 = Integer.parseInt(ligne);
+				if (ligne == null) {
+                    /* TODO À proscrire complétement ! Très mauvaise pratique de lever Exception directement ! */
+                    throw new Exception();
+                }
+                /* TODO Pourquoi pas nextInt directement ? */
+                choix2 = Integer.parseInt(ligne);
  				break;
 			}
 			catch (Exception e)
@@ -107,7 +111,7 @@ public class VueConsole
 				System.out.println("Les valeurs saisies ne sont pas des entiers.\n\n");
 			}
 		}
-        
+
         return new int[]{choix1, choix2};
 	}
 	
@@ -130,6 +134,7 @@ public class VueConsole
 	 * @return true si le joueur veut rejouer une partie, false sinon. */
 	public boolean choixRejouer()
 	{
+        /* TODO Aileurs vous utilisez le BufferedReader et ici le Scanner directement ??? */
         Scanner choixDePoursuite = new Scanner(System.in);
         while (true)
 		{		
