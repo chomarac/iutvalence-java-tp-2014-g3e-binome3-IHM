@@ -2,7 +2,7 @@ package fr.iutvalence.java.morpion;
 
 import fr.iutvalence.java.morpion.erreur.CoordonneesDejaPriseException;
 import fr.iutvalence.java.morpion.erreur.MauvaiseCoordonneesException;
-import fr.iutvalence.java.morpion.vue.console.VueConsole;
+import fr.iutvalence.java.morpion.vues.VueConsole;
 
 /** Modélisation du fonctionnement d'une partie.
  *

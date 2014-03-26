@@ -8,12 +8,19 @@ import javax.swing.JMenuBar;
 import javax.swing.JMenuItem;
 import javax.swing.JPanel;
 
+import fr.iutvalence.java.morpion.vue.graphique.boutons.BoutonAProposDe;
+import fr.iutvalence.java.morpion.vue.graphique.boutons.BoutonHistoriqueDesScores;
+import fr.iutvalence.java.morpion.vue.graphique.boutons.BoutonJouer;
+import fr.iutvalence.java.morpion.vue.graphique.boutons.BoutonQuitter;
+import fr.iutvalence.java.morpion.vue.graphique.boutons.BoutonReglesDuJeu;
+import fr.iutvalence.java.morpion.vue.graphique.boutons.BoutonVersion;
+
 /** Modélisation d'une fenêtre graphique
  * 
  * @author DELORME Loïc & BASSON Julien
  * @version 1.0
  * */
-public class Fenetre extends JFrame
+public class VueGraphique extends JFrame
 {
 	/** ??? */
 	private static final long serialVersionUID = 1L;
@@ -30,11 +37,8 @@ public class Fenetre extends JFrame
 	/** Premier sous-menu */
 	private JMenuItem item1_1 = new JMenuItem("Jouer");
 
-	/** Deuxième sous-menu */
-	private JMenuItem item1_2 = new JMenuItem("Rejouer");
-
 	/** Troisième sous-menu */
-	private JMenuItem item1_3 = new JMenuItem("Quitter");
+	private JMenuItem item1_2 = new JMenuItem("Quitter");
 
 	/** Premier menu principal : Score */
 	private JMenu menu2 = new JMenu("Score(s)");
@@ -56,10 +60,10 @@ public class Fenetre extends JFrame
 	
 
 	/** Fenetre avec des composantes graphiques */
-	public Fenetre()
+	public VueGraphique()
 	{
 		this.setTitle("Morpion");
-		this.setSize(600, 600);
+		this.setSize(400, 400);
 		this.setResizable(false);
 		this.setLocationRelativeTo(null);
 		this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -68,8 +72,6 @@ public class Fenetre extends JFrame
 		this.menu1.add(this.item1_1);
 		this.menu1.addSeparator();
 		this.menu1.add(this.item1_2);
-		this.menu1.addSeparator();
-		this.menu1.add(this.item1_3);
 
 		// Ajout des actions possibles dans le menu "Historique des scores"
 		this.menu2.add(this.item2_1);
@@ -83,8 +85,7 @@ public class Fenetre extends JFrame
 
 		// On ajoute les événements relatifs aux différents boutons
 		this.item1_1.addActionListener(new BoutonJouer());
-		this.item1_2.addActionListener(new BoutonRejouer());
-		this.item1_3.addActionListener(new BoutonQuitter());
+		this.item1_2.addActionListener(new BoutonQuitter());
 		this.item2_1.addActionListener(new BoutonHistoriqueDesScores());
 		this.item3_1.addActionListener(new BoutonReglesDuJeu());
 		this.item3_2.addActionListener(new BoutonVersion());
@@ -98,7 +99,7 @@ public class Fenetre extends JFrame
 		// On l'ajoute à la fenêtre
 		this.setJMenuBar(this.barreDeMenu);
 
-		unTableau.setBackground(Color.GRAY);
+		unTableau.setBackground(Color.WHITE);
 		this.setContentPane(unTableau);
 		this.setVisible(true);
 	}

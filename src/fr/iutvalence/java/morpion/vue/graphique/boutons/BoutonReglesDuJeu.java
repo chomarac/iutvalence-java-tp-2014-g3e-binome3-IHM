@@ -1,4 +1,4 @@
-package fr.iutvalence.java.morpion.vue.graphique;
+package fr.iutvalence.java.morpion.vue.graphique.boutons;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;

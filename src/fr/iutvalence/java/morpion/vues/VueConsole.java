@@ -1,4 +1,4 @@
-package fr.iutvalence.java.morpion.vue.console;
+package fr.iutvalence.java.morpion.vues;
 
 import java.io.BufferedReader;
 import java.io.InputStreamReader;
