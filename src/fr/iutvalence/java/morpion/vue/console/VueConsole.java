@@ -1,8 +1,11 @@
 package fr.iutvalence.java.morpion.vue.console;
 
-import fr.iutvalence.java.morpion.Joueurs;
-
+import java.io.BufferedReader;
+import java.io.InputStreamReader;
 import java.util.Scanner;
+
+import fr.iutvalence.java.morpion.Joueurs;
+import fr.iutvalence.java.morpion.PlateauJeu;
 
 /** Modélisation d'une vue.
  * 
@@ -12,7 +15,16 @@ public class VueConsole
 {
 	/** Noms par défaut des différents joueurs. */
     private static final String[] JOUEURS_PAR_DEFAUT = {"Joueur 1", "Joueur 2"};
+    
+    /** Flux d'entré au clavier dans la console. */
+    private BufferedReader entreeConsole;
 	
+    /** Modélisation d'un flux d'entrée. */
+    public VueConsole()
+    {
+    	this.entreeConsole = new BufferedReader(new InputStreamReader(System.in));
+    }
+    
 	/** Demander aux utilisateurs si ils veulent changer le nom des joueurs.
 	 *  
 	 * @return Un tableau contenant les noms des joueurs. */
@@ -54,18 +66,47 @@ public class VueConsole
 	{
 		System.out.printf("\nC'est à %s de jouer (pion : %s)%n", unJoueur.obtenirNomCourant(), unJoueur.obtenirSymboleJoueur());
 	}
+	
+	/** Afficher le plateau de jeu courant.
+	 * 
+	 * @param unPlateau Le plateau courant. */
+	public void afficherPlateauCourant(PlateauJeu unPlateau)
+	{
+		System.out.println(unPlateau);
+	}
 
     /** Permet de demander la première coordonnée au joueur courant. 
      * 
      * @return Un tableau contenant les choix du joueur. */
 	public int[] demanderCoordonnees()
 	{
-		Scanner scanner = new Scanner(System.in);
-		
-		System.out.print("Veuillez saisir la première coordonnée (entre 1 et 3 compris) : ");
-        int choix1 = scanner.nextInt();
-        System.out.print("Veuillez saisir la deuxième coordonnée (entre 1 et 3 compris) : ");
-        int choix2 = scanner.nextInt();
+		int choix1, choix2;
+		String ligne = null;
+		while (true)
+		{
+			try
+			{
+				System.out.print("Veuillez saisir la première coordonnée (entre 1 et 3 compris) : ");
+				ligne = this.entreeConsole.readLine();
+				
+				if (ligne == null)
+					throw new Exception();
+				
+				choix1 = Integer.parseInt(ligne);
+				System.out.print("Veuillez saisir la deuxième coordonnée (entre 1 et 3 compris) : ");
+				ligne = this.entreeConsole.readLine();
+				
+				if (ligne == null)
+					throw new Exception();
+				
+				choix2 = Integer.parseInt(ligne);
+ 				break;
+			}
+			catch (Exception e)
+			{
+				System.out.println("Les valeurs saisies ne sont pas des entiers.\n\n");
+			}
+		}
         
         return new int[]{choix1, choix2};
 	}

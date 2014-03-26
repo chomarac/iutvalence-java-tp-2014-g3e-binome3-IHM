@@ -10,8 +10,7 @@ import fr.iutvalence.java.morpion.vue.console.VueConsole;
  * @version 2.0.0 */
 public class Controleur
 {
-	/* TODO Je me demande si la notion de fin de partie ne devrait pas être fournie par le plateau ? */
-    /** Le nombre de tour maximum pour une partie. */
+	/** Le nombre de tour maximum pour une partie. */
     private static final int NOMBREMAXDETOUR = 9;
 
     /** Un plateau de jeu. */
@@ -24,7 +23,8 @@ public class Controleur
     private final Joueurs joueurs;
 
     /** Création du controleur de la partie. */
-    public Controleur() {
+    public Controleur()
+    {
         this.plateau = new PlateauJeu();
         this.vue = new VueConsole();
         this.joueurs = new Joueurs(this.vue.demanderNomsJoueurs());
@@ -33,7 +33,8 @@ public class Controleur
     /** Jouer une partie.
      *
      * @return true si le joueur veut rejouer une partie, false sinon. */
-    public boolean nouvellePartie() {
+    public boolean nouvellePartie()
+    {
         if (this.partie(this.plateau))
             this.vue.afficherVainqueur(this.joueurs.obtenirNomCourant());
         else this.vue.afficherPartieNulle();
@@ -47,17 +48,13 @@ public class Controleur
      * @return True si la partie est gagné et false si la partie est nulle. */
     private boolean partie(PlateauJeu plateau) 
     {
-        
         int compteurDeTour = 0;
         int tableauDesChoix[];
         
         while (compteurDeTour < NOMBREMAXDETOUR)
         {
         	this.vue.debuterUnTour(this.joueurs);
-            /* TODO Encore un println ici ! À déplacer dans l'appel à la vue (mais ça va complexifier les choses). */
-            System.out.println(plateau);
-            /* TODO Pensez à traiter les Exceptions de nextInt() */
-            
+            this.vue.afficherPlateauCourant(this.plateau);
             tableauDesChoix = this.vue.demanderCoordonnees();
 
             try
@@ -65,8 +62,7 @@ public class Controleur
                 plateau.estCoupValide(tableauDesChoix[0], tableauDesChoix[1]);
                 if (plateau.placerPion(this.joueurs, tableauDesChoix[0], tableauDesChoix[1]))
                 {
-                    /* TODO Encore un println ici ! À déplacer dans l'appel à la vue. */
-                    System.out.println(plateau);
+                	this.vue.afficherPlateauCourant(this.plateau);
                     return true;
                 }
                 this.joueurs.joueurSuivant();
