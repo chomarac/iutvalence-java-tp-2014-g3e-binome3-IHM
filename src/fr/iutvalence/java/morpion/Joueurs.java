@@ -57,7 +57,6 @@ public final class Joueurs
      */
     public String obtenirSymboleJoueur()
     {
-        /** TODO Le "X" est le "O" devraient être des constantes du modèle. */
-    	return (this.obtenirSignatureCourante() == PlateauJeu.SIGNATURE_JOUEUR1) ? "X" : "O";
+    	return (this.obtenirSignatureCourante() == PlateauJeu.SIGNATURE_JOUEUR1) ? PlateauJeu.SYMBOLE_JOUEUR_1 : PlateauJeu.SYMBOLE_JOUEUR_2;
     }
 }

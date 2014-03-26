@@ -22,21 +22,42 @@ public class PlateauJeu
 
     /** Constante du nombres de colonnes. */
     private static final int NOMBRE_DE_LIGNES = 5;
+    
+	/** Le nombre de tour maximum pour une partie. */
+    private final int NOMBREMAXDETOUR = 9;
 
     /** Plateau de jeu. */
     private final int[][] plateauDeJeu;
+    
+    /** Le nombre de tour maximum pour une partie de morpion. */
+    private final int nombreDeTours;
     
     /** La signature unique du joueur 1. */
     public static final int SIGNATURE_JOUEUR1 = 5;
     
     /** La signature unique du joueur 2. */
     public static final int SIGNATURE_JOUEUR2 = - SIGNATURE_JOUEUR1;
+    
+    /** Le symbole correspondant au joueur 1. */
+    public static final String SYMBOLE_JOUEUR_1 = "X";
+    
+    /** Le symbole correspondant au joueur 2. */
+    public static final String SYMBOLE_JOUEUR_2 = "O";
 
     /** Constructeur d'un plateau de jeu. */
     public PlateauJeu()
     {
     	//On retourne un nouveau plateau de jeu avec des composantes prédéfinies
         this.plateauDeJeu = new int[PlateauJeu.NOMBRE_DE_LIGNES][PlateauJeu.NOMBRE_DE_COLONNES];
+        this.nombreDeTours = this.NOMBREMAXDETOUR;
+    }
+    
+    /** Obtenir le nombre maximum de tours pour une partie de morpion.
+     * 
+     * @return Le nombre de tours. */
+    public int obtenirNombreDeToursMax()
+    {
+    	return this.nombreDeTours;
     }
 
     /** Vérifier les coordonnées et la disponibilité.
@@ -58,20 +79,16 @@ public class PlateauJeu
             throw new CoordonneesDejaPriseException();
 	}
 
-    /* TODO Vous n'avez pas récupéré ma modification ? Ne mettez pas un Joueurs ici, c'est inutile. Mettez directement un pion */
-    /**
-     * Modifier le plateau de jeu si le coup joué est valide.
+    /** Modifier le plateau de jeu si le coup joué est valide.
      *
-     * @param unJoueur le joueur qui réalise l'action
-     * @param x La première coordonnée
-     * @param y La deuxième coordonnée
+     * @param signature La signature du joueur.
+     * @param x La première coordonnée.
+     * @param y La deuxième coordonnée.
      *
-     * @return true si un joueur gagne, false sinon
-     */
-    public boolean placerPion(Joueurs unJoueur, int x, int y)
+     * @return true si un joueur gagne, false sinon */
+    public boolean placerPion(int signature, int x, int y)
 	{
 		//On récupère les données liées au joueur courant
-		int signature = unJoueur.obtenirSignatureCourante();
 		int victoire = 3 * signature;
 
 		this.plateauDeJeu[x][y] = signature;
@@ -94,8 +111,7 @@ public class PlateauJeu
 
     /** Affichage du plateau de jeu par redéfinition d'une méthode existante.
      * 
-     * @return Le plateau de jeu au format String
-     */
+     * @return Le plateau de jeu au format String */
 	@Override
     public String toString()
 	{

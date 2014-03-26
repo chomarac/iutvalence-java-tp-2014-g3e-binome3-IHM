@@ -1,8 +1,5 @@
-/* TODO Pourquoi avoir changé le package que j'avais créé ? */
+/* TODO Nous avons ajouté une nouvelle vue d'ou le changement. */
 package fr.iutvalence.java.morpion.vues;
-
-import fr.iutvalence.java.morpion.Joueurs;
-import fr.iutvalence.java.morpion.PlateauJeu;
 
 import java.io.BufferedReader;
 import java.io.InputStreamReader;
@@ -22,17 +19,20 @@ public class VueConsole
     private BufferedReader entreeConsole;
 
     /** Modélisation d'un flux d'entrée. */
-    public VueConsole() {
+    public VueConsole()
+    {
         this.entreeConsole = new BufferedReader(new InputStreamReader(System.in));
     }
 
     /** Demander aux utilisateurs si ils veulent changer le nom des joueurs.
      *
      * @return Un tableau contenant les noms des joueurs. */
-    public String[] demanderNomsJoueurs() {
+    public String[] demanderNomsJoueurs()
+    {
         final Scanner scanner = new Scanner(System.in);
 
-        while (true) {
+        while (true)
+        {
             System.out.println("Voulez-vous modifier les noms de Joueur 1 et Joueur 2 (O/N)");
             String choix = scanner.nextLine();
 
@@ -57,22 +57,21 @@ public class VueConsole
 		}
 	}
 
-    /* TODO Je préférerais que l'on passe deux chaines à la méthode plutôt que la classe Joueurs directement. */
 	/** On affiche quel joueur doit jouer son coup.
 	 * 
-	 * @param unJoueur Un joueur. */
-	public void debuterUnTour(Joueurs unJoueur)
+	 * @param nomJoueur Le nom du joueur.
+	 * @param symboleJoueur Le symbole du joueur. */
+	public void debuterUnTour(String nomJoueur, String symboleJoueur)
 	{
-		System.out.printf("\nC'est à %s de jouer (pion : %s)%n", unJoueur.obtenirNomCourant(), unJoueur.obtenirSymboleJoueur());
+		System.out.printf("\nC'est à %s de jouer (pion : %s)%n", nomJoueur, symboleJoueur);
 	}
 
-    /* TODO Je préfèrerais que l'on passe une chaine de caractère à lé méthode plutôt qu'un PlateauJeu directement. */
 	/** Afficher le plateau de jeu courant.
 	 * 
-	 * @param unPlateau Le plateau courant. */
-	public void afficherPlateauCourant(PlateauJeu unPlateau)
+	 * @param plateauAsciiArt Le plateau courant au format texte. */
+	public void afficherPlateauCourant(String plateauAsciiArt)
 	{
-		System.out.println(unPlateau);
+		System.out.println(plateauAsciiArt);
 	}
 
     /** Permet de demander la première coordonnée au joueur courant.
@@ -89,19 +88,19 @@ public class VueConsole
 				System.out.print("Veuillez saisir la première coordonnée (entre 1 et 3 compris) : ");
 				ligne = this.entreeConsole.readLine();
 				
-				if (ligne == null) {
+				if (ligne == null)
                     /* TODO À proscrire complétement ! Très mauvaise pratique de lever Exception directement ! */
                     throw new Exception();
-                }
+         
                 /* TODO Pourquoi pas nextInt directement ? */
 				choix1 = Integer.parseInt(ligne);
 
 				System.out.print("Veuillez saisir la deuxième coordonnée (entre 1 et 3 compris) : ");
 				ligne = this.entreeConsole.readLine();
-				if (ligne == null) {
+				if (ligne == null)
                     /* TODO À proscrire complétement ! Très mauvaise pratique de lever Exception directement ! */
                     throw new Exception();
-                }
+                
                 /* TODO Pourquoi pas nextInt directement ? */
                 choix2 = Integer.parseInt(ligne);
  				break;
