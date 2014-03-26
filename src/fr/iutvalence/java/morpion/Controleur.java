@@ -61,10 +61,12 @@ public class Controleur
             }
             catch (CoordonneesDejaPriseException ignored)
             {
+                // TODO Derniers println mal placé
                 System.out.println("\nLes coordonnées saisies sont déjà prises, veuillez en saisir des différentes.");
             }
             catch (MauvaiseCoordonneesException ignored)
             {
+                // TODO Derniers println mal placé
                 System.out.println("\nLes coordonnées ne sont pas comprises entre 1 et 3.");
             }
         }
