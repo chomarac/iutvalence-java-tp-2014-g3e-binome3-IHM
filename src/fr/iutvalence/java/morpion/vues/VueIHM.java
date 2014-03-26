@@ -1,13 +1,10 @@
-/* TODO Pourquoi avoir changé le package que j'avais créé ? */
 package fr.iutvalence.java.morpion.vues;
+
+import javax.swing.JOptionPane;
 
 import fr.iutvalence.java.morpion.Joueurs;
 import fr.iutvalence.java.morpion.PlateauJeu;
 
-import javax.swing.JOptionPane;
-import java.util.Scanner;
-
-/* TODO À quoi sert cette classe ? */
 /** Modélisation d'une vue.
  * 
  * @author DELORME Loïc & BASSON Julien
@@ -22,46 +19,67 @@ public class VueIHM
 	 * @return Un tableau contenant les noms des joueurs. */
 	public String[] demanderNomsJoueurs()
 	{
-		final Scanner scanner = new Scanner(System.in);
-		
 		while (true)
 		{
-			System.out.println("Voulez-vous modifier les noms de Joueur 1 et Joueur 2 (O/N)");
-			String choix = scanner.nextLine();
-
-			if ("N".equals(choix))
+			String reponse = JOptionPane.showInputDialog(null, "Voulez-vous modifier les noms de Joueur 1 et Joueur 2 (O/N)", "Modification nom des joueurs", JOptionPane.QUESTION_MESSAGE);
+			if ("N".equals(reponse))
 				return JOUEURS_PAR_DEFAUT;
 
-			if ("O".equals(choix))
+			if ("O".equals(reponse))
 			{
 				while (true)
 				{
-					System.out.println("Veuillez entrer le nom du joueur 1 : ");
-					String namePlayer1 = scanner.nextLine();
-					System.out.println("Veuillez entrer le nom du joueur 2 : ");
-					String namePlayer2 = scanner.nextLine();
+					String joueur1 = JOptionPane.showInputDialog(null, "Veuillez entrer le nom du joueur 1", "Modification nom des joueurs", JOptionPane.QUESTION_MESSAGE);
+					String joueur2 = JOptionPane.showInputDialog(null, "Veuillez entrer le nom du joueur 2", "Modification nom des joueurs", JOptionPane.QUESTION_MESSAGE);
 
-					if (namePlayer1.equals(namePlayer2))
-						System.out.println("Veuillez saisir des noms différents.\n");
+					if (joueur1.equals(joueur2))
+						JOptionPane.showInputDialog(null, "Veuillez saisir des noms différents.", "Erreur", JOptionPane.ERROR_MESSAGE);
 					else
-						return new String[]{namePlayer1, namePlayer2};
+						return new String[]{joueur1, joueur2};
 				}
 			}
-			System.out.println("Veuillez saisir une lettre valide.\n");
+			JOptionPane.showInputDialog(null, "Veuillez saisir une lettre valide.", "Erreur", JOptionPane.ERROR_MESSAGE);
 		}
 	}
 	
-	public void choixCoordonnees()
+	/** Demande des coordonnées au joueur.
+	 * 
+	 * @return Un tableau contenant les choix du joueur.*/
+	public int[] choixCoordonnees()
 	{
-		String choixCoordonnee1 = JOptionPane.showInputDialog(null, "ID de l'employé : ", "Consultation", JOptionPane.QUESTION_MESSAGE);
-		String choixCoordonnee2 = JOptionPane.showInputDialog(null, "Nom de l'employé : ", "Consultation", JOptionPane.QUESTION_MESSAGE);
+		String choixCoordonnee1, choixCoordonnee2;
+		int coordonnee1, coordonnee2;
+		
+		while (true)
+		{
+			try
+			{
+				choixCoordonnee1 = JOptionPane.showInputDialog(null, "Veuillez saisir la première coordonnée (entre 1 et 3 compris) : ", "Coordonnée 1", JOptionPane.QUESTION_MESSAGE);
+				if (choixCoordonnee1 == null)
+					throw new Exception();
+				coordonnee1 = Integer.parseInt(choixCoordonnee1);
+				
+				choixCoordonnee2 = JOptionPane.showInputDialog(null, "Veuillez saisir la deuxième coordonnée (entre 1 et 3 compris) : ", "Coordonnée 2", JOptionPane.QUESTION_MESSAGE);
+				if (choixCoordonnee2 == null)
+					throw new Exception();
+				coordonnee2 = Integer.parseInt(choixCoordonnee2);				
+ 				break;
+			}
+			catch (Exception e)
+			{
+				JOptionPane.showInputDialog(null, "Les valeurs saisies ne sont pas des entiers.", "Saisie invalide", JOptionPane.INFORMATION_MESSAGE);
+			}
+		}
+        
+        return new int[]{coordonnee1, coordonnee2};
 	}
+	
 	/** On affiche quel joueur doit jouer son coup.
 	 * 
 	 * @param unJoueur Un joueur. */
 	public void debuterUnTour(Joueurs unJoueur)
 	{
-		System.out.printf("\nC'est à %s de jouer (pion : %s)%n", unJoueur.obtenirNomCourant(), unJoueur.obtenirSymboleJoueur());
+		JOptionPane.showMessageDialog(null, "C'est à " + unJoueur.obtenirNomCourant() + " de jouer (pion : " + unJoueur.obtenirSymboleJoueur() + ")", "Joueur débutant", JOptionPane.INFORMATION_MESSAGE);
 	}
 	
 	/** Afficher le plateau de jeu courant.
@@ -77,12 +95,12 @@ public class VueIHM
 	 * @param vainqueur Contient le nom du vainqueur.*/
 	public void afficherVainqueur(final String vainqueur)
 	{
-		System.out.printf("La partie est remportée par %s%n", vainqueur);
+		JOptionPane.showMessageDialog(null, "La partie est remportée par " + vainqueur, "Victoire !", JOptionPane.INFORMATION_MESSAGE);
 	}
 	
 	/** Permet d'afficher une partie nulle. */
 	public void afficherPartieNulle()
 	{
-		System.out.println("\nPartie nulle. Il n'y a pas de vainqueur.");
+		JOptionPane.showInputDialog(null, "Partie nulle. Il n'y a pas de vainqueur.", "Partie nulle", JOptionPane.INFORMATION_MESSAGE);
 	}
 }
