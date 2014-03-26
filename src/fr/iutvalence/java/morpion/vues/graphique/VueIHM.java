@@ -1,9 +1,9 @@
-package fr.iutvalence.java.morpion.vues;
+package fr.iutvalence.java.morpion.vues.graphique;
 
 import javax.swing.JOptionPane;
 
-import fr.iutvalence.java.morpion.Joueurs;
-import fr.iutvalence.java.morpion.PlateauJeu;
+import fr.iutvalence.java.morpion.modele.Joueurs;
+import fr.iutvalence.java.morpion.modele.PlateauJeu;
 
 /** Modélisation d'une vue.
  * 

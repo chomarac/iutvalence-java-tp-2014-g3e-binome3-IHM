@@ -1,7 +1,9 @@
 package fr.iutvalence.java.morpion;
 
-import fr.iutvalence.java.morpion.erreur.CoordonneesDejaPriseException;
-import fr.iutvalence.java.morpion.erreur.MauvaiseCoordonneesException;
+import fr.iutvalence.java.morpion.modele.Joueurs;
+import fr.iutvalence.java.morpion.modele.erreur.CoordonneesDejaPriseException;
+import fr.iutvalence.java.morpion.modele.erreur.MauvaiseCoordonneesException;
+import fr.iutvalence.java.morpion.modele.PlateauJeu;
 import fr.iutvalence.java.morpion.vues.VueConsole;
 
 /** Modélisation du fonctionnement d'une partie.
@@ -18,8 +20,7 @@ public class Controleur
     private final Joueurs joueurs;
 
     /** Création du controleur de la partie. */
-    public Controleur()
-    {
+    public Controleur() {
         this.plateau = new PlateauJeu();
         this.vue = new VueConsole();
         this.joueurs = new Joueurs(this.vue.demanderNomsJoueurs());
@@ -28,8 +29,7 @@ public class Controleur
     /** Jouer une partie.
      *
      * @return true si le joueur veut rejouer une partie, false sinon. */
-    public boolean nouvellePartie()
-    {
+    public boolean nouvellePartie() {
         if (this.partie(this.plateau))
             this.vue.afficherVainqueur(this.joueurs.obtenirNomCourant());
         else this.vue.afficherPartieNulle();

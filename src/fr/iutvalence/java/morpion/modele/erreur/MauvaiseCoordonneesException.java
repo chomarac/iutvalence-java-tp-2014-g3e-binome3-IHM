@@ -1,4 +1,4 @@
-package fr.iutvalence.java.morpion.erreur;
+package fr.iutvalence.java.morpion.modele.erreur;
 
 /** Permet de soulever une exception lorsque les coordonnées saisies sont invalides.
  *

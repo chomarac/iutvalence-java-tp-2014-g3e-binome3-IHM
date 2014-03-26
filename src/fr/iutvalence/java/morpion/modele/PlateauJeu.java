@@ -1,7 +1,7 @@
-package fr.iutvalence.java.morpion;
+package fr.iutvalence.java.morpion.modele;
 
-import fr.iutvalence.java.morpion.erreur.CoordonneesDejaPriseException;
-import fr.iutvalence.java.morpion.erreur.MauvaiseCoordonneesException;
+import fr.iutvalence.java.morpion.modele.erreur.CoordonneesDejaPriseException;
+import fr.iutvalence.java.morpion.modele.erreur.MauvaiseCoordonneesException;
 
 /** Modélisation d'un plateau du jeu.
  * <p>

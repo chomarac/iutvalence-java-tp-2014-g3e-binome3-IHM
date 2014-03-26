@@ -1,4 +1,4 @@
-package fr.iutvalence.java.morpion;
+package fr.iutvalence.java.morpion.modele;
 
 /** Modélisation d'un joueur par son nom et sa signature.
  * 

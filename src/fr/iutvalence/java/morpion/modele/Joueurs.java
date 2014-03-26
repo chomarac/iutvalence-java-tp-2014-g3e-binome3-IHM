@@ -1,4 +1,4 @@
-package fr.iutvalence.java.morpion;
+package fr.iutvalence.java.morpion.modele;
 
 import java.security.SecureRandom;
 

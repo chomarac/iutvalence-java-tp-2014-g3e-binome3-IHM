@@ -1,19 +1,18 @@
-package fr.iutvalence.java.morpion.vue.graphique;
+package fr.iutvalence.java.morpion.vues.graphique;
 
-import java.awt.Color;
+import fr.iutvalence.java.morpion.vues.graphique.boutons.BoutonAProposDe;
+import fr.iutvalence.java.morpion.vues.graphique.boutons.BoutonHistoriqueDesScores;
+import fr.iutvalence.java.morpion.vues.graphique.boutons.BoutonJouer;
+import fr.iutvalence.java.morpion.vues.graphique.boutons.BoutonQuitter;
+import fr.iutvalence.java.morpion.vues.graphique.boutons.BoutonReglesDuJeu;
+import fr.iutvalence.java.morpion.vues.graphique.boutons.BoutonVersion;
 
 import javax.swing.JFrame;
 import javax.swing.JMenu;
 import javax.swing.JMenuBar;
 import javax.swing.JMenuItem;
 import javax.swing.JPanel;
-
-import fr.iutvalence.java.morpion.vue.graphique.boutons.BoutonAProposDe;
-import fr.iutvalence.java.morpion.vue.graphique.boutons.BoutonHistoriqueDesScores;
-import fr.iutvalence.java.morpion.vue.graphique.boutons.BoutonJouer;
-import fr.iutvalence.java.morpion.vue.graphique.boutons.BoutonQuitter;
-import fr.iutvalence.java.morpion.vue.graphique.boutons.BoutonReglesDuJeu;
-import fr.iutvalence.java.morpion.vue.graphique.boutons.BoutonVersion;
+import java.awt.Color;
 
 /** Modélisation d'une fenêtre graphique
  * 
