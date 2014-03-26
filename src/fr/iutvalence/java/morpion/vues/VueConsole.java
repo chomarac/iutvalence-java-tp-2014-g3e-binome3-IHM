@@ -1,7 +1,7 @@
-/* TODO Nous avons ajouté une nouvelle vue d'ou le changement. */
 package fr.iutvalence.java.morpion.vues;
 
 import java.io.BufferedReader;
+import java.io.IOException;
 import java.io.InputStreamReader;
 import java.util.Scanner;
 
@@ -14,7 +14,6 @@ public class VueConsole
 	/** Noms par défaut des différents joueurs. */
     private static final String[] JOUEURS_PAR_DEFAUT = {"Joueur 1", "Joueur 2"};
 
-    /* TODO Pourquoi ce BufferedReader ? */
     /** Flux d'entré au clavier dans la console. */
     private BufferedReader entreeConsole;
 
@@ -29,6 +28,7 @@ public class VueConsole
      * @return Un tableau contenant les noms des joueurs. */
     public String[] demanderNomsJoueurs()
     {
+        // TODO Scanner -> entreeConsole
         final Scanner scanner = new Scanner(System.in);
 
         while (true)
@@ -87,29 +87,30 @@ public class VueConsole
 			{
 				System.out.print("Veuillez saisir la première coordonnée (entre 1 et 3 compris) : ");
 				ligne = this.entreeConsole.readLine();
-				
-				if (ligne == null)
-                    /* TODO À proscrire complétement ! Très mauvaise pratique de lever Exception directement ! */
-                    throw new Exception();
-         
-                /* TODO Pourquoi pas nextInt directement ? */
+				if (ligne == null) {
+                    // Indique une fermeture de l'entrée standard. Sans doute une fin de partie brutale.
+                    throw new IOException("ligne == null");
+                }
 				choix1 = Integer.parseInt(ligne);
 
 				System.out.print("Veuillez saisir la deuxième coordonnée (entre 1 et 3 compris) : ");
 				ligne = this.entreeConsole.readLine();
-				if (ligne == null)
-                    /* TODO À proscrire complétement ! Très mauvaise pratique de lever Exception directement ! */
-                    throw new Exception();
-                
-                /* TODO Pourquoi pas nextInt directement ? */
+                if (ligne == null) {
+                    // Indique une fermeture de l'entrée standard. Sans doute une fin de partie brutale.
+                    throw new IOException("ligne == null");
+                }
                 choix2 = Integer.parseInt(ligne);
  				break;
 			}
-			catch (Exception e)
-			{
+            catch (NumberFormatException e) {
 				System.out.println("Les valeurs saisies ne sont pas des entiers.\n\n");
 			}
-		}
+            catch (IOException e) {
+                /* TODO À reprendre mieux. Peut-être propager au dessus pour que le contrôleur ferme tout correctement. */
+                System.out.println("Fin de la partie demandée…");
+                System.exit(-1);
+            }
+        }
 
         return new int[]{choix1, choix2};
 	}
@@ -133,7 +134,7 @@ public class VueConsole
 	 * @return true si le joueur veut rejouer une partie, false sinon. */
 	public boolean choixRejouer()
 	{
-        /* TODO Aileurs vous utilisez le BufferedReader et ici le Scanner directement ??? */
+        /* TODO Scanner -> entreeConsole */
         Scanner choixDePoursuite = new Scanner(System.in);
         while (true)
 		{		

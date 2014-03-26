@@ -10,15 +10,10 @@ import fr.iutvalence.java.morpion.vues.VueConsole;
  * @version 2.0.0 */
 public class Controleur
 {
-
-
     /** Un plateau de jeu. */
     private final PlateauJeu plateau;
-
-    /* TODO Qu'entendez vous par interface ? */
     /** Une vue. */
     private final VueConsole vue;
-
     /** Joueurs. */
     private final Joueurs joueurs;
 
@@ -48,9 +43,7 @@ public class Controleur
      * @return True si la partie est gagné et false si la partie est nulle. */
     private boolean partie(PlateauJeu plateau) 
     {
-        int compteurDeTour = 0;
-
-        while (compteurDeTour < this.plateau.obtenirNombreDeToursMax())
+        while (plateau.coupPossible())
         {
         	this.vue.debuterUnTour(this.joueurs.obtenirNomCourant(), this.joueurs.obtenirSymboleJoueur());
             this.vue.afficherPlateauCourant(this.plateau.toString());
@@ -65,7 +58,6 @@ public class Controleur
                     return true;
                 }
                 this.joueurs.joueurSuivant();
-                compteurDeTour += 1;
             }
             catch (CoordonneesDejaPriseException ignored)
             {

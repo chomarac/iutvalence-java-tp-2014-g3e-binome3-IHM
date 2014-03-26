@@ -16,55 +16,42 @@ import fr.iutvalence.java.morpion.erreur.MauvaiseCoordonneesException;
  * @version 1.0 */
 public class PlateauJeu 
 {
-
+    /** La signature unique du joueur 1. */
+    public static final int    SIGNATURE_JOUEUR_1 = 5;
+    /** La signature unique du joueur 2. */
+    public static final int    SIGNATURE_JOUEUR_2 = -SIGNATURE_JOUEUR_1;
+    /** Le symbole correspondant au joueur 1. */
+    public static final String SYMBOLE_JOUEUR_1   = "X";
+    /** Le symbole correspondant au joueur 2. */
+    public static final String SYMBOLE_JOUEUR_2   = "O";
     /** Constante du nombres de lignes. */
-    private static final int NOMBRE_DE_COLONNES = 5;
-
+    private static final int   NOMBRE_DE_COLONNES = 5;
     /** Constante du nombres de colonnes. */
-    private static final int NOMBRE_DE_LIGNES = 5;
-    
-	/** Le nombre de tour maximum pour une partie. */
-    private final int NOMBREMAXDETOUR = 9;
-
+    private static final int   NOMBRE_DE_LIGNES   = 5;
+    /** Le nombre de tour maximum pour une partie. */
+    private static final int   NOMBRE_MAX_DE_TOUR = 9;
     /** Plateau de jeu. */
     private final int[][] plateauDeJeu;
-    
-    /** Le nombre de tour maximum pour une partie de morpion. */
-    private final int nombreDeTours;
-    
-    /** La signature unique du joueur 1. */
-    public static final int SIGNATURE_JOUEUR1 = 5;
-    
-    /** La signature unique du joueur 2. */
-    public static final int SIGNATURE_JOUEUR2 = - SIGNATURE_JOUEUR1;
-    
-    /** Le symbole correspondant au joueur 1. */
-    public static final String SYMBOLE_JOUEUR_1 = "X";
-    
-    /** Le symbole correspondant au joueur 2. */
-    public static final String SYMBOLE_JOUEUR_2 = "O";
+    /** Le nombre de tour actuel. */
+    private       int     nombreDeTours;
 
     /** Constructeur d'un plateau de jeu. */
-    public PlateauJeu()
-    {
-    	//On retourne un nouveau plateau de jeu avec des composantes prédéfinies
+    public PlateauJeu() {
+        //On retourne un nouveau plateau de jeu avec des composantes prédéfinies
         this.plateauDeJeu = new int[PlateauJeu.NOMBRE_DE_LIGNES][PlateauJeu.NOMBRE_DE_COLONNES];
-        this.nombreDeTours = this.NOMBREMAXDETOUR;
+        this.nombreDeTours = 0;
     }
-    
-    /** Obtenir le nombre maximum de tours pour une partie de morpion.
-     * 
-     * @return Le nombre de tours. */
-    public int obtenirNombreDeToursMax()
-    {
-    	return this.nombreDeTours;
+
+    /** Indique si la grille est remplie (et donc le match nul). */
+    public boolean coupPossible() {
+        return this.nombreDeTours < NOMBRE_MAX_DE_TOUR;
     }
 
     /** Vérifier les coordonnées et la disponibilité.
      *
      * @param x La première coordonnée
      * @param y La deuxième coordonnée
-     * 
+     *
      * @throws CoordonneesDejaPriseException Si la case est déjà occupée
      * @throws MauvaiseCoordonneesException Si les coordonnées ne sont pas dans l'intervalle [1,3]
      */
@@ -81,29 +68,32 @@ public class PlateauJeu
 
     /** Modifier le plateau de jeu si le coup joué est valide.
      *
-     * @param signature La signature du joueur.
+     * @param pion Le pion à placer.
      * @param x La première coordonnée.
      * @param y La deuxième coordonnée.
      *
      * @return true si un joueur gagne, false sinon */
-    public boolean placerPion(int signature, int x, int y)
+    public boolean placerPion(int pion, int x, int y)
 	{
-		//On récupère les données liées au joueur courant
-		int victoire = 3 * signature;
+        //On incrémente le nombre de tours.
+        nombreDeTours++;
 
-		this.plateauDeJeu[x][y] = signature;
+		//On récupère les données liées au joueur courant
+		int victoire = 3 * pion;
+
+		this.plateauDeJeu[x][y] = pion;
 
 		//On calcul les lignes
-		this.plateauDeJeu[x][0] += signature;
-		this.plateauDeJeu[0][y] += signature;
+		this.plateauDeJeu[x][0] += pion;
+		this.plateauDeJeu[0][y] += pion;
 
 		//On calcul la première diagonale
 		if (x == y)
-            this.plateauDeJeu[0][0] += signature;
+            this.plateauDeJeu[0][0] += pion;
 
 		//On calcul la deuxième diagonale
 		if ((x + y) == 4)
-            this.plateauDeJeu[4][0] += signature;
+            this.plateauDeJeu[4][0] += pion;
 
         //On teste une éventuelle victoire
         return (this.plateauDeJeu[x][0] == victoire) || (this.plateauDeJeu[0][y] == victoire) || (this.plateauDeJeu[0][0] == victoire) || (this.plateauDeJeu[4][0] == victoire);
@@ -115,7 +105,7 @@ public class PlateauJeu
 	@Override
     public String toString()
 	{
-		StringBuilder plateauAsciiArt = new StringBuilder(21);
+		StringBuilder plateauAsciiArt = new StringBuilder(30);
 
 		for (int nombreDeLignes = 1 ; nombreDeLignes < 4; nombreDeLignes++)
 		{
@@ -123,11 +113,11 @@ public class PlateauJeu
 			{
 				switch (this.plateauDeJeu[nombreDeLignes][nombreDeColonnes])
 				{
-				case SIGNATURE_JOUEUR1:
-					plateauAsciiArt.append('X').append(' ');
+				case SIGNATURE_JOUEUR_1:
+					plateauAsciiArt.append(PlateauJeu.SYMBOLE_JOUEUR_1).append(' ');
 					break;
-				case SIGNATURE_JOUEUR2:
-					plateauAsciiArt.append('O').append(' ');
+				case SIGNATURE_JOUEUR_2:
+					plateauAsciiArt.append(PlateauJeu.SYMBOLE_JOUEUR_2).append(' ');
 					break;
 				default:
 					plateauAsciiArt.append('.').append(' ');

@@ -1,5 +1,7 @@
 package fr.iutvalence.java.morpion;
 
+import fr.iutvalence.java.morpion.vues.graphique.VueGraphique;
+
 /** Permet d'executer l'application.
  *
  * @author DELORME Loïc & BASSON Julien
@@ -10,11 +12,16 @@ public class Morpion {
      * @param args args.*/
     public static void main(String[] args)
     {
-        Controleur controleur;
-        
-        do
-        {
-            controleur = new Controleur();
-        } while (controleur.nouvellePartie());
+        if ((args.length > 0) && args[0].equals("--gui")) {
+            new VueGraphique();
+        }
+        else {
+            Controleur controleur;
+
+            do {
+                controleur = new Controleur();
+            }
+            while (controleur.nouvellePartie());
+        }
     }
 }

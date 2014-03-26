@@ -24,8 +24,8 @@ public final class Joueurs
     {
         assert joueurs.length == 2 : "Tentative de création d'un gestionnaire avec moins de deux joueurs";
 
-        this.joueur1 = new Joueur(joueurs[0], PlateauJeu.SIGNATURE_JOUEUR1);
-        this.joueur2 = new Joueur(joueurs[1], PlateauJeu.SIGNATURE_JOUEUR2);
+        this.joueur1 = new Joueur(joueurs[0], PlateauJeu.SIGNATURE_JOUEUR_1);
+        this.joueur2 = new Joueur(joueurs[1], PlateauJeu.SIGNATURE_JOUEUR_2);
         this.joueurCourant = new SecureRandom().nextBoolean() ? this.joueur1 : this.joueur2;
     }
 
@@ -57,6 +57,6 @@ public final class Joueurs
      */
     public String obtenirSymboleJoueur()
     {
-    	return (this.obtenirSignatureCourante() == PlateauJeu.SIGNATURE_JOUEUR1) ? PlateauJeu.SYMBOLE_JOUEUR_1 : PlateauJeu.SYMBOLE_JOUEUR_2;
+    	return (joueurCourant.equals(joueur1)) ? PlateauJeu.SYMBOLE_JOUEUR_1 : PlateauJeu.SYMBOLE_JOUEUR_2;
     }
 }
