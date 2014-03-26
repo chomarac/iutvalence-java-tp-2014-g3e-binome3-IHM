@@ -10,12 +10,14 @@ import fr.iutvalence.java.morpion.vues.VueConsole;
  * @version 2.0.0 */
 public class Controleur
 {
+    /* TODO Je persiste sur mon idée de déporter cela dans le modèle. */
 	/** Le nombre de tour maximum pour une partie. */
     private static final int NOMBREMAXDETOUR = 9;
 
     /** Un plateau de jeu. */
     private final PlateauJeu plateau;
 
+    /* TODO Toujours pas d'interface en vue ? */
     /** Une vue. */
     private final VueConsole vue;
 
@@ -49,13 +51,12 @@ public class Controleur
     private boolean partie(PlateauJeu plateau) 
     {
         int compteurDeTour = 0;
-        int tableauDesChoix[];
-        
+
         while (compteurDeTour < NOMBREMAXDETOUR)
         {
         	this.vue.debuterUnTour(this.joueurs);
             this.vue.afficherPlateauCourant(this.plateau);
-            tableauDesChoix = this.vue.demanderCoordonnees();
+            int[] tableauDesChoix = this.vue.demanderCoordonnees();
 
             try
             {

@@ -1,12 +1,13 @@
+/* TODO Pourquoi avoir changé le package que j'avais créé ? */
 package fr.iutvalence.java.morpion.vues;
-
-import java.util.Scanner;
-
-import javax.swing.JOptionPane;
 
 import fr.iutvalence.java.morpion.Joueurs;
 import fr.iutvalence.java.morpion.PlateauJeu;
 
+import javax.swing.JOptionPane;
+import java.util.Scanner;
+
+/* TODO À quoi sert cette classe ? */
 /** Modélisation d'une vue.
  * 
  * @author DELORME Loïc & BASSON Julien

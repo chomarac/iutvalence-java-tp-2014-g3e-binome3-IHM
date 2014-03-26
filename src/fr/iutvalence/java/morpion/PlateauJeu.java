@@ -58,6 +58,7 @@ public class PlateauJeu
             throw new CoordonneesDejaPriseException();
 	}
 
+    /* TODO Vous n'avez pas récupéré ma modification ? Ne mettez pas un Joueurs ici, c'est inutile. Mettez directement un pion */
     /**
      * Modifier le plateau de jeu si le coup joué est valide.
      *
