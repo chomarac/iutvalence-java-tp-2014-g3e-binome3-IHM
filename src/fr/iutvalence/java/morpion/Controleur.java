@@ -20,7 +20,8 @@ public class Controleur
     private final Joueurs joueurs;
 
     /** Création du controleur de la partie. */
-    public Controleur() {
+    public Controleur()
+    {
         this.plateau = new PlateauJeu();
         this.vue = new VueConsole();
         this.joueurs = new Joueurs(this.vue.demanderNomsJoueurs());

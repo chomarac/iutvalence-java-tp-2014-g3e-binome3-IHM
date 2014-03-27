@@ -1,4 +1,4 @@
-package fr.iutvalence.java.morpion.vues.graphique;
+package fr.iutvalence.java.morpion.vues;
 
 import javax.swing.JOptionPane;
 
@@ -45,7 +45,7 @@ public class VueIHM
 	/** Demande des coordonnées au joueur.
 	 * 
 	 * @return Un tableau contenant les choix du joueur.*/
-	public int[] choixCoordonnees()
+	public int[] demanderCoordonnees()
 	{
 		String choixCoordonnee1, choixCoordonnee2;
 		int coordonnee1, coordonnee2;
@@ -102,5 +102,17 @@ public class VueIHM
 	public void afficherPartieNulle()
 	{
 		JOptionPane.showInputDialog(null, "Partie nulle. Il n'y a pas de vainqueur.", "Partie nulle", JOptionPane.INFORMATION_MESSAGE);
+	}
+	
+	/** Les coordonnées ne sont pas comprises entre 1 et 3. */
+	public void mauvaisesCoordonnees()
+	{
+		System.out.println("\nLes coordonnées ne sont pas comprises entre 1 et 3.");
+	}
+
+	/** Les coordonnées sont déjà occupées. */
+	public void coordonneesDejaPrise()
+	{
+		System.out.println("\nLes coordonnées saisies sont déjà prises, veuillez en saisir des différentes.");
 	}
 }
