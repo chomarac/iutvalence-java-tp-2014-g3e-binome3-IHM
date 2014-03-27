@@ -61,13 +61,11 @@ public class Controleur
             }
             catch (CoordonneesDejaPriseException ignored)
             {
-                // TODO Derniers println mal placé
-                System.out.println("\nLes coordonnées saisies sont déjà prises, veuillez en saisir des différentes.");
+                this.vue.coordonneesDejaPrise();
             }
             catch (MauvaiseCoordonneesException ignored)
             {
-                // TODO Derniers println mal placé
-                System.out.println("\nLes coordonnées ne sont pas comprises entre 1 et 3.");
+                this.vue.mauvaisesCoordonnees();
             }
         }
         return false;
