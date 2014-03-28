@@ -49,6 +49,9 @@ public class PlateauJeu
 		// On retourne un nouveau plateau de jeu avec des composantes prédéfinies
 		this.plateauDeJeu = new int[PlateauJeu.NOMBRE_DE_LIGNES][PlateauJeu.NOMBRE_DE_COLONNES];
 		this.nombreDeTours = 0;
+		for (int nombreDeLigne = 0; nombreDeLigne < NOMBRE_DE_LIGNES; nombreDeLigne++)
+			for (int nombreDeColonne = 0; nombreDeColonne < NOMBRE_DE_COLONNES; nombreDeColonne++)
+				this.plateauDeJeu[nombreDeLigne][nombreDeColonne] = 0;
 	}
 
 	/** Indique si la grille est remplie (et donc le match nul).
