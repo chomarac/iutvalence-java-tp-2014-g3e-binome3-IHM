@@ -70,7 +70,8 @@ public class VueGraphique extends JFrame
 	private JMenuItem item3_3 = new JMenuItem("A propos de");
 	
 
-	/** Fenetre avec des composantes graphiques */
+	/** Fenetre avec des composantes graphiques 
+	 * @param unControleur Le controleur courant. */
 	public VueGraphique()
 	{
 		this.setTitle("Morpion");
@@ -120,7 +121,8 @@ public class VueGraphique extends JFrame
 		JButton Case8 = new JButton("8");
 		JButton Case9 = new JButton("9");
 		
-		Case1.addActionListener(new Case1());
+		Case1.setName("1/2");
+		Case1.addActionListener(new Case(Case1)));
 		Case2.addActionListener(new Case2());
 		Case3.addActionListener(new Case3());
 		Case4.addActionListener(new Case4());

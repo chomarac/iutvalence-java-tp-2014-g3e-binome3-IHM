@@ -1,5 +1,6 @@
 package fr.iutvalence.java.morpion;
 
+import fr.iutvalence.java.morpion.vues.graphique.Controleur2;
 import fr.iutvalence.java.morpion.vues.graphique.VueGraphique;
 
 /** Permet d'executer l'application.
@@ -29,6 +30,8 @@ public class Morpion
 			}
 			while (controleur.nouvellePartie());
 		}*/
+		//Controleur2 unControleur = new Controleur2();
+		
 		new VueGraphique();
 	}
 }

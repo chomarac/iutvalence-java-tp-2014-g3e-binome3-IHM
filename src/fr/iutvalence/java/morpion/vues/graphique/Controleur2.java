@@ -10,7 +10,7 @@ import fr.iutvalence.java.morpion.vues.VueConsole;
  *
  * @author DELORME Loïc & BASSON Julien
  * @version 2.0.0 */
-public class Controleur
+public class Controleur2
 {
     /** Un plateau de jeu. */
     private final PlateauJeu plateau;
@@ -20,7 +20,7 @@ public class Controleur
     private final Joueurs joueurs;
 
     /** Création du controleur de la partie. */
-    public Controleur()
+    public Controleur2()
     {
         this.plateau = new PlateauJeu();
         this.vue = new VueConsole();
@@ -71,4 +71,5 @@ public class Controleur
         }
         return false;
     }
+
 }
