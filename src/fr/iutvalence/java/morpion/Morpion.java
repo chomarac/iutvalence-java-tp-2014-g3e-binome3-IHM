@@ -15,7 +15,7 @@ public class Morpion
 	 *            args. */
 	public static void main(String[] args)
 	{
-		if ((args.length > 0) && args[0].equals("--gui"))
+		/*if ((args.length > 0) && args[0].equals("--gui"))
 		{
 			new VueGraphique();
 		}
@@ -28,6 +28,7 @@ public class Morpion
 				controleur = new Controleur();
 			}
 			while (controleur.nouvellePartie());
-		}
+		}*/
+		new VueGraphique();
 	}
 }

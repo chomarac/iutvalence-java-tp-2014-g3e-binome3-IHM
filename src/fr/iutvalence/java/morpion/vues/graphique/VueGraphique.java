@@ -6,13 +6,25 @@ import fr.iutvalence.java.morpion.vues.graphique.boutons.BoutonJouer;
 import fr.iutvalence.java.morpion.vues.graphique.boutons.BoutonQuitter;
 import fr.iutvalence.java.morpion.vues.graphique.boutons.BoutonReglesDuJeu;
 import fr.iutvalence.java.morpion.vues.graphique.boutons.BoutonVersion;
+import fr.iutvalence.java.morpion.vues.graphique.boutons.Case1;
+import fr.iutvalence.java.morpion.vues.graphique.boutons.Case2;
+import fr.iutvalence.java.morpion.vues.graphique.boutons.Case3;
+import fr.iutvalence.java.morpion.vues.graphique.boutons.Case4;
+import fr.iutvalence.java.morpion.vues.graphique.boutons.Case5;
+import fr.iutvalence.java.morpion.vues.graphique.boutons.Case6;
+import fr.iutvalence.java.morpion.vues.graphique.boutons.Case7;
+import fr.iutvalence.java.morpion.vues.graphique.boutons.Case8;
+import fr.iutvalence.java.morpion.vues.graphique.boutons.Case9;
 
+import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JMenu;
 import javax.swing.JMenuBar;
 import javax.swing.JMenuItem;
 import javax.swing.JPanel;
+
 import java.awt.Color;
+import java.awt.GridLayout;
 
 /** Modélisation d'une fenêtre graphique
  * 
@@ -97,7 +109,38 @@ public class VueGraphique extends JFrame
 
 		// On l'ajoute à la fenêtre
 		this.setJMenuBar(this.barreDeMenu);
-
+		
+		JButton Case1 = new JButton("1");
+		JButton Case2 = new JButton("2");
+		JButton Case3 = new JButton("3");
+		JButton Case4 = new JButton("4");
+		JButton Case5 = new JButton("5");
+		JButton Case6 = new JButton("6");
+		JButton Case7 = new JButton("7");
+		JButton Case8 = new JButton("8");
+		JButton Case9 = new JButton("9");
+		
+		Case1.addActionListener(new Case1());
+		Case2.addActionListener(new Case2());
+		Case3.addActionListener(new Case3());
+		Case4.addActionListener(new Case4());
+		Case5.addActionListener(new Case5());
+		Case6.addActionListener(new Case6());
+		Case7.addActionListener(new Case7());
+		Case8.addActionListener(new Case8());
+		Case9.addActionListener(new Case9());
+		
+		unTableau.setLayout(new GridLayout(3,3));
+		unTableau.add(Case1);
+		unTableau.add(Case2);
+		unTableau.add(Case3);
+		unTableau.add(Case4);
+		unTableau.add(Case5);
+		unTableau.add(Case6);
+		unTableau.add(Case7);
+		unTableau.add(Case8);
+		unTableau.add(Case9);
+		
 		unTableau.setBackground(Color.WHITE);
 		this.setContentPane(unTableau);
 		this.setVisible(true);

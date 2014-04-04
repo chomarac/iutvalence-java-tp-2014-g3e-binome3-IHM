@@ -11,10 +11,7 @@ public class BoutonQuitter implements ActionListener
 	@Override
 	public void actionPerformed(ActionEvent e)
 	{
-		JOptionPane.showMessageDialog(null, "-------------------------------------------------\n"
-										  + "-- Développé par Delorme Loïc et Basson Julien --\n"
-										  + "--- Merci à Anthony Gelibert pour son aide ! ----\n"
-										  + "-------------------------------------------------",
+		JOptionPane.showMessageDialog(null, "Merci d'avoir joué ! ;)",
 										  "Remerciements", JOptionPane.INFORMATION_MESSAGE);
 		System.exit(0);
 	}

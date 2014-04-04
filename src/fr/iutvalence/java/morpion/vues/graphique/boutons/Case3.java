@@ -3,17 +3,13 @@ package fr.iutvalence.java.morpion.vues.graphique.boutons;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
-/**
- * @author delormel
- *
- */
-public class BoutonHistoriqueDesScores implements ActionListener
-{
+public class Case3 implements ActionListener {
 
 	@Override
 	public void actionPerformed(ActionEvent e)
 	{
-		// A venir..
+		System.out.println("3");
+
 	}
 
 }
