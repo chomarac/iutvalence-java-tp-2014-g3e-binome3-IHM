@@ -37,7 +37,7 @@ public class VueGraphique extends JFrame
 		
 		/** La coordonnée en y sur la grille. */
 		private final int y;
-
+		
 		/**
 		 * Modélisation d'une case avec plusieurs paramètres.
 		 * 
@@ -48,7 +48,7 @@ public class VueGraphique extends JFrame
 		public Case(String nom, int x, int y)
 		{
 			super(nom);
-			
+			this.addActionListener(this);
 			this.x = x;
 			this.y = y;
 		}
