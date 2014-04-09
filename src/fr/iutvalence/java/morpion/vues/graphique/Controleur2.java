@@ -1,10 +1,11 @@
 package fr.iutvalence.java.morpion.vues.graphique;
 
+import javax.swing.JOptionPane;
+
 import fr.iutvalence.java.morpion.modele.Joueurs;
 import fr.iutvalence.java.morpion.modele.erreur.CoordonneesDejaPriseException;
 import fr.iutvalence.java.morpion.modele.erreur.MauvaiseCoordonneesException;
 import fr.iutvalence.java.morpion.modele.PlateauJeu;
-import fr.iutvalence.java.morpion.vues.VueConsole;
 
 /** Modélisation du fonctionnement d'une partie.
  *
@@ -14,62 +15,40 @@ public class Controleur2
 {
     /** Un plateau de jeu. */
     private final PlateauJeu plateau;
-    /** Une vue. */
-    private final VueConsole vue;
+
     /** Joueurs. */
     private final Joueurs joueurs;
+    
+    /** Noms par défaut des différents joueurs. */
+	private static final String[] JOUEURS_PAR_DEFAUT = { "Joueur 1", "Joueur 2" };
 
     /** Création du controleur de la partie. */
     public Controleur2()
     {
         this.plateau = new PlateauJeu();
-        this.vue = new VueConsole();
-        this.joueurs = new Joueurs(this.vue.demanderNomsJoueurs());
+        this.joueurs = new Joueurs(JOUEURS_PAR_DEFAUT);
     }
-
-    /** Jouer une partie.
-     *
-     * @return true si le joueur veut rejouer une partie, false sinon. */
-    public boolean nouvellePartie() {
-        if (this.partie(this.plateau))
-            this.vue.afficherVainqueur(this.joueurs.obtenirNomCourant());
-        else this.vue.afficherPartieNulle();
-
-        return this.vue.choixRejouer();
-    }
-
-    /** Permet de jouer une partie.
-     *
-     * @param plateau Le plateau de jeu courant.
-     * @return True si la partie est gagné et false si la partie est nulle. */
-    private boolean partie(PlateauJeu plateau) 
+    
+    public void placerPion(int x, int y)
     {
-        while (plateau.coupPossible())
+    	try
         {
-        	this.vue.debuterUnTour(this.joueurs.obtenirNomCourant(), this.joueurs.obtenirSymboleJoueur());
-            this.vue.afficherPlateauCourant(this.plateau.toString());
-            int[] tableauDesChoix = this.vue.demanderCoordonnees();
-
-            try
-            {
-                plateau.estCoupValide(tableauDesChoix[0], tableauDesChoix[1]);
-                if (plateau.placerPion(this.joueurs.obtenirSignatureCourante(), tableauDesChoix[0], tableauDesChoix[1]))
-                {
-                	this.vue.afficherPlateauCourant(this.plateau.toString());
-                    return true;
-                }
-                this.joueurs.joueurSuivant();
-            }
-            catch (CoordonneesDejaPriseException ignored)
-            {
-                this.vue.coordonneesDejaPrise();
-            }
-            catch (MauvaiseCoordonneesException ignored)
-            {
-                this.vue.mauvaisesCoordonnees();
-            }
+            this.plateau.estCoupValide(x, y);
+            if (this.plateau.placerPion(this.joueurs.obtenirSignatureCourante(), x, y))
+            	JOptionPane.showMessageDialog(null, "Partie gagné !", "Fin de la partie.", JOptionPane.INFORMATION_MESSAGE);
+            this.joueurs.joueurSuivant();
+            
+            if (!(this.plateau.coupPossible()))
+            	JOptionPane.showMessageDialog(null, "Partie nulle !", "Fin de la partie.", JOptionPane.INFORMATION_MESSAGE);
         }
-        return false;
+        catch (final CoordonneesDejaPriseException ignored)
+        {
+            //
+        }
+        catch (final MauvaiseCoordonneesException ignored)
+        {
+            //
+        }
     }
 
 }

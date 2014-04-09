@@ -48,7 +48,7 @@ public class Controleur
         {
         	this.vue.debuterUnTour(this.joueurs.obtenirNomCourant(), this.joueurs.obtenirSymboleJoueur());
             this.vue.afficherPlateauCourant(this.plateau.toString());
-            int[] tableauDesChoix = this.vue.demanderCoordonnees();
+            final int[] tableauDesChoix = this.vue.demanderCoordonnees();
 
             try
             {
@@ -60,11 +60,11 @@ public class Controleur
                 }
                 this.joueurs.joueurSuivant();
             }
-            catch (CoordonneesDejaPriseException ignored)
+            catch (final CoordonneesDejaPriseException ignored)
             {
                 this.vue.coordonneesDejaPrise();
             }
-            catch (MauvaiseCoordonneesException ignored)
+            catch (final MauvaiseCoordonneesException ignored)
             {
                 this.vue.mauvaisesCoordonnees();
             }

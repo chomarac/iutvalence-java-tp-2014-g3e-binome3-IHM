@@ -6,15 +6,6 @@ import fr.iutvalence.java.morpion.vues.graphique.boutons.BoutonJouer;
 import fr.iutvalence.java.morpion.vues.graphique.boutons.BoutonQuitter;
 import fr.iutvalence.java.morpion.vues.graphique.boutons.BoutonReglesDuJeu;
 import fr.iutvalence.java.morpion.vues.graphique.boutons.BoutonVersion;
-import fr.iutvalence.java.morpion.vues.graphique.boutons.Case1;
-import fr.iutvalence.java.morpion.vues.graphique.boutons.Case2;
-import fr.iutvalence.java.morpion.vues.graphique.boutons.Case3;
-import fr.iutvalence.java.morpion.vues.graphique.boutons.Case4;
-import fr.iutvalence.java.morpion.vues.graphique.boutons.Case5;
-import fr.iutvalence.java.morpion.vues.graphique.boutons.Case6;
-import fr.iutvalence.java.morpion.vues.graphique.boutons.Case7;
-import fr.iutvalence.java.morpion.vues.graphique.boutons.Case8;
-import fr.iutvalence.java.morpion.vues.graphique.boutons.Case9;
 
 import javax.swing.JButton;
 import javax.swing.JFrame;
@@ -25,23 +16,60 @@ import javax.swing.JPanel;
 
 import java.awt.Color;
 import java.awt.GridLayout;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 
 /** Modélisation d'une fenêtre graphique
  * 
  * @author DELORME Loïc & BASSON Julien
  * @version 1.0
  * */
-public class VueGraphique extends JFrame
+public class VueGraphique extends JFrame                                                                  
 {
+	/** Modélisation d'une case. */
+	private final class Case extends JButton implements ActionListener
+	{
+		/** Utilisé pour sérialiser. */
+		private static final long serialVersionUID = 1L;
+		
+		/** La coordonnée en x sur la grille. */
+		private final int x;
+		
+		/** La coordonnée en y sur la grille. */
+		private final int y;
+
+		/**
+		 * Modélisation d'une case avec plusieurs paramètres.
+		 * 
+		 * @param nom Le nom de la case.
+		 * @param x La coordonnée en x sur la grille.
+		 * @param y La coordonnée en y sur la grille.
+		 */
+		public Case(String nom, int x, int y)
+		{
+			super(nom);
+			
+			this.x = x;
+			this.y = y;
+		}
+
+		@Override
+		public void actionPerformed(ActionEvent e)
+		{
+			VueGraphique.this.unControleur.placerPion(x, y);
+			System.out.println(x + "," + y);
+		}
+	}
+
 	/** ??? */
 	private static final long serialVersionUID = 1L;
 
 	/** Un objet qui contiendra toutes les informations à afficher */
-	public final static JPanel unTableau = new JPanel();
+	public static final JPanel unTableau = new JPanel();
 
 	/** Définition de la barre de menu */
 	private JMenuBar barreDeMenu = new JMenuBar();
-
+					 
 	/** Premier menu principal : Partie */
 	private JMenu menu1 = new JMenu("Partie");
 
@@ -69,11 +97,14 @@ public class VueGraphique extends JFrame
 	/** Troisième menu principal : A propos */
 	private JMenuItem item3_3 = new JMenuItem("A propos de");
 	
-
-	/** Fenetre avec des composantes graphiques 
-	 * @param unControleur Le controleur courant. */
+	/** Un controleur. */
+	private Controleur2 unControleur;
+	
+	/** Modélisation de la fenêtre graphique. */
 	public VueGraphique()
 	{
+		this.unControleur = new Controleur2();
+		
 		this.setTitle("Morpion");
 		this.setSize(400, 400);
 		this.setResizable(false);
@@ -111,41 +142,19 @@ public class VueGraphique extends JFrame
 		// On l'ajoute à la fenêtre
 		this.setJMenuBar(this.barreDeMenu);
 		
-		JButton Case1 = new JButton("1");
-		JButton Case2 = new JButton("2");
-		JButton Case3 = new JButton("3");
-		JButton Case4 = new JButton("4");
-		JButton Case5 = new JButton("5");
-		JButton Case6 = new JButton("6");
-		JButton Case7 = new JButton("7");
-		JButton Case8 = new JButton("8");
-		JButton Case9 = new JButton("9");
-		
-		Case1.setName("1/2");
-		Case1.addActionListener(new Case(Case1)));
-		Case2.addActionListener(new Case2());
-		Case3.addActionListener(new Case3());
-		Case4.addActionListener(new Case4());
-		Case5.addActionListener(new Case5());
-		Case6.addActionListener(new Case6());
-		Case7.addActionListener(new Case7());
-		Case8.addActionListener(new Case8());
-		Case9.addActionListener(new Case9());
-		
 		unTableau.setLayout(new GridLayout(3,3));
-		unTableau.add(Case1);
-		unTableau.add(Case2);
-		unTableau.add(Case3);
-		unTableau.add(Case4);
-		unTableau.add(Case5);
-		unTableau.add(Case6);
-		unTableau.add(Case7);
-		unTableau.add(Case8);
-		unTableau.add(Case9);
+		unTableau.add(new Case("1",1,1));
+		unTableau.add(new Case("2",1,2));
+		unTableau.add(new Case("3",1,3));
+		unTableau.add(new Case("4",2,1));
+		unTableau.add(new Case("5",2,2));
+		unTableau.add(new Case("6",2,3));
+		unTableau.add(new Case("7",3,1));
+		unTableau.add(new Case("8",3,2));
+		unTableau.add(new Case("9",1,1));
 		
 		unTableau.setBackground(Color.WHITE);
 		this.setContentPane(unTableau);
 		this.setVisible(true);
 	}
-
 }
