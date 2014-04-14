@@ -29,6 +29,11 @@ public class Controleur2
         this.joueurs = new Joueurs(JOUEURS_PAR_DEFAUT);
     }
     
+    /** Tentative de placer un pion sur le plateau.
+     * 
+     * @param x La coordonnée en X.
+     * @param y La coordonnée en Y.
+     */
     public void placerPion(int x, int y)
     {
     	try
@@ -41,14 +46,13 @@ public class Controleur2
             if (!(this.plateau.coupPossible()))
             	JOptionPane.showMessageDialog(null, "Partie nulle !", "Fin de la partie.", JOptionPane.INFORMATION_MESSAGE);
         }
-        catch (final CoordonneesDejaPriseException ignored)
+        catch (CoordonneesDejaPriseException ignored)
         {
             //
         }
-        catch (final MauvaiseCoordonneesException ignored)
+        catch (MauvaiseCoordonneesException ignored)
         {
             //
         }
     }
-
 }

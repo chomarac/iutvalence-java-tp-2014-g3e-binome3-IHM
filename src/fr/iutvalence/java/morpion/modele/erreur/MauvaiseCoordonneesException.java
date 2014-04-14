@@ -6,6 +6,6 @@ package fr.iutvalence.java.morpion.modele.erreur;
  * @version 1.0 */
 public class MauvaiseCoordonneesException extends Exception
 {
-    /** Serial version UID (used for serialization). */
+    /** Utilisé pour serialiser. */
     private static final long serialVersionUID = 1L;
 }

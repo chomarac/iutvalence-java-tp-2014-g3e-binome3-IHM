@@ -4,7 +4,8 @@ package fr.iutvalence.java.morpion.modele.erreur;
  *
  * @author DELORME Loïc & BASSON Julien
  * @version 1.0 */
-public class CoordonneesDejaPriseException extends Exception {
-    /** Serial version UID (used for serialization). */
+public class CoordonneesDejaPriseException extends Exception
+{
+    /** Utilisé pour serialiser. */
     private static final long serialVersionUID = 1L;
 }

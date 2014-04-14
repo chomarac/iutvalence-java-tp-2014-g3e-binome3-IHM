@@ -56,12 +56,12 @@ public class VueGraphique extends JFrame
 		@Override
 		public void actionPerformed(ActionEvent e)
 		{
-			VueGraphique.this.unControleur.placerPion(x, y);
-			System.out.println(x + "," + y);
+			VueGraphique.this.unControleur.placerPion(this.x, this.y);
+			
 		}
 	}
 
-	/** ??? */
+	/** Utilisé pour serialiser. */
 	private static final long serialVersionUID = 1L;
 
 	/** Un objet qui contiendra toutes les informations à afficher */
