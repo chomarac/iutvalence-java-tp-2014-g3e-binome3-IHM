@@ -18,6 +18,7 @@ public class Morpion
 	{
 		if ((args.length > 0) && args[0].equals("--gui"))
 		{
+			/* Attention : l'interface graphique n'est pas encore aboutie. */
 			new VueGraphique();
 		}
 		else
