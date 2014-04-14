@@ -1,4 +1,4 @@
-package fr.iutvalence.java.morpion.vues.graphique;
+package fr.iutvalence.java.morpion.controleurs;
 
 import javax.swing.JOptionPane;
 

@@ -1,5 +1,6 @@
 package fr.iutvalence.java.morpion.vues.graphique;
 
+import fr.iutvalence.java.morpion.controleurs.ControleurGraphique;
 import fr.iutvalence.java.morpion.vues.graphique.boutons.BoutonAProposDe;
 import fr.iutvalence.java.morpion.vues.graphique.boutons.BoutonHistoriqueDesScores;
 import fr.iutvalence.java.morpion.vues.graphique.boutons.BoutonJouer;

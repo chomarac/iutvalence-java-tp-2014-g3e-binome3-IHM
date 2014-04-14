@@ -1,5 +1,6 @@
 package fr.iutvalence.java.morpion;
 
+import fr.iutvalence.java.morpion.controleurs.ControleurConsole;
 import fr.iutvalence.java.morpion.vues.graphique.VueGraphique;
 
 /** Permet d'executer l'application.

@@ -1,4 +1,4 @@
-package fr.iutvalence.java.morpion;
+package fr.iutvalence.java.morpion.controleurs;
 
 import fr.iutvalence.java.morpion.modele.Joueurs;
 import fr.iutvalence.java.morpion.modele.PlateauJeu;
