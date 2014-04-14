@@ -1,15 +1,17 @@
 package fr.iutvalence.java.morpion;
 
 import fr.iutvalence.java.morpion.modele.Joueurs;
+import fr.iutvalence.java.morpion.modele.PlateauJeu;
 import fr.iutvalence.java.morpion.modele.erreur.CoordonneesDejaPriseException;
 import fr.iutvalence.java.morpion.modele.erreur.MauvaiseCoordonneesException;
-import fr.iutvalence.java.morpion.modele.PlateauJeu;
 import fr.iutvalence.java.morpion.vues.VueConsole;
+import fr.iutvalence.java.morpion.vues.VueConsoleANSI;
+import fr.iutvalence.java.morpion.vues.VueConsoleSimple;
 
 /** Modélisation du fonctionnement d'une partie.
  *
  * @author DELORME Loïc & BASSON Julien
- * @version 2.0.0
+ * @version 2.5.0
  */
 public class ControleurConsole
 {
@@ -22,11 +24,22 @@ public class ControleurConsole
     /** Les joueurs de la partie. */
     private final Joueurs joueurs;
 
-    /** Création du controleur de la partie. */
-    public ControleurConsole()
+    /** Création du controleur de la partie. 
+     * 
+     * @param choixVue True si une vue AINSI, false sinon. */
+    public ControleurConsole(boolean choixVue)
     {
         this.plateau = new PlateauJeu();
-        this.vue = new VueConsole();
+        
+        if (choixVue)
+        {
+        	this.vue = new VueConsoleANSI();
+        }
+        else
+        {
+        	this.vue = new VueConsoleSimple();
+        }
+        
         this.joueurs = new Joueurs(this.vue.demanderNomsJoueurs());
     }
 

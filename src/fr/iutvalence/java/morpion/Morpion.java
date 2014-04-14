@@ -23,10 +23,16 @@ public class Morpion
 		else
 		{
 			ControleurConsole unControleurConsole;
-
+			boolean choixVue = false;
+			
+			if ((args.length > 0) && args[0].equals("--ainsi"))
+			{
+				choixVue = true;
+			}
+			
 			do
 			{
-				unControleurConsole = new ControleurConsole();
+				unControleurConsole = new ControleurConsole(choixVue);
 			}
 			while (unControleurConsole.nouvellePartie());
 		}

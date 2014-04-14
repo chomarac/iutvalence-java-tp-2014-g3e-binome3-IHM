@@ -1,67 +1,16 @@
 package fr.iutvalence.java.morpion.vues;
 
-import java.io.BufferedReader;
-import java.io.IOException;
-import java.io.InputStreamReader;
-
-/** Modélisation d'une vue.
+/** Interface de la vue console.
  * 
  * @author DELORME Loïc & BASSON Julien
  * @version 1.0
  */
-public class VueConsole
+public interface VueConsole
 {
-	/** Noms par défaut des différents joueurs. */
-	private static final String[] JOUEURS_PAR_DEFAUT = { "Joueur 1", "Joueur 2" };
-
-	/** Flux d'entré au clavier dans la console. */
-	private BufferedReader entreeConsole;
-
-	/** Modélisation d'un flux d'entrée. */
-	public VueConsole()
-	{
-		this.entreeConsole = new BufferedReader(new InputStreamReader(System.in));
-	}
-
 	/** Demander aux utilisateurs si ils veulent changer le nom des joueurs.
 	 * 
 	 * @return Un tableau contenant les noms des joueurs. */
-	public String[] demanderNomsJoueurs()
-	{
-		while (true)
-		{
-			System.out.println("Voulez-vous modifier les noms de Joueur 1 et Joueur 2 (O/N)");
-			String choix;
-			try
-			{
-				choix = this.entreeConsole.readLine();
-				if ("N".equals(choix))
-					return JOUEURS_PAR_DEFAUT;
-
-				if ("O".equals(choix))
-				{
-					while (true)
-					{
-						String namePlayer2, namePlayer1;
-
-						System.out.println("Veuillez entrer le nom du joueur 1 : ");
-						namePlayer1 = this.entreeConsole.readLine();
-						System.out.println("Veuillez entrer le nom du joueur 2 : ");
-						namePlayer2 = this.entreeConsole.readLine();
-						if (namePlayer1.equals(namePlayer2))
-							System.out.println("Veuillez saisir des noms différents.\n");
-						else
-							return new String[] { namePlayer1, namePlayer2 };
-					}
-				}
-				System.out.println("Veuillez saisir une lettre valide.\n");
-			}
-			catch (IOException e)
-			{
-				System.out.println("La lettre saisie n'est pas valide. \n");
-			}
-		}
-	}
+	String[] demanderNomsJoueurs();
 
 	/** On affiche quel joueur doit jouer son coup.
 	 * 
@@ -69,119 +18,39 @@ public class VueConsole
 	 *            Le nom du joueur.
 	 * @param symboleJoueur
 	 *            Le symbole du joueur. */
-	public void debuterUnTour(String nomJoueur, String symboleJoueur)
-	{
-		System.out.printf("\nC'est à %s de jouer (pion : %s)%n", nomJoueur, symboleJoueur);
-	}
+	void debuterUnTour(String nomJoueur, String symboleJoueur);
 
 	/** Afficher le plateau de jeu courant.
 	 * 
 	 * @param plateauAsciiArt
 	 *            Le plateau courant au format texte. */
-	public void afficherPlateauCourant(String plateauAsciiArt)
-	{
-		System.out.println(plateauAsciiArt);
-	}
+	void afficherPlateauCourant(String plateauAsciiArt);
 
 	/** Permet de demander la première coordonnée au joueur courant.
 	 * 
 	 * @return Un tableau contenant les choix du joueur. */
-	public int[] demanderCoordonnees()
-	{
-		int choix1, choix2;
-		String ligne = null;
-		while (true)
-		{
-			try
-			{
-				System.out.print("Veuillez saisir la première coordonnée (entre 1 et 3 compris) : ");
-				ligne = this.entreeConsole.readLine();
-				if (ligne == null)
-					// Indique une fermeture de l'entrée standard. Sans doute une fin de partie brutale.
-					throw new Exception("ligne == null");
-
-				choix1 = Integer.parseInt(ligne);
-
-				System.out.print("Veuillez saisir la deuxième coordonnée (entre 1 et 3 compris) : ");
-				ligne = this.entreeConsole.readLine();
-				if (ligne == null)
-					// Indique une fermeture de l'entrée standard. Sans doute une fin de partie brutale.
-					throw new Exception("ligne == null");
-
-				choix2 = Integer.parseInt(ligne);
-				break;
-			}
-			catch (Exception e)
-			{
-				System.out.println("Les valeurs saisies ne sont pas des entiers.\n");
-			}
-		}
-
-		return new int[] { choix1, choix2 };
-	}
+	int[] demanderCoordonnees();
 
 	/** Message à afficher lorsqu'il y a un vainqueur.
 	 * 
 	 * @param vainqueur
 	 *            Contient le nom du vainqueur. */
-	public void afficherVainqueur(final String vainqueur)
-	{
-		System.out.printf("La partie est remportée par %s%n", vainqueur);
-	}
+	void afficherVainqueur(final String vainqueur);
 
 	/** Permet d'afficher une partie nulle. */
-	public void afficherPartieNulle()
-	{
-		System.out.println("\nPartie nulle. Il n'y a pas de vainqueur.");
-	}
+	void afficherPartieNulle();
 
 	/** Permet de demander aux joueurs si ils veulent rejouer une partie.
 	 * 
 	 * @return true si le joueur veut rejouer une partie, false sinon. */
-	public boolean choixRejouer()
-	{
-		while (true)
-		{
-			try
-			{
-				System.out.println("\nVoulez-vous rejouer une partie ? (O/N)");
-				String reponse = this.entreeConsole.readLine();
-
-				if ("O".equals(reponse))
-					return true;
-
-				if ("N".equals(reponse))
-				{
-					VueConsole.quitter();
-					return false;
-				}
-				System.out.println("Veuillez saisir une lettre valide.\n");
-			}
-			catch (Exception e)
-			{
-				System.out.println("La lettre saisie n'est pas valide. \n");
-			}
-		}
-	}
+	public boolean choixRejouer();
 
 	/** Message à afficher lorsqu'on quitte l'application. */
-	private static void quitter()
-	{
-		System.out.println("-------------------------------------------------");
-		System.out.println("-- Développé par Delorme Loïc et Basson Julien --");
-		System.out.println("--- Merci à Anthony Gelibert pour son aide ! ----");
-		System.out.println("-------------------------------------------------");
-	}
+	void quitter();
 
 	/** Les coordonnées ne sont pas comprises entre 1 et 3. */
-	public void mauvaisesCoordonnees()
-	{
-		System.out.println("\nLes coordonnées ne sont pas comprises entre 1 et 3.");
-	}
+	void mauvaisesCoordonnees();	
 
 	/** Les coordonnées sont déjà occupées. */
-	public void coordonneesDejaPrise()
-	{
-		System.out.println("\nLes coordonnées saisies sont déjà prises, veuillez en saisir des différentes.");
-	}
+	void coordonneesDejaPrise();
 }
