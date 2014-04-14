@@ -9,18 +9,21 @@ import fr.iutvalence.java.morpion.vues.VueConsole;
 /** Modélisation du fonctionnement d'une partie.
  *
  * @author DELORME Loïc & BASSON Julien
- * @version 2.0.0 */
-public class Controleur
+ * @version 2.0.0
+ */
+public class ControleurConsole
 {
     /** Un plateau de jeu. */
     private final PlateauJeu plateau;
-    /** Une vue. */
+    
+    /** La vue de la partie. */
     private final VueConsole vue;
-    /** Joueurs. */
+    
+    /** Les joueurs de la partie. */
     private final Joueurs joueurs;
 
     /** Création du controleur de la partie. */
-    public Controleur()
+    public ControleurConsole()
     {
         this.plateau = new PlateauJeu();
         this.vue = new VueConsole();
@@ -29,16 +32,22 @@ public class Controleur
 
     /** Jouer une partie.
      *
-     * @return true si le joueur veut rejouer une partie, false sinon. */
-    public boolean nouvellePartie() {
+     * @return True si le joueur veut rejouer une partie, false sinon. */
+    public boolean nouvellePartie()
+    {
         if (this.partie(this.plateau))
-            this.vue.afficherVainqueur(this.joueurs.obtenirNomCourant());
-        else this.vue.afficherPartieNulle();
-
+        {
+        	this.vue.afficherVainqueur(this.joueurs.obtenirNomCourant());
+        }
+        else
+        {
+        	this.vue.afficherPartieNulle();
+        }
+        
         return this.vue.choixRejouer();
     }
 
-    /** Permet de jouer une partie.
+    /** Permet de controler le déroulement d'une partie.
      *
      * @param plateau Le plateau de jeu courant.
      * @return True si la partie est gagné et false si la partie est nulle. */

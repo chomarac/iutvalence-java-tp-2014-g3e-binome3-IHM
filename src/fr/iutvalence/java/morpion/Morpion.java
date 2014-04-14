@@ -1,12 +1,12 @@
 package fr.iutvalence.java.morpion;
 
-import fr.iutvalence.java.morpion.vues.graphique.Controleur2;
 import fr.iutvalence.java.morpion.vues.graphique.VueGraphique;
 
 /** Permet d'executer l'application.
  * 
  * @author DELORME Loïc & BASSON Julien
- * @version 1.2 */
+ * @version 1.5
+ */
 public class Morpion
 {
 
@@ -16,22 +16,19 @@ public class Morpion
 	 *            args. */
 	public static void main(String[] args)
 	{
-		/*if ((args.length > 0) && args[0].equals("--gui"))
+		if ((args.length > 0) && args[0].equals("--gui"))
 		{
 			new VueGraphique();
 		}
 		else
 		{
-			Controleur controleur;
+			ControleurConsole unControleurConsole;
 
 			do
 			{
-				controleur = new Controleur();
+				unControleurConsole = new ControleurConsole();
 			}
-			while (controleur.nouvellePartie());
-		}*/
-		//Controleur2 unControleur = new Controleur2();
-		
-		new VueGraphique();
+			while (unControleurConsole.nouvellePartie());
+		}
 	}
 }

@@ -7,7 +7,8 @@ import java.io.InputStreamReader;
 /** Modélisation d'une vue.
  * 
  * @author DELORME Loïc & BASSON Julien
- * @version 1.0 */
+ * @version 1.0
+ */
 public class VueConsole
 {
 	/** Noms par défaut des différents joueurs. */

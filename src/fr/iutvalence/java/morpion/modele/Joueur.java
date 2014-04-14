@@ -3,13 +3,14 @@ package fr.iutvalence.java.morpion.modele;
 /** Modélisation d'un joueur par son nom et sa signature.
  * 
  * @author DELORME Loïc & BASSON Julien
- * @version 2.0.0 */
+ * @version 2.0.0
+ */
 public final class Joueur
 {
-	/** Nom. */
+	/** Nom du joueur. */
 	private final String nom;
 
-	/** Signature. */
+	/** Signature du joueur. */
 	private final int signature;
 
 	/** Permet de modéliser un joueur avec des composantes pré-définies.
@@ -40,6 +41,7 @@ public final class Joueur
 		return this.signature;
 	}
 
+	/** Rédéfinition de la méthode toString() pour afficher les paramètres d'un joueur. */
 	@Override
 	public String toString()
 	{

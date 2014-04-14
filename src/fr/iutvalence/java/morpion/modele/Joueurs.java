@@ -5,7 +5,8 @@ import java.security.SecureRandom;
 /** Gestionnaire des joueurs.
  * 
  * @author DELORME Loïc & BASSON Julien
- * @version 2.0.0 */
+ * @version 2.0.0
+ */
 public final class Joueurs
 {
 	/** Premier joueur. */

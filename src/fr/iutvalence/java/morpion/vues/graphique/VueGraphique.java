@@ -57,7 +57,6 @@ public class VueGraphique extends JFrame
 		public void actionPerformed(ActionEvent e)
 		{
 			VueGraphique.this.unControleur.placerPion(this.x, this.y);
-			
 		}
 	}
 
@@ -98,12 +97,12 @@ public class VueGraphique extends JFrame
 	private JMenuItem item3_3 = new JMenuItem("A propos de");
 	
 	/** Un controleur. */
-	private Controleur2 unControleur;
+	private ControleurGraphique unControleur;
 	
 	/** Modélisation de la fenêtre graphique. */
 	public VueGraphique()
 	{
-		this.unControleur = new Controleur2();
+		this.unControleur = new ControleurGraphique();
 		
 		this.setTitle("Morpion");
 		this.setSize(400, 400);
