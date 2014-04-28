@@ -32,13 +32,9 @@ public class ControleurConsole
         this.plateau = new PlateauJeu();
         
         if (choixVue)
-        {
         	this.vue = new VueConsoleANSI();
-        }
         else
-        {
         	this.vue = new VueConsoleSimple();
-        }
         
         this.joueurs = new Joueurs(this.vue.demanderNomsJoueurs());
     }
