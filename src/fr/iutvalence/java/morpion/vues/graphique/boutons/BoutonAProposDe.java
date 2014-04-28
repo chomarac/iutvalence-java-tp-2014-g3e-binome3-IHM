@@ -5,7 +5,10 @@ import java.awt.event.ActionListener;
 
 import javax.swing.JOptionPane;
 
-/** Modélisation du bouton "A propos de" de l'application */
+/** Modélisation du bouton "A propos de" de l'application.
+ * 
+ * @author DELORME Loïc & BASSON Julien
+ * @version 1.0 */
 public class BoutonAProposDe implements ActionListener
 {
 	@Override

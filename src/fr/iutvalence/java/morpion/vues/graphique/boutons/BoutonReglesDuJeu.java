@@ -5,10 +5,12 @@ import java.awt.event.ActionListener;
 
 import javax.swing.JOptionPane;
 
-/** Modélisation du bouton "Règle du jeu" de l'application */
+/** Modélisation du bouton "Règle du jeu" de l'application.
+ * 
+ * @author DELORME Loïc & BASSON Julien
+ * @version 1.0 */
 public class BoutonReglesDuJeu implements ActionListener
 {
-
 	@Override
 	public void actionPerformed(ActionEvent e)
 	{
@@ -17,5 +19,4 @@ public class BoutonReglesDuJeu implements ActionListener
 										  + "\nLe premier joueur qui a aligné 3 symboles a gagné."
 										  , "Règle du jeu", JOptionPane.INFORMATION_MESSAGE);
 	}
-
 }

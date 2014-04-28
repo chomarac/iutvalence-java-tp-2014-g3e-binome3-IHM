@@ -43,7 +43,7 @@ public interface VueConsole
 	/** Permet de demander aux joueurs si ils veulent rejouer une partie.
 	 * 
 	 * @return true si le joueur veut rejouer une partie, false sinon. */
-	public boolean choixRejouer();
+	boolean choixRejouer();
 
 	/** Message à afficher lorsqu'on quitte l'application. */
 	void quitter();

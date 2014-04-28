@@ -5,10 +5,12 @@ import java.awt.event.ActionListener;
 
 import javax.swing.JOptionPane;
 
-/** Modélisation du bouton "Version" de l'application */
+/** Modélisation du bouton "Version" permettant d'obtenir des informations sur la version du jeu.
+ * 
+ * @author DELORME Loïc & BASSON Julien
+ * @version 1.0 */
 public class BoutonVersion implements ActionListener
 {
-
 	@Override
 	public void actionPerformed(ActionEvent e)
 	{
@@ -19,5 +21,4 @@ public class BoutonVersion implements ActionListener
 				+ "\nLicence : Ce programme est distribué selon les termes de la version GNU General Public License 3"
 				, "Version", JOptionPane.INFORMATION_MESSAGE);
 	}
-
 }

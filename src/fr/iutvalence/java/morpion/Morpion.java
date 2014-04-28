@@ -28,9 +28,7 @@ public class Morpion
 			boolean choixVue = false;
 			
 			if ((args.length > 0) && args[0].equals("--ainsi"))
-			{
 				choixVue = true;
-			}
 			
 			do
 			{

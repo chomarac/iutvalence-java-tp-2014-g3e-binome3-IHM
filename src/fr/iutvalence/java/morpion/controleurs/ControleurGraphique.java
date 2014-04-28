@@ -49,11 +49,11 @@ public class ControleurGraphique
         }
         catch (CoordonneesDejaPriseException ignored)
         {
-            //
+            // Rien.
         }
         catch (MauvaiseCoordonneesException ignored)
         {
-            //
+            // Rien.
         }
     }
 }
