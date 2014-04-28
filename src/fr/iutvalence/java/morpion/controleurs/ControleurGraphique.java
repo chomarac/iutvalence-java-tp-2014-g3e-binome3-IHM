@@ -56,4 +56,12 @@ public class ControleurGraphique
             // Rien.
         }
     }
+    
+    /** Obtenir la signature du joueur courant.
+     * 
+     * @return La signature du joueur courant. */
+    public String obtenirSignatureJoueurCourant()
+    {
+    	return (this.joueurs.obtenirSymboleJoueur());
+    }
 }

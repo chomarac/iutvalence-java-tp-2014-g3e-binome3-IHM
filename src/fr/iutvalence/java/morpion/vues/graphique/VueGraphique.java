@@ -58,6 +58,16 @@ public class VueGraphique extends JFrame
 		public void actionPerformed(ActionEvent e)
 		{
 			VueGraphique.this.unControleur.placerPion(this.x, this.y);
+			this.mettreAJourLeBouton(VueGraphique.this.unControleur.obtenirSignatureJoueurCourant());
+		}
+
+		/** Mettre à jour le bouton avec la singature du joueur.
+		 * 
+		 * @param symboleJoueurCourant Le symbole du joueur courant. */
+		private void mettreAJourLeBouton(String symboleJoueurCourant)
+		{
+			this.setText(symboleJoueurCourant);
+			this.updateUI();
 		}
 	}
 
@@ -143,15 +153,15 @@ public class VueGraphique extends JFrame
 		this.setJMenuBar(this.barreDeMenu);
 		
 		unTableau.setLayout(new GridLayout(3,3));
-		unTableau.add(new Case("1",1,1));
-		unTableau.add(new Case("2",1,2));
-		unTableau.add(new Case("3",1,3));
-		unTableau.add(new Case("4",2,1));
-		unTableau.add(new Case("5",2,2));
-		unTableau.add(new Case("6",2,3));
-		unTableau.add(new Case("7",3,1));
-		unTableau.add(new Case("8",3,2));
-		unTableau.add(new Case("9",1,1));
+		unTableau.add(new Case(".",1,1));
+		unTableau.add(new Case(".",1,2));
+		unTableau.add(new Case(".",1,3));
+		unTableau.add(new Case(".",2,1));
+		unTableau.add(new Case(".",2,2));
+		unTableau.add(new Case(".",2,3));
+		unTableau.add(new Case(".",3,1));
+		unTableau.add(new Case(".",3,2));
+		unTableau.add(new Case(".",1,1));
 		
 		unTableau.setBackground(Color.WHITE);
 		this.setContentPane(unTableau);
