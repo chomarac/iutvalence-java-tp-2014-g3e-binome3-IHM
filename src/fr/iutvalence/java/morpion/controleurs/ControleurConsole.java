@@ -45,13 +45,9 @@ public class ControleurConsole
     public boolean nouvellePartie()
     {
         if (this.partie(this.plateau))
-        {
         	this.vue.afficherVainqueur(this.joueurs.obtenirNomCourant());
-        }
         else
-        {
         	this.vue.afficherPartieNulle();
-        }
         
         return this.vue.choixRejouer();
     }
