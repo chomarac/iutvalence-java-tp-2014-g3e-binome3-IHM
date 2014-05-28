@@ -60,4 +60,8 @@ public final class Joueurs
 	{
 		return (this.joueurCourant.equals(this.joueur1)) ? PlateauJeu.SYMBOLE_JOUEUR_1 : PlateauJeu.SYMBOLE_JOUEUR_2;
 	}
+	
+	public Joueur obtenirJoueurCourant(){
+		return this.joueurCourant ;
+	}
 }

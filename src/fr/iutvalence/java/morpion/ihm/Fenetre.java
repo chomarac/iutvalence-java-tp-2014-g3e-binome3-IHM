@@ -19,7 +19,13 @@ import javax.swing.JPanel;
 import javax.swing.JSplitPane;
 import javax.swing.SwingConstants;
 
-public class Fenetre implements Runnable {
+import fr.iutvalence.java.morpion.modele.Joueur;
+
+public class Fenetre implements Runnable, InterfaceIHM {
+	
+	private ControleurIHM controleur;
+	
+	private JButton[][] tab = new JButton[3][3];
 	
 	@Override
 	public void run(){
@@ -36,25 +42,22 @@ public class Fenetre implements Runnable {
 		/**Menu de la fenetre*/
 		JMenuBar BarreMenu = new JMenuBar();
 		
-		/**
-		 * Menu "Partie"
-		 */
+		/** Menu "Partie" */
 		JMenu Partie = new JMenu("Partie");
-		
-		JMenuItem NouvellePartie = new JMenuItem("Nouvelle Partie");
-		
-		JMenuItem Fermer = new JMenuItem("Fermer");
-		
-		JMenu Aide = new JMenu("Aide");
-		
-		JMenu APropos = new JMenu("A propos");
-		
 		BarreMenu.add(Partie);
+
+		JMenuItem NouvellePartie = new JMenuItem("Nouvelle Partie");
 		Partie.add(NouvellePartie);
+
+		JMenuItem Fermer = new JMenuItem("Fermer");
 		Partie.add(Fermer);
-		
+
+		JMenu Aide = new JMenu("Aide");
 		BarreMenu.add(Aide);
+
+		JMenu APropos = new JMenu("A propos");
 		BarreMenu.add(APropos);		
+
 		fenetre.setJMenuBar(BarreMenu);
 		
 		JSplitPane JSplitPaneVertical = new JSplitPane(JSplitPane.HORIZONTAL_SPLIT);
@@ -69,27 +72,22 @@ public class Fenetre implements Runnable {
 		JSplitPaneGaucheHorizontal.setBorder(null);
 		JSplitPaneGaucheHorizontal.setDividerSize(1);
 		JSplitPaneGaucheHorizontal.setResizeWeight(0.5);
+		JSplitPaneVertical.add(JSplitPaneGaucheHorizontal);
+
 		
 		JSplitPane JSplitPaneDroiteHorizontal = new JSplitPane(JSplitPane.VERTICAL_SPLIT);
 		JSplitPaneDroiteHorizontal.setEnabled(false);
 		JSplitPaneDroiteHorizontal.setBorder(null);
 		JSplitPaneDroiteHorizontal.setDividerSize(1);
 		JSplitPaneDroiteHorizontal.setResizeWeight(0.1);
-
-		JSplitPaneVertical.add(JSplitPaneGaucheHorizontal);
-		
 		JSplitPaneVertical.add(JSplitPaneDroiteHorizontal);
 			
 	    Box BoxJoueur1 = Box.createHorizontalBox();
-		
 		JSplitPaneGaucheHorizontal.add(BoxJoueur1);
-		
 		BoxJoueur1.add(new JLabel("Joueur 1"));
 		
 		Box BoxJoueur2 = Box.createHorizontalBox();
-		
 		JSplitPaneGaucheHorizontal.add(BoxJoueur2);
-		
 		BoxJoueur2.add(new JLabel("Joueur 2"));
 		
 		JSplitPaneDroiteHorizontal.add(new JLabel("C'est à joueur x de jouer."));
@@ -98,19 +96,31 @@ public class Fenetre implements Runnable {
 		
 		JPanel morpion = new JPanel();
 		morpion.setLayout(new GridLayout(3,3));
-		
 		JSplitPaneDroiteHorizontal.add(morpion);
 		
-		morpion.add(new JButton());
-		morpion.add(new JButton());
-		morpion.add(new JButton());
-		morpion.add(new JButton());
-		morpion.add(new JButton());
-		morpion.add(new JButton());
-		morpion.add(new JButton());
-		morpion.add(new JButton());
-		morpion.add(new JButton());
+		// XXX Changer l'affectation.
+		for (int i = 0; i < 3; i++) {
+			for (int j = 0; j < 3; j++) {
+				morpion.add(new JButtonMorpion(i, j, this, this.controleur));
+			}
+		}		
+	}
+
+	@Override
+	public void placerPion(int ligne, int colonne, Joueur joueur) {
+		// TODO Auto-generated method stub
 		
+	}
+
+	@Override
+	public void victoire(Joueur joueur) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void nul() {
+		// TODO Auto-generated method stub
 		
 	}
 }
